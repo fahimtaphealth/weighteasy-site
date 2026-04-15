@@ -38,38 +38,57 @@ export default function CoachBand() {
           </p>
         </div>
         <div className="mt-14 grid items-center gap-12 lg:grid-cols-2">
-          <div className="relative flex items-center justify-center">
+          <div className="relative flex flex-col items-center gap-8">
+            {/* candid photo — someone on their phone at night */}
             <motion.div
-              className="relative h-[220px] w-[220px] rounded-full bg-coach-orb"
+              initial={{ opacity: 0, y: 20, rotate: -4 }}
+              whileInView={{ opacity: 1, y: 0, rotate: -3 }}
+              viewport={viewportOnce}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="relative overflow-hidden rounded-[18px]"
               style={{
-                boxShadow:
-                  "0 30px 80px rgba(79,70,229,.45), inset 0 -10px 40px rgba(255,255,255,.2)",
+                width: "320px",
+                height: "380px",
+                boxShadow: "0 30px 60px -20px rgba(0,0,0,0.5), 0 10px 20px rgba(0,0,0,0.2)",
               }}
-              animate={{ scale: [1, 1.05, 1] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             >
-              <motion.span
-                className="pointer-events-none absolute inset-0 rounded-full"
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=640&h=760&fit=crop&q=80"
+                alt="Meagan texting the coach at 11pm"
+                className="h-full w-full object-cover"
+                style={{ filter: "brightness(0.85) contrast(1.05)" }}
+              />
+              {/* glow overlay to tie to the orb aesthetic */}
+              <div
+                className="pointer-events-none absolute inset-0"
                 style={{
                   background:
-                    "radial-gradient(circle at 40% 40%, rgba(255,255,255,.5), transparent 60%)",
+                    "radial-gradient(circle at 70% 60%, rgba(159,228,229,0.22) 0%, transparent 55%)",
                 }}
-                animate={{ rotate: 360 }}
-                transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
+              />
+              {/* timestamp caption */}
+              <div className="absolute bottom-4 left-4 rounded-full bg-white/90 px-3 py-1.5 hand text-[1rem] text-ink">
+                Meagan &middot; 11:47pm, Wednesday
+              </div>
+              {/* glowing orb dot in corner */}
+              <motion.div
+                className="absolute right-4 top-4 h-3 w-3 rounded-full bg-coach-orb"
+                animate={{ scale: [1, 1.4, 1], opacity: [0.7, 1, 0.7] }}
+                transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
               />
             </motion.div>
-            {/* Orbital dots */}
-            <motion.div
-              className="absolute inset-0"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-            >
-              <span className="absolute left-1/2 top-4 h-2 w-2 -translate-x-1/2 rounded-full bg-teal" />
-              <span
-                className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 rounded-full bg-purple"
-                style={{ transform: "translate(90px, 120px)" }}
+
+            {/* small orb + status line */}
+            <div className="flex items-center gap-3 text-white/70">
+              <motion.span
+                className="h-7 w-7 rounded-full bg-coach-orb"
+                animate={{ scale: [1, 1.12, 1] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                style={{ boxShadow: "0 6px 16px rgba(79,70,229,0.5)" }}
               />
-            </motion.div>
+              <span className="hand text-[1.15rem]">online. always.</span>
+            </div>
           </div>
 
           <motion.div
