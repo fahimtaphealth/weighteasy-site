@@ -31,33 +31,40 @@ export default function FounderNote() {
           </motion.div>
 
           <div>
-            <motion.span variants={fadeUp} className="eyebrow">
-              A note from us
+            <motion.span variants={fadeUp} className="hand text-[1.4rem] text-accent">
+              hi, from the kitchen table
             </motion.span>
             <motion.h2
               variants={fadeUp}
-              className="mt-4 font-display text-[1.9rem] font-extrabold leading-[1.15] text-ink md:text-[2.2rem]"
+              className="mt-3 font-display text-[1.9rem] font-extrabold leading-[1.15] text-ink md:text-[2.2rem]"
             >
-              We built this because we needed it first.
+              We built this because <span className="marker-hl">we needed it first.</span>
             </motion.h2>
             <motion.p
               variants={fadeUp}
               className="mt-5 text-[1.02rem] leading-[1.65] text-muted"
             >
-              I started on Mounjaro in 2024. The shot was the easy part. The hard part
-              was every Wednesday night wondering if the nausea was normal, if the
-              plateau meant it stopped working, if I was eating enough protein. My
-              prescriber was 3 weeks away. Google was useless. My friends didn&rsquo;t
-              get it.
+              I started on Mounjaro in 2024. The shot was the easy part. The hard
+              part was every Wednesday night lying on the bathroom floor googling
+              &ldquo;is green bile normal&rdquo; at 11pm. My prescriber was 3 weeks
+              out. My friends nodded politely. Google was a rabbit hole.
             </motion.p>
             <motion.p
               variants={fadeUp}
               className="mt-4 text-[1.02rem] leading-[1.65] text-muted"
             >
-              So we built WeightEasy — the thing we wished we had at 10pm on a Tuesday.
-              Half the team is on GLP-1s. The other half is obsessed with making sure
-              the coach actually knows what it&rsquo;s talking about. We&rsquo;d love
-              for you to try it.
+              So I started a spreadsheet. Then a group chat. Then I quit my job
+              and convinced three brilliant friends to help me build the thing I
+              wished I&rsquo;d had. Half the team is on GLP-1s. The other half is
+              obsessed with making sure the coach actually knows what it&rsquo;s
+              talking about.
+            </motion.p>
+            <motion.p
+              variants={fadeUp}
+              className="mt-4 text-[1.02rem] leading-[1.65] text-muted"
+            >
+              If you try it and it doesn&rsquo;t help — tell me. Seriously. My
+              email&rsquo;s below and I still read every one.
             </motion.p>
             <motion.div
               variants={fadeUp}
@@ -78,9 +85,9 @@ export default function FounderNote() {
                 />
               </svg>
               <div className="text-[0.86rem] text-muted">
-                <b className="font-display font-bold text-ink">Meagan Ruiz</b> &amp;
-                the WeightEasy team
-                <div className="text-muted-2">Austin, TX</div>
+                <b className="font-display font-bold text-ink">Meagan Ruiz</b>,
+                founder
+                <div className="text-muted-2">meagan@weighteasy.app · Austin, TX</div>
               </div>
             </motion.div>
           </div>

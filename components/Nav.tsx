@@ -15,14 +15,14 @@ export default function Nav() {
       <div className="container-x flex h-[72px] items-center justify-between">
         <Logo />
         <div className="hidden items-center gap-7 md:flex">
-          <a className="text-[0.92rem] font-medium text-muted hover:text-ink transition" href="#how">How it works</a>
-          <a className="text-[0.92rem] font-medium text-muted hover:text-ink transition" href="#medications">Medications</a>
-          <a className="text-[0.92rem] font-medium text-muted hover:text-ink transition" href="#features">Features</a>
+          <a className="text-[0.92rem] font-medium text-muted hover:text-ink transition" href="#story">The story</a>
+          <a className="text-[0.92rem] font-medium text-muted hover:text-ink transition" href="#wall">Wall of love</a>
+          <a className="text-[0.92rem] font-medium text-muted hover:text-ink transition" href="#features">What&rsquo;s inside</a>
           <a className="text-[0.92rem] font-medium text-muted hover:text-ink transition" href="#pricing">Pricing</a>
-          <a className="text-[0.92rem] font-medium text-muted hover:text-ink transition" href="#faq">FAQ</a>
+          <a className="text-[0.92rem] font-medium text-muted hover:text-ink transition" href="#faq">Questions</a>
         </div>
         <div className="flex items-center gap-3">
-          <a href="#pricing" className="btn btn-primary">Start free trial</a>
+          <a href="#pricing" className="btn btn-primary">Try it free</a>
         </div>
       </div>
     </motion.nav>

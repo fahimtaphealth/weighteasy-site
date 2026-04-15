@@ -37,7 +37,7 @@ const chapters = [
 
 export default function CaseStudy() {
   return (
-    <section className="bg-bg py-[100px]">
+    <section id="story" className="bg-bg py-[100px]">
       <div className="container-x">
         <SectionHead
           eyebrow="A real story"

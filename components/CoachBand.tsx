@@ -1,21 +1,20 @@
 "use client";
 
 import { motion } from "framer-motion";
-import SectionHead from "./SectionHead";
 import { fadeUp, stagger, viewportOnce } from "@/lib/motion";
 
 const messages = [
-  { who: "user", text: "Day 4 and still nauseous after dinner. Normal?" },
+  { who: "user", text: "ok it\u2019s 11pm and i threw up twice. should i be worried" },
   {
     who: "bot",
     text:
-      "You're in Zone B — your stomach is still recovering from Monday's dose. Try an earlier dinner (before 7pm) and keep portions small. This usually resolves by Day 5.",
+      "That sounds rough. Day 4 nausea like this is within normal range for your 5mg dose \u2014 but twice in one night is the upper edge. Sip ginger tea, skip dinner, text me at 7am. If you vomit again tonight, call your prescriber.",
   },
-  { who: "user", text: "Can I have the grain bowl tomorrow?" },
+  { who: "user", text: "okay. thank you. i really thought i was dying lol" },
   {
     who: "bot",
     text:
-      "Yes — tomorrow's Day 5, your best protein day this cycle. The grain bowl with salmon is perfect. I'll save it to your plan.",
+      "You\u2019re not. You\u2019re on Day 4. Also \u2014 72% of people on your dose feel exactly this at this point. You\u2019re not broken, you\u2019re just in Zone B.",
   },
 ];
 
@@ -23,16 +22,21 @@ export default function CoachBand() {
   return (
     <section className="relative overflow-hidden bg-ink text-white py-[100px]">
       <div className="container-x relative">
-        <SectionHead
-          dark
-          eyebrow="Meet your coach"
-          title={
-            <>
-              A coach that <span style={{ color: "#9FE4E5" }}>actually knows your cycle.</span>
-            </>
-          }
-          body="Not a generic chatbot. An AI trained on GLP-1 pharmacokinetics that knows what day of your cycle you're on — and tailors every answer accordingly."
-        />
+        <div className="mx-auto max-w-[760px] text-center">
+          <span className="hand text-[1.4rem]" style={{ color: "#9FE4E5" }}>
+            the 11pm friend
+          </span>
+          <h2 className="mt-3 !text-white">
+            Trained on GLP-1 pharmacokinetics.
+            <br />
+            <span style={{ color: "#9FE4E5" }}>Answers like a person.</span>
+          </h2>
+          <p className="mx-auto mt-5 max-w-[560px] text-white/70">
+            Knows what dose you&rsquo;re on. Knows what day of your cycle it is.
+            Won&rsquo;t tell you to &ldquo;consult your physician&rdquo; when
+            you&rsquo;re on the bathroom floor.
+          </p>
+        </div>
         <div className="mt-14 grid items-center gap-12 lg:grid-cols-2">
           <div className="relative flex items-center justify-center">
             <motion.div

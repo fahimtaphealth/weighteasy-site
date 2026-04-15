@@ -2,10 +2,29 @@
 
 import { motion } from "framer-motion";
 import { fadeUp, stagger, viewportOnce } from "@/lib/motion";
+import StickyNote from "./StickyNote";
 
 export default function FinalCTA() {
   return (
-    <section className="relative overflow-hidden bg-ink py-[120px] text-center text-white">
+    <section className="relative overflow-hidden bg-ink py-[130px] text-center text-white">
+      {/* stuck-on notes */}
+      <div className="pointer-events-none absolute left-[6%] top-[18%] hidden md:block">
+        <StickyNote rotate={-8} color="yellow">
+          p.s. we read every email.
+          <br />
+          meagan@weighteasy.app
+        </StickyNote>
+      </div>
+      <div className="pointer-events-none absolute right-[7%] top-[22%] hidden md:block">
+        <StickyNote rotate={6} color="pink">
+          cancel anytime,
+          <br />
+          no dark patterns,
+          <br />
+          we promise.
+        </StickyNote>
+      </div>
+
       <div className="container-x relative">
         <motion.div
           variants={stagger(0.1, 0.12)}
@@ -13,21 +32,25 @@ export default function FinalCTA() {
           whileInView="show"
           viewport={viewportOnce}
         >
-          <motion.span variants={fadeUp} className="eyebrow dark">
-            Ready when you are
+          <motion.span variants={fadeUp} className="hand text-[1.5rem]" style={{ color: "#9FE4E5" }}>
+            okay last thing
           </motion.span>
           <motion.h2
             variants={fadeUp}
-            className="mt-5 !text-white"
+            className="mt-4 !text-white"
             style={{ fontSize: "clamp(2.4rem,4.8vw,4rem)" }}
           >
-            Your complete GLP-1 app <span className="shimmer-text animate-shimmer">is ready.</span>
+            Try it for a week.
+            <br />
+            <span className="shimmer-text animate-shimmer">See if we&rsquo;re right.</span>
           </motion.h2>
           <motion.p
             variants={fadeUp}
-            className="mx-auto mt-5 max-w-[560px] text-[1.1rem] text-white/80"
+            className="mx-auto mt-6 max-w-[560px] text-[1.1rem] text-white/80"
           >
-            Start your 7-day free trial. Cancel anytime. Backed by a 90-day money-back guarantee.
+            If the coach doesn&rsquo;t feel like a real friend by day seven, cancel
+            and we&rsquo;ll refund the trial. No clicking through three settings
+            pages to find the button.
           </motion.p>
           <motion.a
             variants={fadeUp}
@@ -36,13 +59,20 @@ export default function FinalCTA() {
             href="#"
             className="btn mt-9 bg-white px-8 py-4 text-base text-ink hover:bg-bg"
           >
-            Start 7-day free trial
+            Start the 7 days →
           </motion.a>
           <motion.p
             variants={fadeUp}
-            className="mx-auto mt-10 max-w-[520px] text-[0.82rem] text-white/55"
+            className="mx-auto mt-6 hand text-[1.2rem] text-white/70"
           >
-            WeightEasy is a wellness companion app. It is not a substitute for medical advice, diagnosis, or treatment. Always talk to your prescriber about serious side effects.
+            no credit card for the first 48 hours.
+          </motion.p>
+          <motion.p
+            variants={fadeUp}
+            className="mx-auto mt-10 max-w-[520px] text-[0.82rem] text-white/45"
+          >
+            WeightEasy is a wellness companion app, not a substitute for medical
+            advice. For anything serious, please call your prescriber or 911.
           </motion.p>
         </motion.div>
       </div>
