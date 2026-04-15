@@ -1,0 +1,56 @@
+"use client";
+
+import { motion } from "framer-motion";
+import SectionHead from "./SectionHead";
+import { fadeUp, stagger, viewportOnce } from "@/lib/motion";
+
+const integrations = [
+  { name: "Apple Health", sub: "steps · heart · sleep", icon: "❤" },
+  { name: "Google Fit", sub: "steps · activity", icon: "◆" },
+  { name: "Fitbit", sub: "HR · sleep · steps", icon: "✦" },
+  { name: "Oura Ring", sub: "sleep · recovery", icon: "○" },
+  { name: "Withings Scale", sub: "weight · composition", icon: "⊕" },
+  { name: "Garmin", sub: "workouts · HRV", icon: "▲" },
+];
+
+export default function Integrations() {
+  return (
+    <section className="bg-bg py-[100px]">
+      <div className="container-x">
+        <SectionHead
+          eyebrow="Already in your life"
+          title={
+            <>
+              Your data already lives in your watch and scale.{" "}
+              <span className="text-accent">We just listen.</span>
+            </>
+          }
+        />
+        <motion.div
+          variants={stagger(0.05, 0.07)}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+          className="mt-10 flex flex-wrap justify-center gap-3"
+        >
+          {integrations.map((i) => (
+            <motion.div
+              key={i.name}
+              variants={fadeUp}
+              whileHover={{ y: -2 }}
+              className="flex items-center gap-3 rounded-2xl border border-line bg-white px-6 py-4"
+            >
+              <div className="flex h-10 w-10 items-center justify-center rounded-[10px] bg-indigo-soft text-indigo">
+                {i.icon}
+              </div>
+              <div>
+                <b className="font-display text-[0.95rem] text-ink">{i.name}</b>
+                <span className="block text-[0.8rem] text-muted">{i.sub}</span>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
