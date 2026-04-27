@@ -9,9 +9,7 @@ import Stats from "@/components/Stats";
 import WhoItsFor from "@/components/WhoItsFor";
 import Integrations from "@/components/Integrations";
 import Testimonials from "@/components/Testimonials";
-import FounderNote from "@/components/FounderNote";
 import CaseStudy from "@/components/CaseStudy";
-import Community from "@/components/Community";
 import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
 import FinalCTA from "@/components/FinalCTA";
@@ -32,8 +30,6 @@ export default function Home() {
       <Integrations />
       <CaseStudy />
       <Testimonials />
-      <Community />
-      <FounderNote />
       <Pricing />
       <FAQ />
       <FinalCTA />

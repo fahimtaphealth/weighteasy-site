@@ -95,7 +95,7 @@ export default function Testimonials() {
               }}
             >
               <div className="absolute -top-2 left-1/2 -translate-x-1/2">
-                <PushPin color={i % 2 === 0 ? "#E74C3C" : "#4F46E5"} />
+                <PushPin color={i % 2 === 0 ? "#E74C3C" : "var(--primary-default)"} />
               </div>
               <div className="flex items-center gap-3">
                 {/* eslint-disable-next-line @next/next/no-img-element */}

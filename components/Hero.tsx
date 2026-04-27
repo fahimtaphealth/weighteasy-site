@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { fadeUp, stagger } from "@/lib/motion";
 import PhoneMockup from "./PhoneMockup";
-import Squiggle from "./Squiggle";
 
 export default function Hero() {
   return (
@@ -15,45 +14,20 @@ export default function Hero() {
           animate="show"
           className="relative"
         >
-          {/* handwritten margin note */}
-          <motion.div
-            initial={{ opacity: 0, x: -10, rotate: -8 }}
-            animate={{ opacity: 1, x: 0, rotate: -5 }}
-            transition={{ delay: 1.2, duration: 0.6 }}
-            className="absolute -left-2 -top-6 hidden text-[1.05rem] text-accent hand md:block"
-            aria-hidden
-          >
-            <span className="inline-flex items-center gap-2">
-              ← hi, we&rsquo;re real people
-            </span>
-          </motion.div>
+          <motion.span variants={fadeUp} className="eyebrow">
+            WeightEasy — Tracker and Coach
+          </motion.span>
 
-          <motion.h1 variants={fadeUp} className="mt-2">
-            GLP-1s are hard.
-            <br />
-            <span className="relative inline-block">
-              We&rsquo;ve got you
-              <Squiggle
-                className="absolute -bottom-3 left-0 h-3 w-[110%]"
-                color="#2563EB"
-                strokeWidth={4}
-              />
-            </span>
-            <span className="text-accent">.</span>
+          <motion.h1 variants={fadeUp} className="mt-5">
+            Get more from your{" "}
+            <span className="text-accent">GLP-1</span>
           </motion.h1>
 
           <motion.p variants={fadeUp} className="mt-7 max-w-[540px] text-[1.13rem] text-muted">
-            It&rsquo;s 10:47pm. You&rsquo;re on the kitchen floor wondering if the
-            nausea is normal or if something&rsquo;s wrong. Your prescriber is 3 weeks
-            away. Google is useless. <span className="marker-hl">That&rsquo;s the gap we fill.</span>
-          </motion.p>
-
-          <motion.p
-            variants={fadeUp}
-            className="mt-3 max-w-[540px] text-[0.98rem] text-muted-2"
-          >
-            Built with people on Ozempic, Wegovy, Mounjaro, Zepbound &amp; Rybelsus
-            — not just for them.
+            We know day 3 hits hardest. We know the nausea peaks at week 3.
+            We built an app that predicts what happens next — so you&rsquo;re
+            never guessing alone.{" "}
+            <span className="marker-hl">That&rsquo;s the gap we fill.</span>
           </motion.p>
 
           <motion.div variants={fadeUp} className="mt-9 flex flex-wrap items-center gap-3">
@@ -81,15 +55,9 @@ export default function Hero() {
               ))}
             </div>
             <div>
-              <b className="font-semibold text-ink">12,400 people on GLP-1s</b>{" "}
-              use WeightEasy. Only four of them were on a waiting list.
+              Based on research with{" "}
+              <b className="font-semibold text-ink">500+ people on GLP-1</b>
             </div>
-          </motion.div>
-          <motion.div
-            variants={fadeUp}
-            className="mt-4 inline-flex items-center gap-2 text-[0.82rem] text-muted-2 before:inline-block before:h-1.5 before:w-1.5 before:rounded-full before:bg-teal"
-          >
-            7-day free trial · 90-day money-back · no &ldquo;just trust us&rdquo;
           </motion.div>
         </motion.div>
 

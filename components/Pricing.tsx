@@ -9,7 +9,6 @@ const features = [
   "AI coach trained on GLP-1",
   "Cycle-aware meal plans",
   "Dose, symptom, food & fitness tracking",
-  "Connects to Apple Health, Fitbit, Oura, Withings",
   "Weekly progress reviews",
   "7-day free trial",
   "90-day money-back guarantee",
@@ -23,14 +22,18 @@ const plans = [
     note: "Billed monthly. Cancel anytime.",
     badge: null,
     highlight: false,
+    oldPrice: null,
+    cta: "Start now",
   },
   {
     name: "Yearly",
     price: "$49.99",
     period: "/ year",
-    note: "That's $4.17 / month. Best value.",
+    note: "That\u2019s $4.17 / month. Best value.",
     badge: "59% off",
     highlight: true,
+    oldPrice: "$120",
+    cta: "Start 7-day free trial",
   },
 ];
 
@@ -80,6 +83,9 @@ export default function Pricing() {
               )}
               <h3 className="text-[1.1rem]">{p.name}</h3>
               <div className="mt-3.5 font-display text-[3rem] font-extrabold tracking-[-0.04em] text-ink">
+                {p.oldPrice && (
+                  <span className="mr-2 text-[1.4rem] font-medium text-muted line-through">{p.oldPrice}</span>
+                )}
                 {p.price}
                 <small className="ml-0.5 text-[0.95rem] font-medium text-muted">{p.period}</small>
               </div>
@@ -94,7 +100,7 @@ export default function Pricing() {
                       <svg width="10" height="10" viewBox="0 0 16 16" fill="none">
                         <path
                           d="M4 8.5l2.5 2.5L12 5.5"
-                          stroke="#4F46E5"
+                          stroke="var(--primary-default)"
                           strokeWidth="2.2"
                           strokeLinecap="round"
                           strokeLinejoin="round"
@@ -109,7 +115,7 @@ export default function Pricing() {
                 href="#"
                 className={cn("btn w-full", p.highlight ? "btn-primary" : "btn-light")}
               >
-                Start 7-day free trial
+                {p.cta}
               </a>
             </motion.div>
           ))}

@@ -32,7 +32,7 @@ export default function FinalCTA() {
           whileInView="show"
           viewport={viewportOnce}
         >
-          <motion.span variants={fadeUp} className="hand text-[1.5rem]" style={{ color: "#9FE4E5" }}>
+          <motion.span variants={fadeUp} className="hand text-[1.5rem]" style={{ color: "var(--color-teal-300)" }}>
             okay last thing
           </motion.span>
           <motion.h2

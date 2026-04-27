@@ -10,8 +10,8 @@ type Props = {
  * Inlined so we can dynamically swap colors for the inverted (footer) variant.
  */
 export default function Logo({ inverted = false, className = "" }: Props) {
-  const wordColor = inverted ? "#FFFFFF" : "#172554";
-  const accentColor = inverted ? "#9FE4E5" : "#2563EB";
+  const wordColor = inverted ? "var(--content-inverse)" : "var(--color-brand-950)";
+  const accentColor = inverted ? "var(--color-teal-300)" : "var(--primary-default)";
 
   return (
     <a

@@ -32,7 +32,7 @@ export default function PhoneMockup() {
       >
         <div
           className="relative h-full w-full overflow-hidden"
-          style={{ borderRadius: 40, background: "#F3F4F8" }}
+          style={{ borderRadius: 40, background: "var(--surface-default)" }}
         >
           {/* Dynamic island notch */}
           <div
@@ -56,7 +56,7 @@ export default function PhoneMockup() {
               {/* Avatar */}
               <div
                 className="absolute right-[18px] top-[46px] flex h-8 w-8 items-center justify-center rounded-full font-display text-[0.68rem] font-bold"
-                style={{ background: "#F4C9B6", color: "#0F1B3F" }}
+                style={{ background: "#F4C9B6", color: "var(--content-on-surface)" }}
               >
                 MK
               </div>
@@ -80,7 +80,7 @@ export default function PhoneMockup() {
                   Due today
                 </div>
                 {/* Animated progress bar — the signature gradient */}
-                <div className="mt-2.5 h-[3px] overflow-hidden rounded-full" style={{ background: "#EEF0F6" }}>
+                <div className="mt-2.5 h-[3px] overflow-hidden rounded-full" style={{ background: "var(--interaction-hover)" }}>
                   <motion.span
                     className="block h-full rounded-full bg-coach-grad"
                     initial={{ width: "0%" }}
@@ -127,7 +127,7 @@ export default function PhoneMockup() {
                   style={{
                     padding: 1.5,
                     background:
-                      "linear-gradient(135deg,#22C1C3 0%,#4F46E5 55%,#A855F7 100%)",
+                      "linear-gradient(135deg, var(--color-teal-400) 0%, var(--tertiary-default) 55%, var(--color-purple-500) 100%)",
                     WebkitMask:
                       "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
                     WebkitMaskComposite: "xor",
@@ -182,7 +182,7 @@ export default function PhoneMockup() {
                       <motion.polyline
                         points="0,8 80,16 130,14 200,36 280,44"
                         fill="none"
-                        stroke="#2563EB"
+                        stroke="var(--primary-default)"
                         strokeWidth={2}
                         initial={{ pathLength: 0, opacity: 0 }}
                         animate={inView ? { pathLength: 1, opacity: 1 } : {}}
@@ -202,7 +202,7 @@ export default function PhoneMockup() {
                         cx={130}
                         cy={14}
                         r={3.5}
-                        fill="#2563EB"
+                        fill="var(--primary-default)"
                         initial={{ scale: 0 }}
                         animate={inView ? { scale: 1 } : {}}
                         transition={{ duration: 0.3, delay: 2.4 }}
@@ -229,7 +229,7 @@ export default function PhoneMockup() {
               <div
                 key={tab.label}
                 className="flex flex-col items-center gap-0.5 text-[0.56rem] font-semibold"
-                style={{ color: tab.active ? "#172554" : "#5E6378" }}
+                style={{ color: tab.active ? "var(--content-primary)" : "var(--content-tertiary)" }}
               >
                 {tab.isOrb ? (
                   <motion.span
@@ -278,7 +278,7 @@ function Tracker({
     >
       <span
         className="flex h-[30px] w-[30px] flex-shrink-0 items-center justify-center rounded-full text-[0.72rem]"
-        style={{ background: "#F3F4F8" }}
+        style={{ background: "var(--surface-default)" }}
       >
         {icon}
       </span>

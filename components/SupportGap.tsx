@@ -35,19 +35,16 @@ export default function SupportGap() {
     <section className="bg-bg py-[100px]">
       <div className="container-x">
         <div className="mx-auto max-w-[760px]">
-          <span className="hand text-[1.4rem] text-accent">what we heard (a lot)</span>
+          <span className="eyebrow">The Problem</span>
           <h2 className="mt-3">
-            Your prescriber saw you for 15 minutes.
-            <br />
+            Your prescriber saw you for 15 minutes.{" "}
             <span className="marker-hl">Then what?</span>
           </h2>
-          <p className="mt-5 max-w-[560px] text-muted">
-            We sat down with four people on GLP-1s — Meagan, Brian, Genevieve, and
-            Tricia. No scripts, no leading questions, no &ldquo;what features would
-            you want.&rdquo; Just: &ldquo;how&rsquo;s it going?&rdquo;
-          </p>
-          <p className="mt-3 max-w-[560px] text-muted">
-            Three things came up in every conversation.
+          <p className="mt-5 max-w-[600px] text-muted">
+            We sat down with many people on GLP-1s. No scripts, no leading
+            questions, no &ldquo;what features would you want.&rdquo; Just:
+            &ldquo;how&rsquo;s it going?&rdquo; Three things came up in every
+            conversation.
           </p>
         </div>
 

@@ -8,27 +8,40 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        bg: "#F3F4F8",
-        "bg-2": "#EEF0F6",
-        paper: "#FFFFFF",
-        ink: "#172554",
-        "ink-2": "#0F1B3F",
-        text: "#2B3150",
-        muted: "#5E6378",
-        "muted-2": "#8A8FA3",
-        line: "#E5E7EE",
-        "line-2": "#D8DBE6",
-        accent: "#2563EB",
-        "accent-soft": "#E6EEFF",
-        "accent-line": "#C9D7FF",
+        /* ── Surface ── */
+        bg: "var(--surface-default)",
+        "bg-2": "var(--interaction-hover)",
+        paper: "var(--surface-container)",
+
+        /* ── Content ── */
+        ink: "var(--content-primary)",
+        "ink-2": "var(--content-on-surface)",
+        text: "var(--content-on-surface)",
+        muted: "var(--content-secondary)",
+        "muted-2": "var(--content-tertiary)",
+
+        /* ── Border ── */
+        line: "var(--border-default)",
+        "line-2": "var(--border-strong)",
+
+        /* ── Primary (brand/blue) ── */
+        accent: "var(--primary-default)",
+        "accent-soft": "var(--interaction-selected-subtle)",
+        "accent-line": "var(--interaction-selected)",
+
+        /* ── Indigo → Tertiary (purple) ── */
         indigo: {
-          DEFAULT: "#4F46E5",
-          600: "#4338CA",
-          soft: "#EEF0FF",
-          line: "#C7CDFF",
+          DEFAULT: "var(--tertiary-default)",
+          600: "var(--color-purple-600)",
+          soft: "var(--tertiary-container)",
+          line: "var(--color-purple-400)",
         },
-        teal: "#22C1C3",
-        purple: "#A855F7",
+
+        /* ── Secondary (teal) ── */
+        teal: "var(--secondary-default)",
+
+        /* ── Tertiary (purple) ── */
+        purple: "var(--color-purple-500)",
       },
       fontFamily: {
         display: ['"Plus Jakarta Sans"', '"Inter"', "system-ui", "sans-serif"],
@@ -40,11 +53,11 @@ const config: Config = {
       },
       backgroundImage: {
         "coach-grad":
-          "linear-gradient(135deg,#22C1C3 0%,#4F46E5 55%,#A855F7 100%)",
+          "linear-gradient(135deg, var(--color-teal-400) 0%, var(--tertiary-default) 55%, var(--color-purple-500) 100%)",
         "cycle-header":
-          "linear-gradient(160deg,#0E3B3D 0%,#0A2E35 60%,#081E2A 100%)",
+          "linear-gradient(160deg, #0E3B3D 0%, #0A2E35 60%, #081E2A 100%)",
         "coach-orb":
-          "radial-gradient(circle at 30% 30%, #9FE4E5 0%, #4F46E5 55%, #A855F7 100%)",
+          "radial-gradient(circle at 30% 30%, var(--color-teal-300) 0%, var(--tertiary-default) 55%, var(--color-purple-500) 100%)",
       },
       boxShadow: {
         "sm-soft": "0 1px 2px rgba(10,11,26,.04), 0 1px 3px rgba(10,11,26,.03)",

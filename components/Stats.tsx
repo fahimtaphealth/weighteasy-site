@@ -1,46 +1,13 @@
 "use client";
 
-import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import SectionHead from "./SectionHead";
 import { fadeUp, stagger, viewportOnce } from "@/lib/motion";
 
-function AnimatedNumber({
-  value,
-  suffix = "",
-  decimals = 0,
-}: {
-  value: number;
-  suffix?: string;
-  decimals?: number;
-}) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-  const mv = useMotionValue(0);
-  const [display, setDisplay] = useState("0");
-
-  useEffect(() => {
-    if (!inView) return;
-    const controls = animate(mv, value, {
-      duration: 1.6,
-      ease: [0.22, 1, 0.36, 1],
-      onUpdate: (v) => setDisplay(v.toFixed(decimals)),
-    });
-    return () => controls.stop();
-  }, [inView, value, decimals, mv]);
-
-  return (
-    <span ref={ref}>
-      {display}
-      {suffix}
-    </span>
-  );
-}
-
 const stats = [
-  { value: 89, suffix: "%", label: "of connected users lost weight 2× faster.", sub: "Connected users log their dose at least weekly." },
-  { value: 4.3, suffix: " lbs", label: "more weight lost per month on average.", sub: "Versus self-directed GLP-1 users without a coach.", decimals: 1 },
-  { value: 14, suffix: " min", label: "average time to get a coach answer at 2am.", sub: "You're never alone with a question about dose day." },
+  { display: "2-3x", label: "better outcomes", sub: "with consistent habit tracking alongside GLP-1 medication" },
+  { display: "87%", label: "improvement", sub: "of common side effects manageable with gradual dose support" },
+  { display: "Peer", label: "reviewed", sub: "principles from leading institutions including Harvard Medical School" },
 ];
 
 export default function Stats() {
@@ -70,11 +37,7 @@ export default function Stats() {
               className="rounded-[22px] border border-line bg-white p-8"
             >
               <div className="font-display text-[3.4rem] font-extrabold leading-none tracking-[-0.04em] text-ink">
-                <AnimatedNumber
-                  value={s.value}
-                  suffix={s.suffix}
-                  decimals={s.decimals ?? 0}
-                />
+                {s.display}
               </div>
               <div className="mt-3.5 font-display font-bold text-ink">{s.label}</div>
               <div className="mt-2 text-[0.9rem] text-muted">{s.sub}</div>

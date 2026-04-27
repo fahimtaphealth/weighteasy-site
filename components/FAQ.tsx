@@ -42,7 +42,7 @@ function Item({ q, a }: { q: string; a: string }) {
           transition={{ duration: 0.2 }}
           className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full"
         >
-          <svg width="12" height="12" viewBox="0 0 20 20" fill="none" stroke="#4F46E5" strokeWidth="2.4" strokeLinecap="round">
+          <svg width="12" height="12" viewBox="0 0 20 20" fill="none" stroke="var(--primary-default)" strokeWidth="2.4" strokeLinecap="round">
             <path d="M10 4v12M4 10h12" />
           </svg>
         </motion.span>

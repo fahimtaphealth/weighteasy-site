@@ -22,7 +22,7 @@ const paths: Record<Variant, string> = {
 
 export default function Squiggle({
   variant = "squiggle",
-  color = "#2563EB",
+  color = "var(--primary-default)",
   className,
   strokeWidth = 3,
 }: Props) {

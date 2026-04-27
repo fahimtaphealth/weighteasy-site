@@ -40,14 +40,13 @@ const types = [
 
 export default function WhoItsFor() {
   return (
-    <section className="bg-white py-[110px]">
+    <section className="bg-ink py-[110px] text-white">
       <div className="container-x">
         <div className="mx-auto max-w-[720px]">
-          <span className="hand text-[1.4rem] text-accent">wherever you are</span>
-          <h2 className="mt-3">
+          <h2 className="mt-3 !text-white">
             Built for four kinds of <span className="marker-hl">GLP-1 people.</span>
           </h2>
-          <p className="mt-4 max-w-[540px] text-muted">
+          <p className="mt-4 max-w-[540px] text-white/70">
             Week one looks nothing like month six. Your app shouldn&rsquo;t
             either.
           </p>
@@ -65,9 +64,9 @@ export default function WhoItsFor() {
               key={t.title}
               variants={fadeUp}
               whileHover={{ y: -6, transition: { duration: 0.2 } }}
-              className="group overflow-hidden rounded-[20px] border border-line bg-bg"
+              className="group overflow-hidden rounded-[20px] border border-white/10 bg-white/5"
             >
-              <div className="relative aspect-[5/6] overflow-hidden bg-line">
+              <div className="relative aspect-[5/6] overflow-hidden bg-white/10">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={t.photo}
@@ -75,13 +74,13 @@ export default function WhoItsFor() {
                   className="h-full w-full object-cover transition-transform duration-[600ms] group-hover:scale-[1.04]"
                   loading="lazy"
                 />
-                <div className="absolute bottom-3 left-3 rounded-full bg-white/95 px-3 py-1 hand text-[1rem] text-ink">
+                <div className="absolute bottom-3 left-3 rounded-full bg-black/60 px-3 py-1 hand text-[1rem] text-white">
                   {t.name}
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-[1.05rem]">{t.title}</h3>
-                <p className="mt-2 text-[0.92rem]">{t.body}</p>
+                <h3 className="text-[1.05rem] !text-white">{t.title}</h3>
+                <p className="mt-2 text-[0.92rem] text-white/70">{t.body}</p>
               </div>
             </motion.div>
           ))}

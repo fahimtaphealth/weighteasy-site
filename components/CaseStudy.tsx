@@ -43,10 +43,11 @@ export default function CaseStudy() {
           eyebrow="A real story"
           title={
             <>
-              Meagan&rsquo;s first <span className="text-accent">14 weeks.</span>
+              14 weeks with WeightEasy &ndash;{" "}
+              <span className="text-accent">Story of Meagan</span>
             </>
           }
-          body="Not a curated before/after. The actual arc — scary parts, plateau, and the stuff that surprised her."
+          body="Not a curated before/after. The actual arc — the good, the bad and the scary."
         />
 
         <motion.div
@@ -72,6 +73,26 @@ export default function CaseStudy() {
               Mounjaro · 2.5mg → 7.5mg · Started Jan 2026
             </div>
           </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={viewportOnce}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mx-auto mt-8 flex max-w-[720px] items-center gap-4 rounded-[18px] border border-line bg-white p-5"
+        >
+          <div
+            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full font-display text-[1rem] font-extrabold text-white"
+            style={{ background: "var(--content-primary)" }}
+          >
+            M
+          </div>
+          <p className="text-[0.95rem] italic leading-[1.55] text-muted">
+            &ldquo;I didn&rsquo;t need another app. I needed someone to tell me I
+            wasn&rsquo;t crazy at 10pm on a Tuesday. That&rsquo;s what this is.&rdquo;
+            <span className="not-italic text-muted-2"> — Meagan, Mounjaro</span>
+          </p>
         </motion.div>
 
         <motion.div
@@ -113,26 +134,6 @@ export default function CaseStudy() {
               )}
             </motion.div>
           ))}
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={viewportOnce}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mx-auto mt-10 flex max-w-[720px] items-center gap-4 rounded-[18px] border border-line bg-white p-5"
-        >
-          <div
-            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full font-display text-[1rem] font-extrabold text-white"
-            style={{ background: "#172554" }}
-          >
-            M
-          </div>
-          <p className="text-[0.95rem] italic leading-[1.55] text-muted">
-            &ldquo;I didn&rsquo;t need another app. I needed someone to tell me I
-            wasn&rsquo;t crazy at 10pm on a Tuesday. That&rsquo;s what this is.&rdquo;
-            <span className="not-italic text-muted-2"> — Meagan, Mounjaro</span>
-          </p>
         </motion.div>
       </div>
     </section>

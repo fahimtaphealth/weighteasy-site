@@ -6,6 +6,88 @@
   --font-display: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
   --font-sans: "Inter", system-ui, sans-serif;
   --font-hand: "Caveat", "Bradley Hand", cursive;
+
+  /* ─── Pulse DS · Semantic Colors (WeightEasy-Light mode) ─── */
+
+  /* Surface */
+  --surface-default: #F2F5F9;        /* surface/default → neutral/100 */
+  --surface-container: #FDFDFD;      /* surface/container → neutral/50 */
+  --surface-inverse: #050914;        /* surface/inverse → neutral/950 */
+  --surface-tint: #050914;           /* surface/tint → neutral/950 */
+
+  /* Primary */
+  --primary-default: #2563EB;        /* primary/default → brand/600 */
+  --primary-on: #FDFDFD;             /* primary/on → neutral/50 */
+  --primary-container: #F2F5F9;      /* primary/container → neutral/100 */
+  --primary-on-container: #18203A;   /* primary/on-container → neutral/900 */
+  --primary-hover: #3D4966;          /* primary/hover → neutral/700 */
+  --primary-pressed: #18203A;        /* primary/pressed → neutral/900 */
+
+  /* Secondary (teal) */
+  --secondary-default: #14B8A6;      /* No resolved WE-Light, using teal/500 prim */
+  --secondary-container: #CCFBF1;    /* secondary/container → teal/100 */
+  --secondary-on-container: #115E59; /* secondary/on-container → teal/800 */
+
+  /* Tertiary (purple) */
+  --tertiary-default: #7C3AED;       /* tertiary/default → purple/600 */
+  --tertiary-container: #EDE9FE;     /* tertiary/container → purple/100 */
+
+  /* Content */
+  --content-primary: #050914;        /* content/primary → neutral/950 */
+  --content-secondary: #3D4966;      /* content/secondary → neutral/700 */
+  --content-tertiary: #818BA0;       /* content/tertiary → neutral/500 */
+  --content-disabled: #BEC5D2;       /* content/disabled → neutral/300 */
+  --content-inverse: #FDFDFD;        /* content/inverse → neutral/50 */
+  --content-on-primary: #FDFDFD;     /* content/on-primary → neutral/50 */
+  --content-on-surface: #18203A;     /* content/on-surface → neutral/900 */
+  --content-link: #050914;           /* content/link → neutral/950 */
+  --content-selected: #2563EB;       /* content/selected → brand/600 */
+
+  /* Border */
+  --border-default: #DCE1E8;         /* border/default → neutral/200 */
+  --border-strong: #BEC5D2;          /* border/strong → neutral/300 */
+  --border-subtle: #F2F5F9;          /* border/subtle → neutral/100 */
+  --border-interactive: #9EA7B8;     /* border/interactive → neutral/400 */
+
+  /* Interaction */
+  --interaction-hover: #F2F5F9;      /* interaction/hover → neutral/100 */
+  --interaction-selected: #DBEAFE;   /* interaction/selected → brand/100 */
+  --interaction-selected-subtle: #EFF6FF; /* interaction/selected-subtle → brand/50 */
+
+  /* Fixed */
+  --fixed-white: #FDFDFD;            /* fixed/white → neutral/50 */
+  --fixed-black: #050914;            /* fixed/black → neutral/950 */
+
+  /* Status */
+  --status-success: #16A34A;         /* status/success → green/600 */
+  --status-info: #2563EB;            /* status/info → brand/600 */
+
+  /* ─── Pulse DS · Color Primitives (fallback only) ─── */
+  --color-brand-50: #EFF6FF;
+  --color-brand-100: #DBEAFE;
+  --color-brand-500: #3B82F6;
+  --color-brand-600: #2563EB;
+  --color-brand-700: #1D4ED8;
+  --color-brand-800: #1E40AF;
+  --color-brand-900: #1E3A8A;
+  --color-brand-950: #172554;
+  --color-neutral-50: #FDFDFD;
+  --color-neutral-100: #F2F5F9;
+  --color-neutral-200: #DCE1E8;
+  --color-neutral-300: #BEC5D2;
+  --color-neutral-400: #9EA7B8;
+  --color-neutral-500: #818BA0;
+  --color-neutral-600: #5D6A85;
+  --color-neutral-700: #3D4966;
+  --color-neutral-800: #252E49;
+  --color-neutral-900: #18203A;
+  --color-neutral-950: #050914;
+  --color-teal-300: #5EEAD4;
+  --color-teal-400: #2DD4BF;
+  --color-teal-500: #14B8A6;
+  --color-purple-400: #A78BFA;
+  --color-purple-500: #8B5CF6;
+  --color-purple-600: #7C3AED;
 }
 
 html {
@@ -46,7 +128,7 @@ body {
 @layer base {
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    color: #172554;
+    color: var(--content-primary);
     letter-spacing: -0.025em;
     line-height: 1.05;
     font-weight: 800;
@@ -54,7 +136,7 @@ body {
   h1 { font-size: clamp(2.6rem, 5.2vw, 4.6rem); letter-spacing: -0.035em; }
   h2 { font-size: clamp(2rem, 3.7vw, 3.15rem); letter-spacing: -0.03em; }
   h3 { font-size: clamp(1.2rem, 1.6vw, 1.5rem); font-weight: 700; letter-spacing: -0.02em; }
-  p  { color: #5E6378; margin: 0; }
+  p  { color: var(--content-secondary); margin: 0; }
   a  { color: inherit; text-decoration: none; }
 }
 
@@ -75,11 +157,11 @@ body {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.14em;
-    color: #4F46E5;
-    background: #EEF0FF;
+    color: var(--primary-default);
+    background: var(--interaction-selected-subtle);
     padding: 6px 12px;
     border-radius: 100px;
-    border: 1px solid #C7CDFF;
+    border: 1px solid var(--interaction-selected);
   }
   .eyebrow.dark {
     color: #fff;
@@ -103,37 +185,37 @@ body {
     font-family: inherit;
   }
   .btn-primary {
-    background: #172554;
-    color: #fff;
+    background: var(--content-primary);
+    color: var(--content-inverse);
     box-shadow: 0 1px 2px rgba(10, 11, 26, 0.04), 0 1px 3px rgba(10, 11, 26, 0.03);
   }
   .btn-primary:hover {
-    background: #0F1B3F;
+    background: var(--content-on-surface);
     transform: translateY(-1px);
     box-shadow: 0 4px 16px -4px rgba(10, 11, 26, 0.10), 0 2px 6px rgba(10, 11, 26, 0.04);
   }
   .btn-ghost {
     background: transparent;
-    color: #172554;
-    border-color: #D8DBE6;
+    color: var(--content-primary);
+    border-color: var(--border-strong);
   }
   .btn-ghost:hover {
-    background: #fff;
-    border-color: #172554;
+    background: var(--surface-container);
+    border-color: var(--content-primary);
   }
   .btn-light {
-    background: #fff;
-    color: #172554;
-    border-color: #E5E7EE;
+    background: var(--surface-container);
+    color: var(--content-primary);
+    border-color: var(--border-default);
   }
   .btn-light:hover {
-    border-color: #172554;
+    border-color: var(--content-primary);
   }
 }
 
 /* Shimmer utility for the final CTA */
 .shimmer-text {
-  background: linear-gradient(90deg, #fff 0%, #9FE4E5 40%, #A5A0FF 55%, #fff 100%);
+  background: linear-gradient(90deg, #fff 0%, var(--color-teal-300) 40%, var(--color-purple-400) 55%, #fff 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;

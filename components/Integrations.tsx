@@ -5,12 +5,12 @@ import SectionHead from "./SectionHead";
 import { fadeUp, stagger, viewportOnce } from "@/lib/motion";
 
 const integrations = [
-  { name: "Apple Health", sub: "steps · heart · sleep", icon: "❤" },
-  { name: "Google Fit", sub: "steps · activity", icon: "◆" },
-  { name: "Fitbit", sub: "HR · sleep · steps", icon: "✦" },
-  { name: "Oura Ring", sub: "sleep · recovery", icon: "○" },
-  { name: "Withings Scale", sub: "weight · composition", icon: "⊕" },
-  { name: "Garmin", sub: "workouts · HRV", icon: "▲" },
+  { name: "Apple Health", sub: "steps · heart · sleep", icon: "❤", soon: false },
+  { name: "Google Fit", sub: "steps · activity", icon: "◆", soon: false },
+  { name: "Fitbit", sub: "HR · sleep · steps", icon: "✦", soon: false },
+  { name: "Oura Ring", sub: "sleep · recovery", icon: "○", soon: true },
+  { name: "Withings Scale", sub: "weight · composition", icon: "⊕", soon: true },
+  { name: "Garmin", sub: "workouts · HRV", icon: "▲", soon: true },
 ];
 
 export default function Integrations() {
@@ -22,7 +22,7 @@ export default function Integrations() {
           title={
             <>
               Your data already lives in your watch and scale.{" "}
-              <span className="text-accent">We just listen.</span>
+              <span className="text-accent">We listen to help you.</span>
             </>
           }
         />
@@ -47,6 +47,11 @@ export default function Integrations() {
                 <b className="font-display text-[0.95rem] text-ink">{i.name}</b>
                 <span className="block text-[0.8rem] text-muted">{i.sub}</span>
               </div>
+              {i.soon && (
+                <span className="ml-auto rounded-full bg-amber-50 px-2.5 py-0.5 text-[0.7rem] font-semibold text-amber-600">
+                  Coming soon
+                </span>
+              )}
             </motion.div>
           ))}
         </motion.div>

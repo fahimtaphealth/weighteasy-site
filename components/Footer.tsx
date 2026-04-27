@@ -5,7 +5,7 @@ export default function Footer() {
     <footer
       className="border-t text-[0.88rem] text-white/60"
       style={{
-        background: "#172554",
+        background: "var(--surface-inverse)",
         borderColor: "rgba(255,255,255,0.06)",
         paddingTop: 60,
         paddingBottom: 30,
