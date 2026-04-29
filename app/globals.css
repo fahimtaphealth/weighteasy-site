@@ -225,13 +225,13 @@ body {
 
 /* Hero phone-pair responsive scale */
 .phone-pair {
-  --phone-scale: 0.52;
+  --phone-scale: 0.75;
 }
 @media (min-width: 640px) {
-  .phone-pair { --phone-scale: 0.65; }
+  .phone-pair { --phone-scale: 0.72; }
 }
 @media (min-width: 768px) {
-  .phone-pair { --phone-scale: 0.72; }
+  .phone-pair { --phone-scale: 0.76; }
 }
 @media (min-width: 1024px) {
   .phone-pair { --phone-scale: 0.82; }

@@ -69,8 +69,8 @@ export default function Hero() {
           Phone scale: 0.52 mobile → 0.65 sm → 0.72 md → 0.82 lg (via CSS var)
         */}
         <div
-          className="phone-pair relative mx-auto w-full overflow-hidden"
-          style={{ height: "clamp(360px, 52vw, 580px)" }}
+          className="phone-pair relative mx-auto w-full"
+          style={{ height: "clamp(440px, 55vw, 580px)" }}
         >
           <div className="absolute inset-0 flex items-start justify-center">
             {/* Left phone — Home screen (behind, slightly left and down) */}
