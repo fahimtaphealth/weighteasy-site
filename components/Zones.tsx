@@ -140,11 +140,11 @@ export default function Zones() {
           </motion.div>
         </div>
 
-        {/* ── Chevron buttons — fixed at far left/right ── */}
+        {/* ── Chevron buttons — sized to match number dots (72px) ── */}
         <button
           onClick={prev}
-          className="absolute z-20 flex h-[52px] w-[52px] items-center justify-center rounded-full border-2 border-line bg-white text-muted transition-colors hover:bg-bg hover:text-ink"
-          style={{ left: 60, top: CONTAINER_H * 0.48 - 26 }}
+          className="absolute z-20 hidden md:flex h-[72px] w-[72px] items-center justify-center rounded-full border-2 border-line bg-white text-muted transition-colors hover:bg-bg hover:text-ink"
+          style={{ left: 120, top: CONTAINER_H * 0.48 - 36 }}
           aria-label="Previous stage"
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -153,8 +153,8 @@ export default function Zones() {
         </button>
         <button
           onClick={next}
-          className="absolute z-20 flex h-[52px] w-[52px] items-center justify-center rounded-full border-2 border-line bg-white text-muted transition-colors hover:bg-bg hover:text-ink"
-          style={{ right: 60, top: CONTAINER_H * 0.48 - 26 }}
+          className="absolute z-20 hidden md:flex h-[72px] w-[72px] items-center justify-center rounded-full border-2 border-line bg-white text-muted transition-colors hover:bg-bg hover:text-ink"
+          style={{ right: 120, top: CONTAINER_H * 0.48 - 36 }}
           aria-label="Next stage"
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -191,17 +191,38 @@ export default function Zones() {
                   </p>
                 </motion.div>
               </AnimatePresence>
-              <div className="mt-auto flex gap-2.5">
-                {stages.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => goTo(i)}
-                    className={`h-2 w-2 rounded-full transition-all ${
-                      i === active ? "bg-accent" : "bg-line"
-                    }`}
-                    aria-label={`Stage ${i + 1}`}
-                  />
-                ))}
+              {/* Pagination — mobile: dark pill with active bar, desktop: simple dots */}
+              <div className="mt-auto">
+                {/* Mobile pagination pill */}
+                <div className="flex items-center justify-center gap-[6px] rounded-full bg-[#1a1d2e] px-3 py-2 md:hidden">
+                  {stages.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => goTo(i)}
+                      aria-label={`Stage ${i + 1}`}
+                      className="transition-all duration-300"
+                      style={{
+                        height: 6,
+                        borderRadius: 3,
+                        width: i === active ? 20 : 6,
+                        background: i === active ? "#ffffff" : "rgba(255,255,255,0.25)",
+                      }}
+                    />
+                  ))}
+                </div>
+                {/* Desktop simple dots */}
+                <div className="hidden md:flex gap-2.5 justify-center">
+                  {stages.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => goTo(i)}
+                      className={`h-2 w-2 rounded-full transition-all ${
+                        i === active ? "bg-accent" : "bg-line"
+                      }`}
+                      aria-label={`Stage ${i + 1}`}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -234,26 +255,6 @@ export default function Zones() {
               </div>
             </motion.div>
           </AnimatePresence>
-        </div>
-      </div>
-
-      {/* Mobile-only pagination indicator */}
-      <div className="flex justify-center py-4 md:hidden">
-        <div className="flex items-center gap-[6px] rounded-full bg-[#1a1d2e] px-3 py-2">
-          {stages.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => goTo(i)}
-              aria-label={`Stage ${i + 1}`}
-              className="transition-all duration-300"
-              style={{
-                height: 6,
-                borderRadius: 3,
-                width: i === active ? 20 : 6,
-                background: i === active ? "#ffffff" : "rgba(255,255,255,0.25)",
-              }}
-            />
-          ))}
         </div>
       </div>
 
