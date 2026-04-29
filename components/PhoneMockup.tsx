@@ -14,12 +14,9 @@ import CoachOrb from "./CoachOrb";
  *  4. Water tracker ring fills → check → button goes tertiary
  *  5. Repeats from Weight
  */
-export default function PhoneMockup({ active }: { active?: boolean }) {
+export default function PhoneMockup() {
   const ref = useRef<HTMLDivElement>(null);
-  const selfInView = useInView(ref, { once: false, margin: "-80px" });
-  // If parent passes `active`, use it to gate animations (mobile viewport control)
-  // Otherwise fall back to self-contained viewport detection
-  const inView = active !== undefined ? active : selfInView;
+  const inView = useInView(ref, { once: false, margin: "-80px" });
 
   /* Which tracker is currently animating (0=weight, 1=food, 2=water) */
   const [animatingIdx, setAnimatingIdx] = useState(-1);
@@ -30,10 +27,9 @@ export default function PhoneMockup({ active }: { active?: boolean }) {
   useEffect(() => {
     if (!inView) return;
 
-    // Start first tracker shortly after progress bar finishes
     const startDelay = 800;
-    const perTracker = 1000; // time per tracker animation cycle
-    const ringToCheck = 500; // time from ring fill start to check appearing
+    const perTracker = 1000;
+    const ringToCheck = 500;
 
     let cancelled = false;
 
@@ -76,7 +72,10 @@ export default function PhoneMockup({ active }: { active?: boolean }) {
 
   return (
     <div ref={ref} className="relative flex items-center justify-center" style={{ height: 680 }}>
-      <div
+      <motion.div
+        initial={{ opacity: 0, y: 40, scale: 0.96 }}
+        animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
         className="relative z-10"
         style={{
           width: 316,
@@ -317,7 +316,7 @@ export default function PhoneMockup({ active }: { active?: boolean }) {
             ))}
           </nav>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }
