@@ -68,10 +68,10 @@ export default function Zones() {
         />
       </div>
 
-      {/* Carousel container — clipped at bottom */}
+      {/* Carousel container — full width, clipped at bottom */}
       <div
-        className="relative mx-auto mt-10 overflow-hidden"
-        style={{ maxWidth: 1200, height: CONTAINER_H }}
+        className="relative mt-10 overflow-hidden"
+        style={{ height: CONTAINER_H }}
       >
         {/* Dashed circle — centered at CY, clipped by overflow */}
         <div
