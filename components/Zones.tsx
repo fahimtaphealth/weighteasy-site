@@ -176,9 +176,9 @@ export default function Zones() {
           })()}
         </div>
 
-        {/* Phone frame — centered */}
+        {/* Phone frame — centered, BEHIND the circle dots/pills */}
         <div
-          className="absolute left-1/2 -translate-x-1/2 z-10"
+          className="absolute left-1/2 -translate-x-1/2 z-0"
           style={{ top: 100, width: 300 }}
         >
           <div
@@ -188,7 +188,7 @@ export default function Zones() {
             {/* Notch */}
             <div className="absolute left-1/2 top-0 z-10 h-[30px] w-[110px] -translate-x-1/2 rounded-b-[16px] bg-ink" />
 
-            {/* Stage content */}
+            {/* Stage content inside phone — title and description only (pill is outside overlapping) */}
             <div className="flex h-full flex-col items-center px-6 pt-20 pb-6">
               <AnimatePresence mode="wait">
                 <motion.div
@@ -197,20 +197,10 @@ export default function Zones() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -16 }}
                   transition={{ duration: 0.25 }}
-                  className="flex flex-col items-center text-center"
+                  className="flex flex-col items-center text-center mt-14"
                 >
-                  {/* Stage pill inside phone */}
-                  <div
-                    className="rounded-full px-5 py-1.5 text-[0.8rem] font-bold text-white"
-                    style={{
-                      background: "linear-gradient(135deg, #5EEAD4, #4DB6E5, #3B82F6, #A78BFA)",
-                    }}
-                  >
-                    Stage {current.num}
-                  </div>
-
                   {/* Icon */}
-                  <div className="mt-6 text-[2.8rem] opacity-20">
+                  <div className="text-[2.8rem] opacity-20">
                     {current.icon}
                   </div>
 
