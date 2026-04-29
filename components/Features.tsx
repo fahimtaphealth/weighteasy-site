@@ -312,8 +312,8 @@ function SideEffectsCard() {
         height: 416,
       }}
     >
-      {/* Text content — right side */}
-      <div className="absolute right-[40px] top-[42px] w-[313px]">
+      {/* Text content — right side, with bottom margin for mobile spacing */}
+      <div className="absolute right-[24px] left-[24px] top-[32px] md:left-auto md:right-[40px] md:top-[42px] md:w-[313px]">
         <h3 className="font-display text-[1.35rem] font-bold text-ink tracking-[-0.4px]">
           Manage side effects
         </h3>
@@ -323,7 +323,7 @@ function SideEffectsCard() {
       </div>
 
       {/* Phone mockup — left side */}
-      <div className="absolute left-[32px] top-[106px]">
+      <div className="absolute left-[32px] top-[130px] md:top-[106px]">
         {/* Screen */}
         <div className="absolute left-[7px] top-[5px] w-[241px] h-[536px] rounded-[29px] overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -342,9 +342,9 @@ function SideEffectsCard() {
         />
       </div>
 
-      {/* Remedy cards — horizontally scrolling row anchored to right of phone */}
-      <div className="absolute right-[24px] bottom-[40px] left-[300px] z-10">
-        <div className="flex gap-3">
+      {/* Remedy cards — peek row, shows ~1.5 cards on mobile */}
+      <div className="absolute bottom-[40px] left-[260px] right-0 z-10 overflow-hidden md:left-[300px] md:right-[24px]">
+        <div className="flex gap-3 pr-4">
           {[
             { emoji: "🍵", name: "Ginger Tea", tip: "Sip slowly to calm stomach lining." },
             { emoji: "🧂", name: "Saltine Crackers", tip: "Dry carbs to absorb acidity." },

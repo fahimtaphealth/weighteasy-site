@@ -27,9 +27,10 @@ export default function PhoneMockup() {
   useEffect(() => {
     if (!inView) return;
 
-    // Start first tracker after progress bar (1.6s + 0.6s delay + small gap)
-    const startDelay = 2600;
-    const perTracker = 2000; // time per tracker animation cycle
+    // Start first tracker shortly after progress bar finishes (1.6s + 0.6s delay)
+    const startDelay = 1400;
+    const perTracker = 1400; // time per tracker animation cycle
+    const ringToCheck = 700; // time from ring fill start to check appearing
 
     let cancelled = false;
 
@@ -41,7 +42,7 @@ export default function PhoneMockup() {
 
       const trackers = [0, 1, 2];
       trackers.forEach((tIdx, i) => {
-        const offset = startDelay + (startIdx === 0 ? 0 : 400) + i * perTracker;
+        const offset = startDelay + (startIdx === 0 ? 0 : 300) + i * perTracker;
 
         // Start ring fill
         setTimeout(() => {
@@ -49,15 +50,15 @@ export default function PhoneMockup() {
           setAnimatingIdx(tIdx);
         }, offset);
 
-        // Complete (ring → check, button → tertiary)
+        // Complete (ring → check)
         setTimeout(() => {
           if (cancelled) return;
           setCompleted((prev) => new Set(prev).add(tIdx));
-        }, offset + 1200);
+        }, offset + ringToCheck);
       });
 
       // After all 3 are done, wait then restart
-      const totalCycle = startDelay + 3 * perTracker + 2000;
+      const totalCycle = startDelay + 3 * perTracker + 1800;
       setTimeout(() => {
         if (cancelled) return;
         setAnimatingIdx(-1);
@@ -402,7 +403,7 @@ function AnimatedTracker({
                   animate={{
                     strokeDashoffset: ringProgress === 1 ? 0 : 2 * Math.PI * 14,
                   }}
-                  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                 />
               </svg>
               <span className="relative z-10 text-[0.78rem]">{icon}</span>

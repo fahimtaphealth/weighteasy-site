@@ -65,15 +65,15 @@ export default function Hero() {
         {/* Two phone mockups — overlapping, dose phone in front staggered top-right */}
         {/* Phone scale: 0.52 on mobile → 0.65 sm → 0.72 md → 0.82 lg */}
         <div
-          className="phone-pair relative mx-auto flex w-full max-w-[340px] items-start justify-center sm:max-w-[420px] lg:max-w-none"
-          style={{ height: "clamp(340px, 52vw, 580px)" }}
+          className="phone-pair relative mx-auto flex items-start justify-center"
+          style={{ height: "clamp(360px, 52vw, 580px)" }}
         >
           {/* Left phone — Home screen (behind, slightly left and down) */}
           <div
-            className="relative z-[5] flex-shrink-0"
+            className="relative z-[5]"
             style={{
-              marginTop: "clamp(16px, 3vw, 40px)",
-              marginRight: "clamp(-24px, -3vw, -40px)",
+              marginTop: 40,
+              marginRight: -40,
               transform: "scale(var(--phone-scale))",
               transformOrigin: "top center",
             }}
@@ -82,9 +82,9 @@ export default function Hero() {
           </div>
           {/* Right phone — Dose screen (in front, overlapping left phone) */}
           <div
-            className="relative z-10 flex-shrink-0"
+            className="relative z-10"
             style={{
-              marginLeft: "clamp(-24px, -3vw, -40px)",
+              marginLeft: -40,
               transform: "scale(var(--phone-scale))",
               transformOrigin: "top center",
             }}
