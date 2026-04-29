@@ -62,7 +62,7 @@ function PushPin({ color = "#E74C3C" }: { color?: string }) {
 
 export default function Testimonials() {
   return (
-    <section id="wall" className="relative overflow-hidden bg-bg-2 py-[110px]">
+    <section id="wall" className="relative bg-bg-2 py-[110px]">
       <div className="container-x">
         <div className="mx-auto max-w-[640px] text-center">
           <span className="hand text-[1.4rem] text-accent">what people say when we&rsquo;re not listening</span>
@@ -73,63 +73,68 @@ export default function Testimonials() {
             Messages, emails, App Store notes. Lightly trimmed for length, never for tone.
           </p>
         </div>
+      </div>
 
-        {/* asymmetric pinboard — scrollable on mobile, single row on desktop */}
-        {/* Outer clip wrapper prevents horizontal bleed; inner div scrolls with visible vertical overflow via padding */}
-        <div className="relative mx-auto mt-16 max-w-[1280px] md:overflow-visible">
-          <div className="flex items-start gap-6 overflow-x-auto pb-14 pt-4 px-1 snap-x snap-mandatory scrollbar-hide md:flex-nowrap md:justify-center md:gap-8 md:overflow-visible md:pb-0 md:pt-0 md:px-0 md:snap-none" style={{ overscrollBehaviorX: "contain" }}>
-          {quotes.map((q, i) => (
-            <motion.div
-              key={q.name}
-              initial={{ opacity: 0, y: 30, rotate: q.rotate - 6 }}
-              whileInView={{ opacity: 1, y: 0, rotate: q.rotate }}
-              viewport={viewportOnce}
-              transition={{ duration: 0.7, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ rotate: 0, y: -6, zIndex: 20 }}
-              className="relative flex-shrink-0 snap-start md:flex-shrink"
-              style={{
-                width: "calc(100vw - 80px)",
-                maxWidth: 300,
-                background: q.color,
-                padding: "16px 18px 20px",
-                boxShadow:
-                  "0 18px 36px -12px rgba(10,11,26,0.22), 0 4px 8px rgba(10,11,26,0.06)",
-                borderRadius: "2px",
-              }}
-            >
-              <div className="absolute -top-2 left-1/2 -translate-x-1/2">
-                <PushPin color={i % 2 === 0 ? "#E74C3C" : "var(--primary-default)"} />
-              </div>
-              <div className="flex items-center gap-3">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={q.photo}
-                  alt={q.name}
-                  width={44}
-                  height={44}
-                  className="h-11 w-11 rounded-full object-cover ring-2 ring-white"
-                />
-                <div>
-                  <div className="font-display text-[0.98rem] font-bold text-ink">
-                    {q.name}
-                  </div>
-                  <div className="text-[0.78rem] text-muted-2">{q.meta}</div>
-                </div>
-              </div>
-              <p
-                className="mt-3 text-[0.98rem] leading-[1.5] text-ink/85"
-                dangerouslySetInnerHTML={{ __html: q.text }}
+      {/* Scroll container — full-width so cards aren't clipped by container-x padding */}
+      <div
+        className="relative mx-auto mt-16 flex max-w-[1280px] items-start gap-5 overflow-x-auto pb-12 pt-4 pl-6 snap-x snap-mandatory scrollbar-hide md:flex-nowrap md:justify-center md:gap-8 md:overflow-visible md:pb-0 md:pt-0 md:pl-0 md:snap-none"
+        style={{ overscrollBehaviorX: "contain" }}
+      >
+        {/* Right padding spacer on mobile — ensures last card isn't flush against edge */}
+        {quotes.map((q, i) => (
+          <motion.div
+            key={q.name}
+            initial={{ opacity: 0, y: 30, rotate: q.rotate - 6 }}
+            whileInView={{ opacity: 1, y: 0, rotate: q.rotate }}
+            viewport={viewportOnce}
+            transition={{ duration: 0.7, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+            whileHover={{ rotate: 0, y: -6, zIndex: 20 }}
+            className="relative flex-shrink-0 snap-start md:flex-shrink"
+            style={{
+              width: "75vw",
+              maxWidth: 300,
+              background: q.color,
+              padding: "16px 18px 20px",
+              boxShadow:
+                "0 18px 36px -12px rgba(10,11,26,0.22), 0 4px 8px rgba(10,11,26,0.06)",
+              borderRadius: "2px",
+            }}
+          >
+            <div className="absolute -top-2 left-1/2 -translate-x-1/2">
+              <PushPin color={i % 2 === 0 ? "#E74C3C" : "var(--primary-default)"} />
+            </div>
+            <div className="flex items-center gap-3">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={q.photo}
+                alt={q.name}
+                width={44}
+                height={44}
+                className="h-11 w-11 rounded-full object-cover ring-2 ring-white"
               />
-              <div className="mt-3 flex items-center gap-1.5 text-[0.78rem] text-muted-2">
-                <span>★★★★★</span>
-                <span>·</span>
-                <span>verified</span>
+              <div>
+                <div className="font-display text-[0.98rem] font-bold text-ink">
+                  {q.name}
+                </div>
+                <div className="text-[0.78rem] text-muted-2">{q.meta}</div>
               </div>
-            </motion.div>
-          ))}
-          </div>
-        </div>
+            </div>
+            <p
+              className="mt-3 text-[0.98rem] leading-[1.5] text-ink/85"
+              dangerouslySetInnerHTML={{ __html: q.text }}
+            />
+            <div className="mt-3 flex items-center gap-1.5 text-[0.78rem] text-muted-2">
+              <span>★★★★★</span>
+              <span>·</span>
+              <span>verified</span>
+            </div>
+          </motion.div>
+        ))}
+        {/* End spacer so last card can scroll fully into view */}
+        <div className="flex-shrink-0 w-6 md:hidden" aria-hidden />
+      </div>
 
+      <div className="container-x">
         <p className="mt-14 text-center hand text-[1.2rem] text-muted">
           + 3,847 more on the App Store, 4.9 average. we read every single one.
         </p>
