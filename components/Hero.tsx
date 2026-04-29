@@ -62,14 +62,30 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Two phone mockups side by side, overlapping slightly */}
-        <div className="relative flex items-start justify-center" style={{ minHeight: 680 }}>
-          {/* Left phone — Home screen (slightly in front, offset left) */}
-          <div className="relative z-10" style={{ marginRight: -50 }}>
+        {/* Two phone mockups — scaled down, dose phone in front staggered top-right */}
+        <div className="relative" style={{ height: 580 }}>
+          {/* Left phone — Home screen (behind, slightly left and down) */}
+          <div
+            className="absolute z-[5]"
+            style={{
+              left: 0,
+              top: 40,
+              transform: "scale(0.82)",
+              transformOrigin: "top left",
+            }}
+          >
             <PhoneMockup />
           </div>
-          {/* Right phone — Dose screen (behind, offset right and down) */}
-          <div className="relative z-[5]" style={{ marginTop: 30 }}>
+          {/* Right phone — Dose screen (in front, staggered top-right) */}
+          <div
+            className="absolute z-10"
+            style={{
+              right: -20,
+              top: 0,
+              transform: "scale(0.82)",
+              transformOrigin: "top right",
+            }}
+          >
             <DosePhoneMockup />
           </div>
         </div>
