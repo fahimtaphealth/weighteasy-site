@@ -76,10 +76,7 @@ export default function PhoneMockup({ active }: { active?: boolean }) {
 
   return (
     <div ref={ref} className="relative flex items-center justify-center" style={{ height: 680 }}>
-      <motion.div
-        initial={{ opacity: 0, y: 40, scale: 0.96 }}
-        animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
-        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+      <div
         className="relative z-10"
         style={{
           width: 316,
@@ -320,7 +317,7 @@ export default function PhoneMockup({ active }: { active?: boolean }) {
             ))}
           </nav>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }
