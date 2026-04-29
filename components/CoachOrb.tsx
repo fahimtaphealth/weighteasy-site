@@ -17,7 +17,7 @@ export default function CoachOrb({
   const [animationData, setAnimationData] = useState<object | null>(null);
 
   useEffect(() => {
-    fetch("/ai-avatar.json")
+    fetch("/ai-avatar-sentient.json")
       .then((res) => res.json())
       .then(setAnimationData)
       .catch(() => {});

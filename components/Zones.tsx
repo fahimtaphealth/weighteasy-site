@@ -75,9 +75,11 @@ export default function Zones() {
       >
         {/* Dashed circle — centered at CY, clipped by overflow */}
         <div
-          className="pointer-events-none absolute left-1/2 -translate-x-1/2"
+          className="pointer-events-none absolute"
           style={{
             top: CY - R - 20,
+            left: "50%",
+            marginLeft: -(R + 20),
             width: (R + 20) * 2,
             height: (R + 20) * 2,
             border: "2px dashed #dce1e8",
@@ -88,13 +90,13 @@ export default function Zones() {
         {/* ── Rotating stage dots ── */}
         {/* Outer wrapper: fixed at circle center. Inner motion.div rotates the whole ring. */}
         <div
-          className="absolute left-1/2"
-          style={{ top: CY, transform: "translateX(-50%)" }}
+          className="absolute"
+          style={{ top: CY, left: "50%", width: 0, height: 0 }}
         >
           <motion.div
             animate={{ rotate: -rotation }}
             transition={springConfig}
-            style={{ willChange: "transform" }}
+            style={{ transformOrigin: "0 0", willChange: "transform" }}
           >
             {stages.map((stage, i) => {
               const angle = i * 60;
