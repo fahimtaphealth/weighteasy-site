@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { fadeUp, stagger, viewportOnce } from "@/lib/motion";
+import CoachOrb from "./CoachOrb";
 
 const messages = [
   { who: "user", text: "ok it\u2019s 11pm and i threw up twice. should i be worried" },
@@ -40,45 +41,18 @@ export default function CoachBand() {
         <div className="mt-14 grid items-center gap-12 lg:grid-cols-2">
           <div className="relative flex items-center justify-center">
             <motion.div
-              className="relative h-[240px] w-[240px] rounded-full bg-coach-orb"
+              className="relative"
               style={{
+                width: 240,
+                height: 240,
                 boxShadow:
                   "0 30px 80px rgba(79,70,229,.45), inset 0 -10px 40px rgba(255,255,255,.2)",
+                borderRadius: "50%",
               }}
               animate={{ scale: [1, 1.05, 1] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             >
-              {/* rotating highlight */}
-              <motion.span
-                className="pointer-events-none absolute inset-0 rounded-full"
-                style={{
-                  background:
-                    "radial-gradient(circle at 40% 40%, rgba(255,255,255,.5), transparent 60%)",
-                }}
-                animate={{ rotate: 360 }}
-                transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
-              />
-
-              {/* face — two blinking eyes */}
-              <motion.div
-                className="absolute left-1/2 top-[44%] flex -translate-x-1/2 gap-5"
-                animate={{ scaleY: [1, 1, 0.1, 1, 1] }}
-                transition={{
-                  duration: 4.2,
-                  times: [0, 0.92, 0.95, 0.98, 1],
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              >
-                <span
-                  className="block h-[14px] w-[14px] rounded-full bg-white"
-                  style={{ boxShadow: "0 1px 2px rgba(0,0,0,0.2)" }}
-                />
-                <span
-                  className="block h-[14px] w-[14px] rounded-full bg-white"
-                  style={{ boxShadow: "0 1px 2px rgba(0,0,0,0.2)" }}
-                />
-              </motion.div>
+              <CoachOrb size={240} />
             </motion.div>
 
             {/* Orbital dots */}
@@ -119,12 +93,9 @@ export default function CoachBand() {
                 }}
               >
                 {m.who === "bot" && (
-                  <motion.span
-                    className="absolute left-[14px] top-[14px] h-7 w-7 rounded-full bg-coach-orb"
-                    style={{ boxShadow: "0 3px 8px rgba(79,70,229,.5)" }}
-                    animate={{ scale: [1, 1.08, 1] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  />
+                  <span className="absolute left-[14px] top-[14px]">
+                    <CoachOrb size={28} />
+                  </span>
                 )}
                 {m.text}
               </motion.div>

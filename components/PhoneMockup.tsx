@@ -3,6 +3,7 @@
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { stagger } from "@/lib/motion";
+import CoachOrb from "./CoachOrb";
 
 /**
  * Left phone — WeightEasy Home screen.
@@ -211,11 +212,7 @@ export default function PhoneMockup() {
                   }}
                 />
                 <div className="flex items-center gap-[10px]">
-                  <motion.span
-                    className="h-[22px] w-[22px] flex-shrink-0 rounded-full bg-coach-orb"
-                    animate={{ scale: [1, 1.08, 1] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  />
+                  <CoachOrb size={22} />
                   <div className="flex-1 text-[0.72rem] text-muted">
                     Don&apos;t like your meals?
                     <b className="block font-display text-[0.78rem] font-bold text-ink">Talk to your Coach</b>
@@ -308,12 +305,7 @@ export default function PhoneMockup() {
                 style={{ color: tab.active ? "var(--content-primary)" : "var(--content-tertiary)" }}
               >
                 {tab.isOrb ? (
-                  <motion.span
-                    className="h-7 w-7 rounded-full bg-coach-orb"
-                    style={{ boxShadow: "0 6px 12px -4px rgba(79,70,229,.45)" }}
-                    animate={{ scale: [1, 1.05, 1] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  />
+                  <CoachOrb size={28} />
                 ) : (
                   <span className="flex h-[18px] w-[18px] items-center justify-center text-base">
                     {tab.icon}

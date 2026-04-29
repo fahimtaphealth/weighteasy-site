@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import CoachOrb from "./CoachOrb";
 
 /**
  * Right phone — Dose tracking screen.
@@ -236,12 +237,7 @@ export default function DosePhoneMockup() {
                 style={{ color: tab.active ? "var(--content-primary, #18203a)" : "var(--content-tertiary, #9CA3AF)" }}
               >
                 {tab.isOrb ? (
-                  <motion.span
-                    className="h-7 w-7 rounded-full bg-coach-orb"
-                    style={{ boxShadow: "0 6px 12px -4px rgba(79,70,229,.45)" }}
-                    animate={{ scale: [1, 1.05, 1] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  />
+                  <CoachOrb size={28} />
                 ) : (
                   <span className="flex h-[18px] w-[18px] items-center justify-center text-base">
                     {tab.icon}
