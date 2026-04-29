@@ -13,21 +13,12 @@ const stages = [
   { num: 6, name: "Almost Time", note: "Ease back. Light dinner. Calming tea for evening.", icon: "🌙" },
 ];
 
-/*
- * Dot positions on a circle (angles in degrees, 0 = top/12 o'clock, clockwise)
- * Position 0: active stage at top (12 o'clock)
- * Position 1: 60° clockwise (~2 o'clock)
- * Position 2: 120° (~4 o'clock)
- * Position 3: 180° (6 o'clock — bottom, mostly hidden)
- * Position 4: 240° (~8 o'clock)
- * Position 5: 300° (~10 o'clock)
- */
 function getAngle(slotIndex: number): number {
-  return slotIndex * 60; // evenly spaced at 60° intervals
+  return slotIndex * 60;
 }
 
 function angleToPosition(angleDeg: number, radiusX: number, radiusY: number) {
-  const rad = ((angleDeg - 90) * Math.PI) / 180; // -90 so 0° = top
+  const rad = ((angleDeg - 90) * Math.PI) / 180;
   return {
     x: Math.cos(rad) * radiusX,
     y: Math.sin(rad) * radiusY,
@@ -42,15 +33,13 @@ export default function Zones() {
 
   const current = stages[active];
 
-  // Build slot assignments: active at slot 0, then next ones clockwise
   const slots: number[] = [];
   for (let i = 0; i < 6; i++) {
     slots.push((active + i) % 6);
   }
 
-  // Circle dimensions (relative to center)
-  const RX = 420; // horizontal radius
-  const RY = 420; // vertical radius (circle)
+  const RX = 420;
+  const RY = 420;
 
   return (
     <section id="how" className="relative border-t border-line bg-white pb-0 pt-[100px] overflow-hidden">
@@ -67,12 +56,17 @@ export default function Zones() {
         />
       </div>
 
-      {/* Carousel area — extends beyond section */}
+      {/*
+        Carousel container — overflow-hidden clips the bottom of the circle.
+        The circle center is at the vertical midpoint of the full circle,
+        but we only show from the top down to just past the 3/9 o'clock line.
+        Height = top padding + radius + some extra for the dots at 3/9 o'clock.
+      */}
       <div
-        className="relative mx-auto mt-10"
-        style={{ maxWidth: 1200, height: 780 }}
+        className="relative mx-auto mt-10 overflow-hidden"
+        style={{ maxWidth: 1200, height: RY + 140 }}
       >
-        {/* Dashed circle — full circle, bottom half extends below */}
+        {/* Dashed circle — full circle, but bottom is clipped by overflow-hidden */}
         <div
           className="pointer-events-none absolute left-1/2 -translate-x-1/2"
           style={{
@@ -84,23 +78,23 @@ export default function Zones() {
           }}
         />
 
-        {/* Center point for positioning dots */}
+        {/* Center point for circle — placed so top of circle is at top of container */}
         <div
           className="absolute left-1/2 -translate-x-1/2"
           style={{ top: 60 + RY + 20 }}
         >
-          {/* Numbered dots on the circle */}
+          {/* Numbered dots on the circle — hide slot 3 (bottom, 180°) */}
           {slots.map((stageIdx, slotIdx) => {
             const angle = getAngle(slotIdx);
             const pos = angleToPosition(angle, RX, RY);
             const isActive = slotIdx === 0;
             const stage = stages[stageIdx];
 
-            // Hide the bottom dot (slot 3, at 180°/6 o'clock)
+            // Hide the bottom dot (slot 3 at 180°)
             if (slotIdx === 3) return null;
 
-            // Opacity based on distance from active
-            const opacity = slotIdx <= 1 || slotIdx === 5 ? 1 : 0.6;
+            // Opacity: closer to active = more opaque
+            const opacity = slotIdx <= 1 || slotIdx === 5 ? 1 : 0.7;
 
             return (
               <motion.button
@@ -141,7 +135,7 @@ export default function Zones() {
             );
           })}
 
-          {/* Chevron buttons at 9 o'clock and 3 o'clock on the circle */}
+          {/* Chevron buttons at 9 o'clock (left) and 3 o'clock (right) */}
           {(() => {
             const leftPos = angleToPosition(270, RX + 60, RY + 60);
             const rightPos = angleToPosition(90, RX + 60, RY + 60);
@@ -149,25 +143,25 @@ export default function Zones() {
               <>
                 <button
                   onClick={prev}
-                  className="absolute z-20 flex h-[72px] w-[72px] items-center justify-center rounded-full border-2 border-line bg-bg/80 text-muted transition-colors hover:bg-white hover:text-ink"
+                  className="absolute z-20 flex h-[56px] w-[56px] items-center justify-center rounded-full border-2 border-line bg-white text-muted transition-colors hover:bg-bg hover:text-ink"
                   style={{
-                    transform: `translate(${leftPos.x - 36}px, ${leftPos.y - 36}px)`,
+                    transform: `translate(${leftPos.x - 28}px, ${leftPos.y - 28}px)`,
                   }}
                   aria-label="Previous stage"
                 >
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M15 18l-6-6 6-6" />
                   </svg>
                 </button>
                 <button
                   onClick={next}
-                  className="absolute z-20 flex h-[72px] w-[72px] items-center justify-center rounded-full border-2 border-line bg-bg/80 text-muted transition-colors hover:bg-white hover:text-ink"
+                  className="absolute z-20 flex h-[56px] w-[56px] items-center justify-center rounded-full border-2 border-line bg-white text-muted transition-colors hover:bg-bg hover:text-ink"
                   style={{
-                    transform: `translate(${rightPos.x - 36}px, ${rightPos.y - 36}px)`,
+                    transform: `translate(${rightPos.x - 28}px, ${rightPos.y - 28}px)`,
                   }}
                   aria-label="Next stage"
                 >
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M9 18l6-6-6-6" />
                   </svg>
                 </button>
@@ -188,7 +182,7 @@ export default function Zones() {
             {/* Notch */}
             <div className="absolute left-1/2 top-0 z-10 h-[30px] w-[110px] -translate-x-1/2 rounded-b-[16px] bg-ink" />
 
-            {/* Stage content inside phone — title and description only (pill is outside overlapping) */}
+            {/* Stage content inside phone */}
             <div className="flex h-full flex-col items-center px-6 pt-20 pb-6">
               <AnimatePresence mode="wait">
                 <motion.div
@@ -234,8 +228,8 @@ export default function Zones() {
         </div>
       </div>
 
-      {/* Blue gradient at bottom where circle extends */}
-      <div className="h-[120px] bg-gradient-to-b from-white to-bg" />
+      {/* Gradient fade at bottom */}
+      <div className="h-[60px] bg-gradient-to-b from-white to-bg" />
     </section>
   );
 }
