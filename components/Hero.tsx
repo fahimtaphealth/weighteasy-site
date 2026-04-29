@@ -3,11 +3,12 @@
 import { motion } from "framer-motion";
 import { fadeUp, stagger } from "@/lib/motion";
 import PhoneMockup from "./PhoneMockup";
+import DosePhoneMockup from "./DosePhoneMockup";
 
 export default function Hero() {
   return (
     <header className="relative overflow-hidden bg-bg pb-20 pt-[90px]">
-      <div className="container-x grid items-center gap-14 lg:grid-cols-[1.1fr_0.9fr]">
+      <div className="container-x grid items-center gap-14 lg:grid-cols-[1.1fr_1fr]">
         <motion.div
           variants={stagger(0.1, 0.1)}
           initial="hidden"
@@ -61,7 +62,17 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        <PhoneMockup />
+        {/* Two phone mockups side by side, overlapping slightly */}
+        <div className="relative flex items-start justify-center" style={{ minHeight: 680 }}>
+          {/* Left phone — Home screen (slightly in front, offset left) */}
+          <div className="relative z-10" style={{ marginRight: -50 }}>
+            <PhoneMockup />
+          </div>
+          {/* Right phone — Dose screen (behind, offset right and down) */}
+          <div className="relative z-[5]" style={{ marginTop: 30 }}>
+            <DosePhoneMockup />
+          </div>
+        </div>
       </div>
     </header>
   );

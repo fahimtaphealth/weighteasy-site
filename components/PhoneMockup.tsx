@@ -1,17 +1,73 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
 import { stagger } from "@/lib/motion";
 
 /**
- * Mirrors the WeightEasy Home screen (Figma node 9104:146094).
- * Animations: phone entrance, staggered cards, dose-progress fill,
- * chart line draw, and a breathing Coach orb.
+ * Left phone — WeightEasy Home screen.
+ * Animations:
+ *  1. Progress bar fills
+ *  2. Weight tracker ring fills → check → button goes tertiary
+ *  3. Food tracker ring fills → check → button goes tertiary
+ *  4. Water tracker ring fills → check → button goes tertiary
+ *  5. Repeats from Weight
  */
 export default function PhoneMockup() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = useInView(ref, { once: false, margin: "-80px" });
+
+  /* Which tracker is currently animating (0=weight, 1=food, 2=water) */
+  const [animatingIdx, setAnimatingIdx] = useState(-1);
+  /* Which trackers are "completed" (ring filled, check shown, button tertiary) */
+  const [completed, setCompleted] = useState<Set<number>>(new Set());
+
+  /* Kick off the sequential tracker animation loop */
+  useEffect(() => {
+    if (!inView) return;
+
+    // Start first tracker after progress bar (1.6s + 0.6s delay + small gap)
+    const startDelay = 2600;
+    const perTracker = 2000; // time per tracker animation cycle
+
+    let cancelled = false;
+
+    function runCycle(startIdx: number) {
+      if (cancelled) return;
+
+      // Reset completed for the new cycle
+      setCompleted(new Set());
+
+      const trackers = [0, 1, 2];
+      trackers.forEach((tIdx, i) => {
+        const offset = startDelay + (startIdx === 0 ? 0 : 400) + i * perTracker;
+
+        // Start ring fill
+        setTimeout(() => {
+          if (cancelled) return;
+          setAnimatingIdx(tIdx);
+        }, offset);
+
+        // Complete (ring → check, button → tertiary)
+        setTimeout(() => {
+          if (cancelled) return;
+          setCompleted((prev) => new Set(prev).add(tIdx));
+        }, offset + 1200);
+      });
+
+      // After all 3 are done, wait then restart
+      const totalCycle = startDelay + 3 * perTracker + 2000;
+      setTimeout(() => {
+        if (cancelled) return;
+        setAnimatingIdx(-1);
+        setCompleted(new Set());
+        runCycle(1);
+      }, totalCycle);
+    }
+
+    runCycle(0);
+    return () => { cancelled = true; };
+  }, [inView]);
 
   return (
     <div ref={ref} className="relative flex items-center justify-center" style={{ height: 680 }}>
@@ -46,7 +102,7 @@ export default function PhoneMockup() {
           </div>
 
           <div className="h-full overflow-hidden pb-[58px]">
-            {/* Cycle header (the one legitimate dark area) */}
+            {/* Cycle header */}
             <section
               className="relative px-[18px] pb-5 pt-[42px] text-white"
               style={{
@@ -79,7 +135,7 @@ export default function PhoneMockup() {
                 <div className="mt-px font-display text-[1.15rem] font-extrabold text-ink tracking-[-0.02em]">
                   Due today
                 </div>
-                {/* Animated progress bar — the signature gradient */}
+                {/* Animated progress bar */}
                 <div className="mt-2.5 h-[3px] overflow-hidden rounded-full" style={{ background: "var(--interaction-hover)" }}>
                   <motion.span
                     className="block h-full rounded-full bg-coach-grad"
@@ -114,9 +170,29 @@ export default function PhoneMockup() {
                   Your trackers
                 </h3>
                 <div className="rounded-[14px] bg-white px-3 py-1">
-                  <Tracker icon="⚖️" name="Weight" overdue value="134 lb • 2 Apr" />
-                  <Tracker icon="🍽️" name="Food" value="1 of 4 meals logged" />
-                  <Tracker icon="💧" name="Water" value="1.2L of 2L" last />
+                  <AnimatedTracker
+                    icon="⚖️"
+                    name="Weight"
+                    overdue
+                    value="134 lb • 2 Apr"
+                    isAnimating={animatingIdx === 0}
+                    isCompleted={completed.has(0)}
+                  />
+                  <AnimatedTracker
+                    icon="🍽️"
+                    name="Food"
+                    value="1 of 4 meals logged"
+                    isAnimating={animatingIdx === 1}
+                    isCompleted={completed.has(1)}
+                  />
+                  <AnimatedTracker
+                    icon="💧"
+                    name="Water"
+                    value="1.2L of 2L"
+                    last
+                    isAnimating={animatingIdx === 2}
+                    isCompleted={completed.has(2)}
+                  />
                 </div>
               </motion.div>
 
@@ -258,50 +334,159 @@ const cardVariant = {
   show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
 };
 
-function Tracker({
+/* ── Animated Tracker Row ── */
+function AnimatedTracker({
   icon,
   name,
   value,
   overdue,
   last,
+  isAnimating,
+  isCompleted,
 }: {
   icon: string;
   name: string;
   value: string;
   overdue?: boolean;
   last?: boolean;
+  isAnimating: boolean;
+  isCompleted: boolean;
 }) {
+  // Ring progress: 0 → 1 when animating/completed
+  const ringProgress = isAnimating || isCompleted ? 1 : 0;
+  const showCheck = isCompleted;
+  const buttonTertiary = isCompleted;
+
   return (
     <div
       className="flex items-center gap-[10px] py-[11px]"
       style={{ borderBottom: last ? "none" : "1px solid #F0F1F6" }}
     >
-      <span
-        className="flex h-[30px] w-[30px] flex-shrink-0 items-center justify-center rounded-full text-[0.72rem]"
-        style={{ background: "var(--surface-default)" }}
-      >
-        {icon}
-      </span>
+      {/* Animated ring / check icon */}
+      <div className="relative flex h-[30px] w-[30px] flex-shrink-0 items-center justify-center">
+        {/* Background circle */}
+        <span
+          className="absolute inset-0 rounded-full"
+          style={{ background: "var(--surface-default)" }}
+        />
+
+        {/* SVG ring that fills */}
+        <svg className="absolute inset-0" viewBox="0 0 30 30">
+          {/* Track ring */}
+          <circle
+            cx="15"
+            cy="15"
+            r="12"
+            fill="none"
+            stroke="#E8EAF0"
+            strokeWidth="2.5"
+          />
+          {/* Animated fill ring */}
+          <motion.circle
+            cx="15"
+            cy="15"
+            r="12"
+            fill="none"
+            stroke="#16A34A"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeDasharray={2 * Math.PI * 12}
+            style={{ transformOrigin: "center", rotate: "-90deg" }}
+            animate={{
+              strokeDashoffset: ringProgress === 1
+                ? 0
+                : 2 * Math.PI * 12,
+            }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          />
+        </svg>
+
+        {/* Icon / Check crossfade */}
+        <AnimatePresence mode="wait">
+          {showCheck ? (
+            <motion.span
+              key="check"
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0, opacity: 0 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="relative z-10 flex items-center justify-center"
+            >
+              <svg viewBox="0 0 16 16" width="14" height="14" fill="none">
+                <motion.path
+                  d="M3 8.5L6.5 12L13 4"
+                  stroke="#16A34A"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 0.4, delay: 0.1 }}
+                />
+              </svg>
+            </motion.span>
+          ) : (
+            <motion.span
+              key="icon"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="relative z-10 text-[0.72rem]"
+            >
+              {icon}
+            </motion.span>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* Text */}
       <div className="flex-1">
         <b className="block font-display text-[0.82rem] font-bold text-ink">
           {name}
-          {overdue && (
-            <span
+          {overdue && !isCompleted && (
+            <motion.span
               className="ml-1 inline-block rounded-full px-1.5 py-0.5 text-[0.55rem] font-bold"
               style={{ background: "#FFF3D9", color: "#C98C1B" }}
+              animate={isCompleted ? { opacity: 0, scale: 0.8 } : { opacity: 1, scale: 1 }}
             >
               Overdue
-            </span>
+            </motion.span>
           )}
         </b>
         <span className="mt-px block text-[0.66rem] text-muted">{value}</span>
       </div>
-      <span
-        className="flex h-7 w-7 items-center justify-center rounded-full text-[0.9rem] leading-none text-white"
-        style={{ background: "#0A0B1A" }}
-      >
-        +
-      </span>
+
+      {/* Button — switches from filled (black) to tertiary (outline) */}
+      <AnimatePresence mode="wait">
+        {buttonTertiary ? (
+          <motion.span
+            key="tertiary"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="flex h-7 w-7 items-center justify-center rounded-full border-2 text-[0.9rem] leading-none"
+            style={{ borderColor: "#16A34A", color: "#16A34A" }}
+          >
+            <svg viewBox="0 0 16 16" width="12" height="12" fill="none">
+              <path d="M3 8.5L6.5 12L13 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </motion.span>
+        ) : (
+          <motion.span
+            key="filled"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="flex h-7 w-7 items-center justify-center rounded-full text-[0.9rem] leading-none text-white"
+            style={{ background: "#0A0B1A" }}
+          >
+            +
+          </motion.span>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
