@@ -10,7 +10,7 @@ const types = [
     name: "Laura, day 3",
     title: "Just prescribed",
     body:
-      "You got the script. You left the office with questions. We'll walk you through week one, hour by hour if you need it.",
+      "You got the script. You left the office with questions. We’ll walk you through week one, hour by hour if you need it.",
   },
   {
     photo:
@@ -18,7 +18,7 @@ const types = [
     name: "Priya, 7 mo",
     title: "Ramping up doses",
     body:
-      "Every titration changes your appetite, your energy, your sleep. We&rsquo;ll adjust your plan at every step, not every quarter.",
+      "Every titration changes your appetite, your energy, your sleep. We’ll adjust your plan at every step, not every quarter.",
   },
   {
     photo:
@@ -40,13 +40,13 @@ const types = [
 
 export default function WhoItsFor() {
   return (
-    <section className="bg-ink py-[110px] text-white">
+    <section className="bg-bg py-[110px]">
       <div className="container-x">
-        <div className="mx-auto max-w-[720px]">
-          <h2 className="mt-3 !text-white">
-            Built for four kinds of <span className="marker-hl">GLP-1 people.</span>
+        <div className="mx-auto max-w-[720px] text-center">
+          <h2 className="mt-3">
+            <span className="marker-hl">Built for four kinds of GLP-1 people.</span>
           </h2>
-          <p className="mt-4 max-w-[540px] text-white/70">
+          <p className="mt-4 text-muted">
             Week one looks nothing like month six. Your app shouldn&rsquo;t
             either.
           </p>
@@ -64,9 +64,9 @@ export default function WhoItsFor() {
               key={t.title}
               variants={fadeUp}
               whileHover={{ y: -6, transition: { duration: 0.2 } }}
-              className="group overflow-hidden rounded-[20px] border border-white/10 bg-white/5"
+              className="group overflow-hidden rounded-[20px] border border-line bg-white"
             >
-              <div className="relative aspect-[5/6] overflow-hidden bg-white/10">
+              <div className="relative aspect-[5/6] overflow-hidden bg-line">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={t.photo}
@@ -74,13 +74,13 @@ export default function WhoItsFor() {
                   className="h-full w-full object-cover transition-transform duration-[600ms] group-hover:scale-[1.04]"
                   loading="lazy"
                 />
-                <div className="absolute bottom-3 left-3 rounded-full bg-black/60 px-3 py-1 hand text-[1rem] text-white">
+                <div className="absolute bottom-3 left-3 rounded-full bg-white/90 px-3 py-1 hand text-[1rem] text-ink">
                   {t.name}
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-[1.05rem] !text-white">{t.title}</h3>
-                <p className="mt-2 text-[0.92rem] text-white/70">{t.body}</p>
+                <h3 className="text-[1.05rem]">{t.title}</h3>
+                <p className="mt-2 text-[0.92rem] text-muted">{t.body}</p>
               </div>
             </motion.div>
           ))}

@@ -6,24 +6,13 @@ import { viewportOnce } from "@/lib/motion";
 const quotes = [
   {
     text:
-      "It&rsquo;s the first thing that treats me like I&rsquo;m running a system, not just restricting calories. The cycle view finally made my weeks make sense.",
-    name: "Meagan",
-    meta: "Week 14 · Mounjaro",
-    photo:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=160&h=160&fit=crop&crop=faces&q=80",
-    rotate: -3.5,
-    width: "320px",
-    color: "#FFF5B0",
-  },
-  {
-    text:
       "The coach talked me off a ledge the night my dose made me nauseous. Honestly the reason I didn&rsquo;t quit.",
     name: "Genevieve",
     meta: "Week 6 · Wegovy",
     photo:
       "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=160&h=160&fit=crop&crop=faces&q=80",
-    rotate: 2.5,
-    width: "340px",
+    rotate: -3.5,
+    width: "300px",
     color: "#FFFFFF",
   },
   {
@@ -33,9 +22,20 @@ const quotes = [
     meta: "Week 22 · Ozempic",
     photo:
       "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=160&h=160&fit=crop&crop=faces&q=80",
-    rotate: -1.8,
+    rotate: 2.5,
     width: "310px",
     color: "#CFE3FF",
+  },
+  {
+    text:
+      "It&rsquo;s the first thing that treats me like I&rsquo;m running a system, not just restricting calories. The cycle view finally made my weeks make sense.",
+    name: "Meagan",
+    meta: "Week 14 · Mounjaro",
+    photo:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=160&h=160&fit=crop&crop=faces&q=80",
+    rotate: -1.8,
+    width: "320px",
+    color: "#FFF5B0",
   },
   {
     text:

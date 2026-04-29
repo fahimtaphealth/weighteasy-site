@@ -23,13 +23,13 @@ export default function CoachBand() {
     <section className="relative overflow-hidden bg-ink text-white py-[100px]">
       <div className="container-x relative">
         <div className="mx-auto max-w-[760px] text-center">
-          <span className="hand text-[1.4rem]" style={{ color: "var(--color-teal-300)" }}>
-            the 11pm friend
+          <span className="eyebrow !text-teal-300 !border-teal-300/30 !bg-teal-300/10">
+            The 11 PM Friend
           </span>
           <h2 className="mt-3 !text-white">
-            Trained on GLP-1 pharmacokinetics.
+            AI-powered Coach.
             <br />
-            <span style={{ color: "var(--color-teal-300)" }}>Answers like a person.</span>
+            <span style={{ color: "var(--color-teal-300)" }}>Trained on GLP-1.</span>
           </h2>
           <p className="mx-auto mt-5 max-w-[560px] text-white/70">
             Knows what dose you&rsquo;re on. Knows what day of your cycle it is.
