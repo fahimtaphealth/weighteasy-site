@@ -75,102 +75,13 @@ export default function DosePhoneMockup() {
                 <p className="mt-1 text-[0.72rem] text-white/60">on Monday, 12 Dec</p>
               </div>
 
-              {/* Dose concentration graph */}
-              <div className="mt-5 relative">
-                <svg viewBox="0 0 260 80" className="w-full" preserveAspectRatio="xMidYMid meet">
-                  {/* Grid lines (subtle) */}
-                  <line x1="0" y1="20" x2="260" y2="20" stroke="rgba(255,255,255,0.05)" strokeWidth="0.5" />
-                  <line x1="0" y1="40" x2="260" y2="40" stroke="rgba(255,255,255,0.05)" strokeWidth="0.5" />
-                  <line x1="0" y1="60" x2="260" y2="60" stroke="rgba(255,255,255,0.05)" strokeWidth="0.5" />
-
-                  {/* Gradient fill under the curve */}
-                  <defs>
-                    <linearGradient id="doseGradFill" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#5EEAD4" stopOpacity="0.3" />
-                      <stop offset="100%" stopColor="#5EEAD4" stopOpacity="0" />
-                    </linearGradient>
-                    <clipPath id="graphClip">
-                      <motion.rect
-                        x="0"
-                        y="0"
-                        width="260"
-                        height="80"
-                        initial={{ width: 0 }}
-                        animate={inView ? { width: 260 } : {}}
-                        transition={{ duration: 2.2, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                      />
-                    </clipPath>
-                  </defs>
-
-                  {/* Filled area under curve — clipped by animated rect */}
-                  <path
-                    d="M0,65 Q20,64 35,18 Q45,5 55,12 Q70,22 90,42 Q120,58 160,62 Q200,64 240,66 L240,80 L0,80Z"
-                    fill="url(#doseGradFill)"
-                    clipPath="url(#graphClip)"
-                  />
-
-                  {/* Main curve line — trim path animation */}
-                  <motion.path
-                    d="M0,65 Q20,64 35,18 Q45,5 55,12 Q70,22 90,42 Q120,58 160,62 Q200,64 240,66"
-                    fill="none"
-                    stroke="#5EEAD4"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    initial={{ pathLength: 0, opacity: 0 }}
-                    animate={inView ? { pathLength: 1, opacity: 1 } : {}}
-                    transition={{ duration: 2.2, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                  />
-
-                  {/* Current position dot */}
-                  <motion.circle
-                    cx="90"
-                    cy="42"
-                    r="4"
-                    fill="#5EEAD4"
-                    stroke="#081525"
-                    strokeWidth="2"
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={inView ? { scale: 1, opacity: 1 } : {}}
-                    transition={{ duration: 0.4, delay: 2.0 }}
-                  />
-
-                  {/* Dashed projected line from current */}
-                  <motion.path
-                    d="M90,42 Q120,58 160,62 Q200,64 240,66"
-                    fill="none"
-                    stroke="rgba(255,255,255,0.2)"
-                    strokeWidth="1.5"
-                    strokeDasharray="4 4"
-                    initial={{ pathLength: 0, opacity: 0 }}
-                    animate={inView ? { pathLength: 1, opacity: 1 } : {}}
-                    transition={{ duration: 1, delay: 2.4, ease: "easeOut" }}
-                  />
-                </svg>
-
-                {/* X-axis labels */}
-                <div className="mt-1 flex justify-between px-1">
-                  <span className="text-[0.58rem] text-white/40">2 Dec</span>
-                  <span
-                    className="rounded-full px-2 py-0.5 text-[0.58rem] font-bold"
-                    style={{ background: "#16A34A", color: "white" }}
-                  >
-                    4 Dec · TODAY
-                  </span>
-                  <span
-                    className="rounded-full px-2 py-0.5 text-[0.58rem] font-semibold"
-                    style={{ background: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.6)" }}
-                  >
-                    12 Dec
-                  </span>
-                </div>
-              </div>
-
-              {/* "Levels are tapering off" card — pops in after graph */}
+              {/* "Levels are tapering off" card — above graph */}
               <motion.div
-                className="mt-4 rounded-[12px] px-[14px] py-3"
+                className="mt-5 rounded-[12px] px-[14px] py-3"
                 style={{
-                  background: "rgba(22,163,74,0.12)",
-                  border: "1px solid rgba(22,163,74,0.2)",
+                  background: "rgba(14,59,61,0.7)",
+                  border: "1px solid rgba(94,234,212,0.15)",
+                  backdropFilter: "blur(8px)",
                 }}
                 initial={{ opacity: 0, y: 12, scale: 0.95 }}
                 animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
@@ -179,10 +90,148 @@ export default function DosePhoneMockup() {
                 <div className="font-display text-[0.78rem] font-bold text-emerald-300">
                   Levels are tapering off
                 </div>
-                <p className="mt-1 text-[0.62rem] leading-[1.45] text-emerald-200/70">
+                <p className="mt-1 text-[0.62rem] leading-[1.45] text-white/50">
                   Drug concentration is gradually declining. Appetite may return slightly before your next dose.
                 </p>
               </motion.div>
+
+              {/* Dose concentration graph */}
+              <div className="mt-4 relative">
+                <div className="flex">
+                  {/* Graph area */}
+                  <div className="flex-1">
+                    <svg viewBox="0 0 220 100" className="w-full" preserveAspectRatio="xMidYMid meet">
+                      <defs>
+                        <linearGradient id="doseGradFill" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%" stopColor="#5EEAD4" stopOpacity="0.35" />
+                          <stop offset="70%" stopColor="#5EEAD4" stopOpacity="0.08" />
+                          <stop offset="100%" stopColor="#5EEAD4" stopOpacity="0" />
+                        </linearGradient>
+                        <linearGradient id="dotFade" x1="0" y1="0" x2="1" y2="0">
+                          <stop offset="0%" stopColor="#5EEAD4" stopOpacity="0.5" />
+                          <stop offset="100%" stopColor="#5EEAD4" stopOpacity="0" />
+                        </linearGradient>
+                        <linearGradient id="projFill" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%" stopColor="#5EEAD4" stopOpacity="0.08" />
+                          <stop offset="100%" stopColor="#5EEAD4" stopOpacity="0" />
+                        </linearGradient>
+                        <clipPath id="graphClip">
+                          <motion.rect
+                            x="0" y="0" height="100"
+                            initial={{ width: 0 }}
+                            animate={inView ? { width: 220 } : {}}
+                            transition={{ duration: 2.2, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                          />
+                        </clipPath>
+                      </defs>
+
+                      {/* Grid lines */}
+                      <line x1="0" y1="10" x2="220" y2="10" stroke="rgba(255,255,255,0.06)" strokeWidth="0.5" />
+                      <line x1="0" y1="35" x2="220" y2="35" stroke="rgba(255,255,255,0.06)" strokeWidth="0.5" />
+                      <line x1="0" y1="60" x2="220" y2="60" stroke="rgba(255,255,255,0.06)" strokeWidth="0.5" />
+                      <line x1="0" y1="85" x2="220" y2="85" stroke="rgba(255,255,255,0.06)" strokeWidth="0.5" />
+
+                      {/* Filled area under solid curve */}
+                      <path
+                        d="M0,85 C10,84 20,80 30,20 C35,5 42,8 48,18 C60,38 75,58 100,68 L100,100 L0,100Z"
+                        fill="url(#doseGradFill)"
+                        clipPath="url(#graphClip)"
+                      />
+
+                      {/* Main solid teal curve */}
+                      <motion.path
+                        d="M0,85 C10,84 20,80 30,20 C35,5 42,8 48,18 C60,38 75,58 100,68"
+                        fill="none"
+                        stroke="#5EEAD4"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        initial={{ pathLength: 0, opacity: 0 }}
+                        animate={inView ? { pathLength: 1, opacity: 1 } : {}}
+                        transition={{ duration: 2.2, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                      />
+
+                      {/* Light fill under projected dotted line */}
+                      <motion.path
+                        d="M100,68 C130,76 170,82 220,85 L220,100 L100,100Z"
+                        fill="url(#projFill)"
+                        initial={{ opacity: 0 }}
+                        animate={inView ? { opacity: 1 } : {}}
+                        transition={{ duration: 0.6, delay: 2.4 }}
+                      />
+
+                      {/* Dotted projection line — fading gradient */}
+                      <motion.path
+                        d="M100,68 C130,76 170,82 220,85"
+                        fill="none"
+                        stroke="url(#dotFade)"
+                        strokeWidth="2"
+                        strokeDasharray="4 4"
+                        strokeLinecap="round"
+                        initial={{ pathLength: 0, opacity: 0 }}
+                        animate={inView ? { pathLength: 1, opacity: 1 } : {}}
+                        transition={{ duration: 1.2, delay: 2.4, ease: "easeOut" }}
+                      />
+
+                      {/* Current position dot */}
+                      <motion.circle
+                        cx="100" cy="68" r="5"
+                        fill="#5EEAD4"
+                        stroke="#0A2E35"
+                        strokeWidth="2.5"
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={inView ? { scale: 1, opacity: 1 } : {}}
+                        transition={{ duration: 0.4, delay: 2.0 }}
+                      />
+                    </svg>
+                  </div>
+
+                  {/* Y-axis labels */}
+                  <div className="flex flex-col justify-between pl-1 py-[2px]" style={{ minWidth: 20 }}>
+                    <span className="text-[0.48rem] text-white/30 text-right">5</span>
+                    <span className="text-[0.48rem] text-white/30 text-right">2.5</span>
+                    <span className="text-[0.48rem] text-white/30 text-right">0</span>
+                  </div>
+                </div>
+
+                {/* Y-axis vertical label */}
+                <div
+                  className="absolute -right-[2px] top-1/2 text-[0.38rem] text-white/20 font-medium tracking-wider"
+                  style={{ transform: "translateY(-50%) rotate(90deg)", transformOrigin: "center", whiteSpace: "nowrap" }}
+                >
+                  GLP-1 Concentration (mg)
+                </div>
+
+                {/* X-axis date boxes with sub-labels */}
+                <div className="mt-2 flex justify-between items-start px-0">
+                  <div className="flex flex-col items-center">
+                    <span
+                      className="rounded-[6px] px-2 py-[3px] text-[0.56rem] font-semibold text-white/60"
+                      style={{ background: "rgba(255,255,255,0.06)" }}
+                    >
+                      2 Dec
+                    </span>
+                    <span className="mt-[2px] text-[0.42rem] font-bold tracking-[0.05em] text-white/25 uppercase">Last Dose</span>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <span
+                      className="rounded-[6px] px-2 py-[3px] text-[0.56rem] font-bold text-white"
+                      style={{ background: "#16A34A" }}
+                    >
+                      4 Dec · TODAY
+                    </span>
+                    <span className="mt-[2px] text-[0.42rem] font-bold tracking-[0.05em] text-white/25 uppercase">Today</span>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <span
+                      className="rounded-[6px] px-2 py-[3px] text-[0.56rem] font-semibold text-white/60"
+                      style={{ background: "rgba(255,255,255,0.06)" }}
+                    >
+                      12 Dec
+                    </span>
+                    <span className="mt-[2px] text-[0.42rem] font-bold tracking-[0.05em] text-white/25 uppercase">Next Dose</span>
+                  </div>
+                </div>
+              </div>
             </section>
 
             {/* Recent logs — white/light background body */}

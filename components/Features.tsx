@@ -22,11 +22,11 @@ function DoseTrackingCard() {
       className="relative overflow-hidden rounded-[24px] text-white"
       style={{
         background: "linear-gradient(135deg, #081525 0%, #0a5c55 40%, #081525 100%)",
-        height: 416,
+        minHeight: 416,
       }}
     >
       {/* Text content */}
-      <div className="absolute left-[40px] top-[40px] w-[313px] z-10">
+      <div className="relative z-10 px-6 pt-8 pb-4 md:absolute md:left-[40px] md:top-[40px] md:w-[313px] md:px-0 md:pt-0 md:pb-0">
         <h3 className="font-display text-[1.35rem] font-bold !text-white tracking-[-0.4px]">
           Tracking doses made easy
         </h3>
@@ -36,7 +36,7 @@ function DoseTrackingCard() {
       </div>
 
       {/* Phone mockup — right side */}
-      <div className="absolute right-[40px] top-[106px]">
+      <div className="absolute right-[20px] top-[130px] md:right-[40px] md:top-[106px]">
         {/* Screen */}
         <div className="absolute left-[7px] top-[5px] w-[241px] h-[536px] rounded-[29px] overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -121,11 +121,11 @@ function MealPlansCard() {
       className="relative overflow-hidden rounded-[24px]"
       style={{
         background: "radial-gradient(ellipse at bottom right, #ede9fe, #f5f3ff)",
-        height: 416,
+        minHeight: 416,
       }}
     >
       {/* Text content */}
-      <div className="absolute left-[40px] top-[40px] w-[313px]">
+      <div className="relative px-6 pt-8 pb-4 md:absolute md:left-[40px] md:top-[40px] md:w-[313px] md:px-0 md:pt-0 md:pb-0">
         <h3 className="font-display text-[1.35rem] font-bold text-ink tracking-[-0.4px]">
           Cycle-aware meal plans
         </h3>
@@ -136,7 +136,7 @@ function MealPlansCard() {
 
       {/* Meal cards — centered at bottom */}
       <div
-        className="absolute left-1/2 -translate-x-1/2 top-[191px] flex items-center justify-center gap-4"
+        className="absolute left-1/2 -translate-x-1/2 top-[120px] md:top-[191px] flex items-center justify-center gap-4"
         style={{ filter: "drop-shadow(0 -27px 30px rgba(0,0,0,0.05))" }}
       >
         {/* Small breakfast card */}
@@ -309,11 +309,11 @@ function SideEffectsCard() {
       className="relative overflow-hidden rounded-[24px]"
       style={{
         background: "radial-gradient(ellipse at bottom right, #dbeafe, #eff6ff)",
-        height: 416,
+        minHeight: 416,
       }}
     >
-      {/* Text content — right side, with bottom margin for mobile spacing */}
-      <div className="absolute right-[24px] left-[24px] top-[32px] md:left-auto md:right-[40px] md:top-[42px] md:w-[313px]">
+      {/* Text content — flows in document on mobile, absolute on desktop */}
+      <div className="relative px-6 pt-8 pb-4 md:absolute md:right-[40px] md:top-[42px] md:w-[313px] md:px-0 md:pt-0 md:pb-0">
         <h3 className="font-display text-[1.35rem] font-bold text-ink tracking-[-0.4px]">
           Manage side effects
         </h3>

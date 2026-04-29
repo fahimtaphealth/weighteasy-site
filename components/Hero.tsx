@@ -77,8 +77,8 @@ export default function Hero() {
             <div
               className="relative z-[5]"
               style={{
-                marginTop: 40,
-                marginRight: -40,
+                marginTop: "var(--phone-offset-top)",
+                marginRight: "var(--phone-overlap)",
                 transform: "scale(var(--phone-scale))",
                 transformOrigin: "top center",
               }}
@@ -89,7 +89,7 @@ export default function Hero() {
             <div
               className="relative z-10"
               style={{
-                marginLeft: -40,
+                marginLeft: "var(--phone-overlap)",
                 transform: "scale(var(--phone-scale))",
                 transformOrigin: "top center",
               }}

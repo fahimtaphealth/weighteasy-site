@@ -223,18 +223,32 @@ body {
   }
 }
 
-/* Hero phone-pair responsive scale */
+/* Hero phone-pair responsive scale + overlap */
 .phone-pair {
-  --phone-scale: 0.75;
+  --phone-scale: 0.72;
+  --phone-overlap: -60px;
+  --phone-offset-top: 20px;
 }
 @media (min-width: 640px) {
-  .phone-pair { --phone-scale: 0.72; }
+  .phone-pair {
+    --phone-scale: 0.72;
+    --phone-overlap: -50px;
+    --phone-offset-top: 30px;
+  }
 }
 @media (min-width: 768px) {
-  .phone-pair { --phone-scale: 0.76; }
+  .phone-pair {
+    --phone-scale: 0.76;
+    --phone-overlap: -40px;
+    --phone-offset-top: 40px;
+  }
 }
 @media (min-width: 1024px) {
-  .phone-pair { --phone-scale: 0.82; }
+  .phone-pair {
+    --phone-scale: 0.82;
+    --phone-overlap: -40px;
+    --phone-offset-top: 40px;
+  }
 }
 
 /* Shimmer utility for the final CTA */
