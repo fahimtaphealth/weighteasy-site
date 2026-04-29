@@ -16,7 +16,7 @@ import CoachOrb from "./CoachOrb";
  */
 export default function PhoneMockup() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: false, margin: "-80px" });
+  const inView = useInView(ref, { once: false, margin: "0px 0px -50% 0px" });
 
   /* Which tracker is currently animating (0=weight, 1=food, 2=water) */
   const [animatingIdx, setAnimatingIdx] = useState(-1);

@@ -13,7 +13,7 @@ import CoachOrb from "./CoachOrb";
  */
 export default function DosePhoneMockup() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = useInView(ref, { once: true, margin: "0px 0px -50% 0px" });
 
   return (
     <div ref={ref} className="relative flex items-center justify-center" style={{ height: 680 }}>
