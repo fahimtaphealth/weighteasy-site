@@ -223,6 +223,20 @@ body {
   }
 }
 
+/* Hero phone-pair responsive scale */
+.phone-pair {
+  --phone-scale: 0.52;
+}
+@media (min-width: 640px) {
+  .phone-pair { --phone-scale: 0.65; }
+}
+@media (min-width: 768px) {
+  .phone-pair { --phone-scale: 0.72; }
+}
+@media (min-width: 1024px) {
+  .phone-pair { --phone-scale: 0.82; }
+}
+
 /* Shimmer utility for the final CTA */
 .shimmer-text {
   background: linear-gradient(90deg, #fff 0%, var(--color-teal-300) 40%, var(--color-purple-400) 55%, #fff 100%);

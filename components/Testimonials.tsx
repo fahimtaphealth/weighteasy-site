@@ -74,8 +74,8 @@ export default function Testimonials() {
           </p>
         </div>
 
-        {/* asymmetric pinboard */}
-        <div className="relative mx-auto mt-16 flex max-w-[1080px] flex-wrap items-start justify-center gap-8">
+        {/* asymmetric pinboard — single row */}
+        <div className="relative mx-auto mt-16 flex max-w-[1280px] flex-nowrap items-start justify-center gap-8">
           {quotes.map((q, i) => (
             <motion.div
               key={q.name}
@@ -86,7 +86,9 @@ export default function Testimonials() {
               whileHover={{ rotate: 0, y: -6, zIndex: 20 }}
               className="relative"
               style={{
-                width: q.width,
+                flex: "1 1 0",
+                minWidth: 240,
+                maxWidth: 300,
                 background: q.color,
                 padding: "16px 18px 20px",
                 boxShadow:

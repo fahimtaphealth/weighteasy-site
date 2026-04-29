@@ -7,13 +7,13 @@ import DosePhoneMockup from "./DosePhoneMockup";
 
 export default function Hero() {
   return (
-    <header className="relative overflow-hidden bg-bg pb-20 pt-[90px]">
-      <div className="container-x grid items-center gap-14 lg:grid-cols-[1.1fr_1fr]">
+    <header className="relative overflow-hidden bg-bg pb-12 pt-[72px] sm:pb-20 sm:pt-[90px]">
+      <div className="container-x grid items-center gap-10 sm:gap-14 lg:grid-cols-[1.1fr_1fr]">
         <motion.div
           variants={stagger(0.1, 0.1)}
           initial="hidden"
           animate="show"
-          className="relative"
+          className="relative text-center lg:text-left"
         >
           <motion.span variants={fadeUp} className="eyebrow">
             WeightEasy — Tracker and Coach
@@ -24,19 +24,19 @@ export default function Hero() {
             <span className="text-accent">GLP-1</span>
           </motion.h1>
 
-          <motion.p variants={fadeUp} className="mt-7 max-w-[540px] text-[1.13rem] text-muted">
+          <motion.p variants={fadeUp} className="mx-auto mt-5 max-w-[540px] text-[1rem] text-muted sm:mt-7 sm:text-[1.13rem] lg:mx-0">
             We know day 3 hits hardest. We know the nausea peaks at week 3.
             We built an app that predicts what happens next — so you&rsquo;re
             never guessing alone.{" "}
             <span className="marker-hl">That&rsquo;s the gap we fill.</span>
           </motion.p>
 
-          <motion.div variants={fadeUp} className="mt-9 flex flex-wrap items-center gap-3">
-            <a href="#pricing" className="btn btn-primary">Try it for 7 days, free</a>
-            <a href="#story" className="btn btn-ghost">Read Meagan&rsquo;s story →</a>
+          <motion.div variants={fadeUp} className="mt-7 flex flex-col items-center gap-3 sm:mt-9 sm:flex-row sm:flex-wrap lg:justify-start">
+            <a href="#pricing" className="btn btn-primary w-full sm:w-auto">Try it for 7 days, free</a>
+            <a href="#story" className="btn btn-ghost w-full sm:w-auto">Read Meagan&rsquo;s story →</a>
           </motion.div>
 
-          <motion.div variants={fadeUp} className="mt-9 flex items-center gap-4 text-[0.88rem] text-muted">
+          <motion.div variants={fadeUp} className="mt-7 flex items-center justify-center gap-4 text-[0.84rem] text-muted sm:mt-9 sm:text-[0.88rem] lg:justify-start">
             <div className="flex">
               {[
                 "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&h=80&fit=crop&crop=faces&q=80",
@@ -63,14 +63,18 @@ export default function Hero() {
         </motion.div>
 
         {/* Two phone mockups — overlapping, dose phone in front staggered top-right */}
-        <div className="relative flex items-start justify-center" style={{ height: 580 }}>
+        {/* Phone scale: 0.52 on mobile → 0.65 sm → 0.72 md → 0.82 lg */}
+        <div
+          className="phone-pair relative mx-auto flex w-full max-w-[340px] items-start justify-center sm:max-w-[420px] lg:max-w-none"
+          style={{ height: "clamp(340px, 52vw, 580px)" }}
+        >
           {/* Left phone — Home screen (behind, slightly left and down) */}
           <div
             className="relative z-[5] flex-shrink-0"
             style={{
-              marginTop: 40,
-              marginRight: -40,
-              transform: "scale(0.82)",
+              marginTop: "clamp(16px, 3vw, 40px)",
+              marginRight: "clamp(-24px, -3vw, -40px)",
+              transform: "scale(var(--phone-scale))",
               transformOrigin: "top center",
             }}
           >
@@ -80,8 +84,8 @@ export default function Hero() {
           <div
             className="relative z-10 flex-shrink-0"
             style={{
-              marginLeft: -40,
-              transform: "scale(0.82)",
+              marginLeft: "clamp(-24px, -3vw, -40px)",
+              transform: "scale(var(--phone-scale))",
               transformOrigin: "top center",
             }}
           >

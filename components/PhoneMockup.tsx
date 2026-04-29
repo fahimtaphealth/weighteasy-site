@@ -347,68 +347,31 @@ function AnimatedTracker({
   // Ring progress: 0 → 1 when animating/completed
   const ringProgress = isAnimating || isCompleted ? 1 : 0;
   const showCheck = isCompleted;
-  const buttonTertiary = isCompleted;
 
   return (
     <div
       className="flex items-center gap-[10px] py-[11px]"
       style={{ borderBottom: last ? "none" : "1px solid #F0F1F6" }}
     >
-      {/* Animated ring / check icon */}
-      <div className="relative flex h-[30px] w-[30px] flex-shrink-0 items-center justify-center">
-        {/* Background circle */}
-        <span
-          className="absolute inset-0 rounded-full"
-          style={{ background: "var(--surface-default)" }}
-        />
-
-        {/* SVG ring that fills */}
-        <svg className="absolute inset-0" viewBox="0 0 30 30">
-          {/* Track ring */}
-          <circle
-            cx="15"
-            cy="15"
-            r="12"
-            fill="none"
-            stroke="#E8EAF0"
-            strokeWidth="2.5"
-          />
-          {/* Animated fill ring */}
-          <motion.circle
-            cx="15"
-            cy="15"
-            r="12"
-            fill="none"
-            stroke="#16A34A"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeDasharray={2 * Math.PI * 12}
-            style={{ transformOrigin: "center", rotate: "-90deg" }}
-            animate={{
-              strokeDashoffset: ringProgress === 1
-                ? 0
-                : 2 * Math.PI * 12,
-            }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          />
-        </svg>
-
-        {/* Icon / Check crossfade */}
+      {/* Animated ring → solid green check circle */}
+      <div className="relative flex h-[34px] w-[34px] flex-shrink-0 items-center justify-center">
         <AnimatePresence mode="wait">
           {showCheck ? (
+            /* Completed: solid green circle with white checkmark */
             <motion.span
-              key="check"
+              key="check-circle"
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0, opacity: 0 }}
-              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="relative z-10 flex items-center justify-center"
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute inset-0 flex items-center justify-center rounded-full"
+              style={{ background: "#D1FAE5" }}
             >
-              <svg viewBox="0 0 16 16" width="14" height="14" fill="none">
+              <svg viewBox="0 0 16 16" width="16" height="16" fill="none">
                 <motion.path
                   d="M3 8.5L6.5 12L13 4"
                   stroke="#16A34A"
-                  strokeWidth="2"
+                  strokeWidth="2.2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   initial={{ pathLength: 0 }}
@@ -418,15 +381,31 @@ function AnimatedTracker({
               </svg>
             </motion.span>
           ) : (
+            /* Default: ring with icon */
             <motion.span
-              key="icon"
+              key="ring-icon"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="relative z-10 text-[0.72rem]"
+              className="absolute inset-0 flex items-center justify-center"
             >
-              {icon}
+              {/* SVG ring */}
+              <svg className="absolute inset-0" viewBox="0 0 34 34">
+                <circle cx="17" cy="17" r="14" fill="none" stroke="#E8EAF0" strokeWidth="2.5" />
+                <motion.circle
+                  cx="17" cy="17" r="14"
+                  fill="none" stroke="#16A34A" strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeDasharray={2 * Math.PI * 14}
+                  style={{ transformOrigin: "center", rotate: "-90deg" }}
+                  animate={{
+                    strokeDashoffset: ringProgress === 1 ? 0 : 2 * Math.PI * 14,
+                  }}
+                  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                />
+              </svg>
+              <span className="relative z-10 text-[0.78rem]">{icon}</span>
             </motion.span>
           )}
         </AnimatePresence>
@@ -449,36 +428,12 @@ function AnimatedTracker({
         <span className="mt-px block text-[0.66rem] text-muted">{value}</span>
       </div>
 
-      {/* Button — switches from filled (black) to tertiary (outline) */}
-      <AnimatePresence mode="wait">
-        {buttonTertiary ? (
-          <motion.span
-            key="tertiary"
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.8, opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="flex h-7 w-7 items-center justify-center rounded-full border-2 text-[0.9rem] leading-none"
-            style={{ borderColor: "#16A34A", color: "#16A34A" }}
-          >
-            <svg viewBox="0 0 16 16" width="12" height="12" fill="none">
-              <path d="M3 8.5L6.5 12L13 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </motion.span>
-        ) : (
-          <motion.span
-            key="filled"
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.8, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="flex h-7 w-7 items-center justify-center rounded-full text-[0.9rem] leading-none text-white"
-            style={{ background: "#0A0B1A" }}
-          >
-            +
-          </motion.span>
-        )}
-      </AnimatePresence>
+      {/* "+" button — always present */}
+      <span
+        className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full text-[1.1rem] leading-none text-ink"
+      >
+        +
+      </span>
     </div>
   );
 }

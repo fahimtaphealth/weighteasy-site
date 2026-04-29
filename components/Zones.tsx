@@ -82,50 +82,63 @@ export default function Zones() {
           }}
         />
 
-        {/* ── HTML dots layer — positioned individually ── */}
-        {stages.map((stage, i) => {
-          const angle = i * 60;
-          const pos = angleToXY(angle, R);
+        {/* ── Rotating dots container — centered at circle origin ── */}
+        <div
+          className="absolute z-[5]"
+          style={{ left: "50%", top: CY, width: 0, height: 0 }}
+        >
+          <motion.div
+            animate={{ rotate: -rotation }}
+            transition={spring}
+            style={{ transformOrigin: "0px 0px", position: "relative", width: 0, height: 0 }}
+          >
+            {stages.map((stage, i) => {
+              const angle = i * 60;
+              const pos = angleToXY(angle, R);
 
-          const visualSlot = ((i - active) % 6 + 6) % 6;
-          if (visualSlot === 0) return null;
+              const visualSlot = ((i - active) % 6 + 6) % 6;
+              if (visualSlot === 0) return null;
 
-          const opacity =
-            visualSlot === 1 || visualSlot === 5
-              ? 1
-              : visualSlot === 2 || visualSlot === 4
-              ? 0.7
-              : 0.4;
+              const opacity =
+                visualSlot === 1 || visualSlot === 5
+                  ? 1
+                  : visualSlot === 2 || visualSlot === 4
+                  ? 0.7
+                  : 0.4;
 
-          return (
-            <motion.div
-              key={`dot-${stage.num}`}
-              className="absolute cursor-pointer z-[5]"
-              style={{
-                left: "50%",
-                top: CY,
-                width: 72,
-                height: 72,
-                marginLeft: -36,
-                marginTop: -36,
-              }}
-              animate={{
-                x: pos.x,
-                y: pos.y,
-                opacity,
-              }}
-              transition={spring}
-              onClick={() => goTo(i)}
-            >
-              {/* Dark circle background */}
-              <div className="absolute inset-0 rounded-full bg-[#1a1d2e] border border-white/8" />
-              {/* Number text */}
-              <div className="absolute inset-0 flex items-center justify-center font-display text-[1.4rem] font-bold text-white">
-                {stage.num}
-              </div>
-            </motion.div>
-          );
-        })}
+              return (
+                <motion.div
+                  key={`dot-${stage.num}`}
+                  className="absolute cursor-pointer"
+                  style={{
+                    left: pos.x - 36,
+                    top: pos.y - 36,
+                    width: 72,
+                    height: 72,
+                  }}
+                  animate={{ opacity }}
+                  transition={spring}
+                  onClick={() => goTo(i)}
+                >
+                  {/* Counter-rotate to keep text upright */}
+                  <motion.div
+                    className="w-full h-full"
+                    animate={{ rotate: rotation }}
+                    transition={spring}
+                    style={{ transformOrigin: "center center" }}
+                  >
+                    {/* Dark circle background */}
+                    <div className="absolute inset-0 rounded-full bg-[#1a1d2e] border border-white/8" />
+                    {/* Number text */}
+                    <div className="absolute inset-0 flex items-center justify-center font-display text-[1.4rem] font-bold text-white">
+                      {stage.num}
+                    </div>
+                  </motion.div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </div>
 
         {/* ── Chevron buttons — fixed at far left/right ── */}
         <button

@@ -212,11 +212,13 @@ function TrackWeightIconCard() {
         height: 220,
       }}
     >
-      {/* Weight scale icon */}
+      {/* Weight scale icon — matches Figma */}
       <div className="w-[44px] h-[44px]">
         <svg viewBox="0 0 44 44" fill="none" className="w-full h-full">
-          <rect x="5.5" y="5.5" width="33" height="33" rx="4" stroke="#252e49" strokeWidth="2" fill="none" />
-          <path d="M12.83 12.83h18.34v7.33H12.83z" stroke="#252e49" strokeWidth="2" fill="none" rx="2" />
+          <rect x="6" y="10" width="32" height="26" rx="4" stroke="#252e49" strokeWidth="2" />
+          <path d="M14 24a8 8 0 0 1 16 0" stroke="#252e49" strokeWidth="2" strokeLinecap="round" />
+          <line x1="22" y1="24" x2="27" y2="19" stroke="#252e49" strokeWidth="2" strokeLinecap="round" />
+          <circle cx="22" cy="24" r="2" fill="#252e49" />
         </svg>
       </div>
       <h3 className="font-display text-[1.35rem] font-bold text-ink tracking-[-0.4px]">
@@ -241,11 +243,14 @@ function FitnessIconCard() {
         height: 220,
       }}
     >
-      {/* Steps/fitness icon */}
+      {/* Dumbbell/fitness icon — matches Figma */}
       <div className="w-[44px] h-[44px]">
         <svg viewBox="0 0 44 44" fill="none" className="w-full h-full">
-          <path d="M7.33 20.17v11M16.5 13.75v19.25M27.5 13.75v19.25M36.67 20.17v11" stroke="#252e49" strokeWidth="2" strokeLinecap="round" />
-          <path d="M7.33 25.67h9.17M27.5 25.67h9.17" stroke="#252e49" strokeWidth="2" strokeLinecap="round" />
+          <rect x="5" y="16" width="8" height="12" rx="2" stroke="#252e49" strokeWidth="2" />
+          <rect x="31" y="16" width="8" height="12" rx="2" stroke="#252e49" strokeWidth="2" />
+          <rect x="10" y="13" width="6" height="18" rx="2" stroke="#252e49" strokeWidth="2" />
+          <rect x="28" y="13" width="6" height="18" rx="2" stroke="#252e49" strokeWidth="2" />
+          <line x1="16" y1="22" x2="28" y2="22" stroke="#252e49" strokeWidth="2" strokeLinecap="round" />
         </svg>
       </div>
       <h3 className="font-display text-[1.35rem] font-bold text-ink tracking-[-0.4px]">
@@ -337,21 +342,24 @@ function SideEffectsCard() {
         />
       </div>
 
-      {/* Remedy cards */}
-      <div className="absolute left-[87px] top-[213px] w-[328px] rounded-[24px] border border-[#dce1e8] bg-white p-4 z-10">
-        <div className="flex gap-1">
+      {/* Remedy cards — horizontally scrolling row anchored to right of phone */}
+      <div className="absolute right-[24px] bottom-[40px] left-[300px] z-10">
+        <div className="flex gap-3">
           {[
-            { icon: "☕", name: "Ginger Tea", tip: "Sip slowly to calm stomach lining." },
-            { icon: "🦴", name: "Saltine Crackers", tip: "Dry carbs to absorb acidity." },
-            { icon: "🦴", name: "Saltine Crackers", tip: "Dry carbs to absorb acidity." },
+            { emoji: "🍵", name: "Ginger Tea", tip: "Sip slowly to calm stomach lining." },
+            { emoji: "🧂", name: "Saltine Crackers", tip: "Dry carbs to absorb acidity." },
+            { emoji: "🧂", name: "Saltine Crackers", tip: "Dry carbs to absorb acidity." },
           ].map((item, i) => (
             <div
               key={i}
-              className="flex-1 max-w-[132px] rounded-[16px] bg-[#f2f5f9] border border-white p-4 backdrop-blur-sm"
+              className="flex-shrink-0 w-[140px] rounded-[16px] bg-white border border-[#dce1e8] p-4"
+              style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}
             >
-              <div className="w-5 h-5 mb-2 text-sm">{item.icon}</div>
-              <p className="text-[14px] font-semibold text-ink">{item.name}</p>
-              <p className="mt-2 text-[14px] leading-[20px] text-muted">{item.tip}</p>
+              <div className="flex h-[36px] w-[36px] items-center justify-center rounded-[10px] bg-[#f2f5f9] text-[18px] mb-3">
+                {item.emoji}
+              </div>
+              <p className="text-[13px] font-semibold text-ink leading-tight">{item.name}</p>
+              <p className="mt-1.5 text-[12px] leading-[16px] text-muted">{item.tip}</p>
             </div>
           ))}
         </div>
