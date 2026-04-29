@@ -13,38 +13,45 @@ const stages = [
   { num: 6, name: "Almost Time", note: "Ease back. Light dinner. Calming tea for evening.", icon: "🌙" },
 ];
 
-function getAngle(slotIndex: number): number {
-  return slotIndex * 60;
-}
-
-function angleToPosition(angleDeg: number, radiusX: number, radiusY: number) {
+function angleToPosition(angleDeg: number, radius: number) {
   const rad = ((angleDeg - 90) * Math.PI) / 180;
   return {
-    x: Math.cos(rad) * radiusX,
-    y: Math.sin(rad) * radiusY,
+    x: Math.cos(rad) * radius,
+    y: Math.sin(rad) * radius,
   };
 }
 
+const springConfig = { type: "spring" as const, stiffness: 120, damping: 22 };
+
 export default function Zones() {
   const [active, setActive] = useState(0);
+  /* Track cumulative rotation so wrapping (5→0, 0→5) takes the short path */
+  const [rotation, setRotation] = useState(0);
 
-  const next = () => setActive((a) => (a + 1) % 6);
-  const prev = () => setActive((a) => (a + 5) % 6);
+  const next = () => {
+    setActive((a) => (a + 1) % 6);
+    setRotation((r) => r + 60);
+  };
+  const prev = () => {
+    setActive((a) => (a + 5) % 6);
+    setRotation((r) => r - 60);
+  };
+  const goTo = (target: number) => {
+    const diff = ((target - active) % 6 + 6) % 6;
+    const shortest = diff <= 3 ? diff : diff - 6;
+    setActive(target);
+    setRotation((r) => r + shortest * 60);
+  };
 
   const current = stages[active];
 
-  const slots: number[] = [];
-  for (let i = 0; i < 6; i++) {
-    slots.push((active + i) % 6);
-  }
+  const R = 420;
+  const CONTAINER_H = 560;
+  /* Circle center sits near the bottom of the container — overflow-hidden clips the lower arc */
+  const CY = CONTAINER_H - 40;
 
-  const RX = 420;
-  const RY = 420;
-
-  /* Phone top offset from container top */
-  const PHONE_TOP = 100;
-  /* Where the stage pill sits — just above the icon inside the phone */
-  const PILL_TOP = PHONE_TOP + 60; // overlapping the phone top area
+  const PHONE_TOP = 80;
+  const PILL_TOP = PHONE_TOP + 60;
 
   return (
     <section id="how" className="relative border-t border-line bg-white pb-0 pt-[100px] overflow-hidden">
@@ -64,101 +71,102 @@ export default function Zones() {
       {/* Carousel container — clipped at bottom */}
       <div
         className="relative mx-auto mt-10 overflow-hidden"
-        style={{ maxWidth: 1200, height: RY + 140 }}
+        style={{ maxWidth: 1200, height: CONTAINER_H }}
       >
-        {/* Dashed circle — full circle, bottom clipped */}
+        {/* Dashed circle — centered at CY, clipped by overflow */}
         <div
           className="pointer-events-none absolute left-1/2 -translate-x-1/2"
           style={{
-            top: 60,
-            width: RX * 2 + 40,
-            height: RY * 2 + 40,
+            top: CY - R - 20,
+            width: (R + 20) * 2,
+            height: (R + 20) * 2,
             border: "2px dashed #dce1e8",
             borderRadius: "50%",
           }}
         />
 
-        {/* Center point for circle positioning */}
+        {/* ── Rotating stage dots ── */}
+        {/* Outer wrapper: fixed at circle center. Inner motion.div rotates the whole ring. */}
         <div
-          className="absolute left-1/2 -translate-x-1/2"
-          style={{ top: 60 + RY + 20 }}
+          className="absolute left-1/2"
+          style={{ top: CY, transform: "translateX(-50%)" }}
         >
-          {/* Inactive numbered dots on the circle — skip active (slot 0) and bottom (slot 3) */}
-          {slots.map((stageIdx, slotIdx) => {
-            const angle = getAngle(slotIdx);
-            const pos = angleToPosition(angle, RX, RY);
-            const stage = stages[stageIdx];
+          <motion.div
+            animate={{ rotate: -rotation }}
+            transition={springConfig}
+            style={{ willChange: "transform" }}
+          >
+            {stages.map((stage, i) => {
+              const angle = i * 60;
+              const pos = angleToPosition(angle, R);
 
-            // Skip active (rendered separately on the phone) and bottom dot
-            if (slotIdx === 0 || slotIdx === 3) return null;
+              /* Which visual slot does this stage currently occupy? */
+              const visualSlot = ((i - active) % 6 + 6) % 6;
+              /* Hide the active dot (behind phone) */
+              if (visualSlot === 0) return null;
 
-            const opacity = slotIdx <= 1 || slotIdx === 5 ? 1 : 0.7;
+              const opacity =
+                visualSlot === 1 || visualSlot === 5
+                  ? 1
+                  : visualSlot === 2 || visualSlot === 4
+                  ? 0.7
+                  : 0.4;
 
-            return (
-              <motion.button
-                key={`dot-${stage.num}`}
-                onClick={() => setActive(stageIdx)}
-                className="absolute z-20 flex items-center justify-center"
-                animate={{
-                  x: pos.x - 36,
-                  y: pos.y - 36,
-                  opacity,
-                }}
-                transition={{ type: "spring", stiffness: 200, damping: 25 }}
-                aria-label={`Stage ${stage.num}: ${stage.name}`}
-              >
-                <div
-                  className="flex h-[72px] w-[72px] items-center justify-center rounded-full font-display text-[1.3rem] font-bold text-white transition-transform hover:scale-110"
-                  style={{
-                    background: "#1a1d2e",
-                    boxShadow: "inset 0 8px 30px rgba(255,255,255,0.15), 0 4px 16px rgba(0,0,0,0.2)",
-                  }}
-                >
-                  {stage.num}
-                </div>
-              </motion.button>
-            );
-          })}
-
-          {/* Chevron buttons — at ~45° angles (upper-middle of visible area) */}
-          {(() => {
-            // Place chevrons at 315° (upper-left) and 45° (upper-right) on a slightly larger circle
-            const chevronAngleL = 300; // ~10 o'clock
-            const chevronAngleR = 60;  // ~2 o'clock
-            const leftPos = angleToPosition(chevronAngleL, RX + 80, RY + 80);
-            const rightPos = angleToPosition(chevronAngleR, RX + 80, RY + 80);
-            return (
-              <>
+              return (
                 <button
-                  onClick={prev}
-                  className="absolute z-20 flex h-[56px] w-[56px] items-center justify-center rounded-full border-2 border-line bg-white text-muted transition-colors hover:bg-bg hover:text-ink"
+                  key={`dot-${stage.num}`}
+                  onClick={() => goTo(i)}
+                  className="absolute z-20 flex items-center justify-center"
                   style={{
-                    transform: `translate(${leftPos.x - 28}px, ${leftPos.y - 28}px)`,
+                    left: pos.x - 36,
+                    top: pos.y - 36,
+                    opacity,
+                    transition: "opacity 0.4s ease",
                   }}
-                  aria-label="Previous stage"
+                  aria-label={`Stage ${stage.num}: ${stage.name}`}
                 >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M15 18l-6-6 6-6" />
-                  </svg>
+                  {/* Counter-rotate so numbers stay upright */}
+                  <motion.div
+                    className="flex h-[72px] w-[72px] items-center justify-center rounded-full font-display text-[1.3rem] font-bold text-white transition-transform hover:scale-110"
+                    style={{
+                      background: "#1a1d2e",
+                      boxShadow:
+                        "inset 0 8px 30px rgba(255,255,255,0.15), 0 4px 16px rgba(0,0,0,0.2)",
+                    }}
+                    animate={{ rotate: rotation }}
+                    transition={springConfig}
+                  >
+                    {stage.num}
+                  </motion.div>
                 </button>
-                <button
-                  onClick={next}
-                  className="absolute z-20 flex h-[56px] w-[56px] items-center justify-center rounded-full border-2 border-line bg-white text-muted transition-colors hover:bg-bg hover:text-ink"
-                  style={{
-                    transform: `translate(${rightPos.x - 28}px, ${rightPos.y - 28}px)`,
-                  }}
-                  aria-label="Next stage"
-                >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M9 18l6-6-6-6" />
-                  </svg>
-                </button>
-              </>
-            );
-          })()}
+              );
+            })}
+          </motion.div>
         </div>
 
-        {/* Phone frame — centered */}
+        {/* ── Chevron buttons — fixed at far left/right ── */}
+        <button
+          onClick={prev}
+          className="absolute z-20 flex h-[52px] w-[52px] items-center justify-center rounded-full border-2 border-line bg-white text-muted transition-colors hover:bg-bg hover:text-ink"
+          style={{ left: 60, top: CONTAINER_H * 0.48 - 26 }}
+          aria-label="Previous stage"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M15 18l-6-6 6-6" />
+          </svg>
+        </button>
+        <button
+          onClick={next}
+          className="absolute z-20 flex h-[52px] w-[52px] items-center justify-center rounded-full border-2 border-line bg-white text-muted transition-colors hover:bg-bg hover:text-ink"
+          style={{ right: 60, top: CONTAINER_H * 0.48 - 26 }}
+          aria-label="Next stage"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </button>
+
+        {/* ── Phone frame — centered ── */}
         <div
           className="absolute left-1/2 -translate-x-1/2 z-10"
           style={{ top: PHONE_TOP, width: 300 }}
@@ -181,31 +189,24 @@ export default function Zones() {
                   transition={{ duration: 0.25 }}
                   className="flex flex-col items-center text-center mt-14"
                 >
-                  {/* Icon */}
-                  <div className="text-[2.8rem] opacity-20">
-                    {current.icon}
-                  </div>
-
-                  {/* Title */}
+                  <div className="text-[2.8rem] opacity-20">{current.icon}</div>
                   <h3 className="mt-4 font-display text-[1.5rem] font-bold text-ink">
                     {current.name}
                   </h3>
-
-                  {/* Description */}
                   <p className="mt-2 text-[0.9rem] leading-relaxed text-muted">
                     {current.note}
                   </p>
                 </motion.div>
               </AnimatePresence>
 
-              {/* Pagination dots at bottom */}
+              {/* Pagination dots */}
               <div className="mt-auto flex gap-2.5">
                 {stages.map((_, i) => (
                   <button
                     key={i}
-                    onClick={() => setActive(i)}
+                    onClick={() => goTo(i)}
                     className={`h-2 w-2 rounded-full transition-all ${
-                      i === active ? "bg-accent w-2 h-2" : "bg-line"
+                      i === active ? "bg-accent" : "bg-line"
                     }`}
                     aria-label={`Stage ${i + 1}`}
                   />
@@ -215,7 +216,7 @@ export default function Zones() {
           </div>
         </div>
 
-        {/* Active stage pill — ON TOP of the phone, just above the icon */}
+        {/* ── Active stage pill — on top of phone ── */}
         <AnimatePresence mode="wait">
           <motion.div
             key={`pill-${current.num}`}
@@ -230,7 +231,8 @@ export default function Zones() {
               className="flex h-[56px] items-center justify-center rounded-full px-7 font-display text-[1.2rem] font-bold text-white shadow-xl"
               style={{
                 background: "linear-gradient(135deg, #5EEAD4, #4DB6E5, #3B82F6, #A78BFA)",
-                boxShadow: "inset 0 8px 30px rgba(255,255,255,0.5), 0 12px 40px rgba(59,130,246,0.35)",
+                boxShadow:
+                  "inset 0 8px 30px rgba(255,255,255,0.5), 0 12px 40px rgba(59,130,246,0.35)",
                 minWidth: 110,
               }}
             >
