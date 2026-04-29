@@ -75,7 +75,9 @@ export default function Testimonials() {
         </div>
 
         {/* asymmetric pinboard — scrollable on mobile, single row on desktop */}
-        <div className="relative mx-auto mt-16 flex max-w-[1280px] items-start gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide md:flex-nowrap md:justify-center md:gap-8 md:overflow-visible md:pb-0 md:snap-none">
+        {/* Outer clip wrapper prevents horizontal bleed; inner div scrolls with visible vertical overflow via padding */}
+        <div className="relative mx-auto mt-16 max-w-[1280px] md:overflow-visible">
+          <div className="flex items-start gap-6 overflow-x-auto pb-14 pt-4 px-1 snap-x snap-mandatory scrollbar-hide md:flex-nowrap md:justify-center md:gap-8 md:overflow-visible md:pb-0 md:pt-0 md:px-0 md:snap-none" style={{ overscrollBehaviorX: "contain" }}>
           {quotes.map((q, i) => (
             <motion.div
               key={q.name}
@@ -125,6 +127,7 @@ export default function Testimonials() {
               </div>
             </motion.div>
           ))}
+          </div>
         </div>
 
         <p className="mt-14 text-center hand text-[1.2rem] text-muted">
