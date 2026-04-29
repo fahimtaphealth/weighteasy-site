@@ -251,6 +251,10 @@ body {
   }
 }
 
+/* Hide scrollbar but keep scrolling */
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
 /* Shimmer utility for the final CTA */
 .shimmer-text {
   background: linear-gradient(90deg, #fff 0%, var(--color-teal-300) 40%, var(--color-purple-400) 55%, #fff 100%);

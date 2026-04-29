@@ -74,8 +74,8 @@ export default function Testimonials() {
           </p>
         </div>
 
-        {/* asymmetric pinboard — single row */}
-        <div className="relative mx-auto mt-16 flex max-w-[1280px] flex-nowrap items-start justify-center gap-8">
+        {/* asymmetric pinboard — scrollable on mobile, single row on desktop */}
+        <div className="relative mx-auto mt-16 flex max-w-[1280px] items-start gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide md:flex-nowrap md:justify-center md:gap-8 md:overflow-visible md:pb-0 md:snap-none">
           {quotes.map((q, i) => (
             <motion.div
               key={q.name}
@@ -84,10 +84,9 @@ export default function Testimonials() {
               viewport={viewportOnce}
               transition={{ duration: 0.7, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{ rotate: 0, y: -6, zIndex: 20 }}
-              className="relative"
+              className="relative flex-shrink-0 snap-start md:flex-shrink"
               style={{
-                flex: "1 1 0",
-                minWidth: 240,
+                width: "calc(100vw - 80px)",
                 maxWidth: 300,
                 background: q.color,
                 padding: "16px 18px 20px",
