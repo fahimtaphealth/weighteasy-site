@@ -342,9 +342,9 @@ function SideEffectsCard() {
         />
       </div>
 
-      {/* Remedy cards — peek row, shows ~1.5 cards on mobile */}
-      <div className="absolute bottom-[40px] left-[260px] right-0 z-10 overflow-hidden md:left-[300px] md:right-[24px]">
-        <div className="flex gap-3 pr-4">
+      {/* Remedy cards — peek row, shows ~1.5 cards on mobile, flush right on desktop */}
+      <div className="absolute bottom-[40px] left-[200px] right-0 z-10 overflow-hidden sm:left-[240px] md:left-[300px]">
+        <div className="flex gap-3">
           {[
             { emoji: "🍵", name: "Ginger Tea", tip: "Sip slowly to calm stomach lining." },
             { emoji: "🧂", name: "Saltine Crackers", tip: "Dry carbs to absorb acidity." },

@@ -63,33 +63,39 @@ export default function Hero() {
         </motion.div>
 
         {/* Two phone mockups — overlapping, dose phone in front staggered top-right */}
-        {/* Phone scale: 0.52 on mobile → 0.65 sm → 0.72 md → 0.82 lg */}
+        {/*
+          transform: scale() doesn't shrink layout box, so we use a fixed-height
+          container with overflow-hidden to prevent phones from pushing the grid wider.
+          Phone scale: 0.52 mobile → 0.65 sm → 0.72 md → 0.82 lg (via CSS var)
+        */}
         <div
-          className="phone-pair relative mx-auto flex items-start justify-center"
+          className="phone-pair relative mx-auto w-full overflow-hidden"
           style={{ height: "clamp(360px, 52vw, 580px)" }}
         >
-          {/* Left phone — Home screen (behind, slightly left and down) */}
-          <div
-            className="relative z-[5]"
-            style={{
-              marginTop: 40,
-              marginRight: -40,
-              transform: "scale(var(--phone-scale))",
-              transformOrigin: "top center",
-            }}
-          >
-            <PhoneMockup />
-          </div>
-          {/* Right phone — Dose screen (in front, overlapping left phone) */}
-          <div
-            className="relative z-10"
-            style={{
-              marginLeft: -40,
-              transform: "scale(var(--phone-scale))",
-              transformOrigin: "top center",
-            }}
-          >
-            <DosePhoneMockup />
+          <div className="absolute inset-0 flex items-start justify-center">
+            {/* Left phone — Home screen (behind, slightly left and down) */}
+            <div
+              className="relative z-[5]"
+              style={{
+                marginTop: 40,
+                marginRight: -40,
+                transform: "scale(var(--phone-scale))",
+                transformOrigin: "top center",
+              }}
+            >
+              <PhoneMockup />
+            </div>
+            {/* Right phone — Dose screen (in front, overlapping left phone) */}
+            <div
+              className="relative z-10"
+              style={{
+                marginLeft: -40,
+                transform: "scale(var(--phone-scale))",
+                transformOrigin: "top center",
+              }}
+            >
+              <DosePhoneMockup />
+            </div>
           </div>
         </div>
       </div>
