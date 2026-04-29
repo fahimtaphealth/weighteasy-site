@@ -121,7 +121,7 @@ export default function PhoneMockup() {
               <div className="mt-0.5 font-display text-[1.5rem] font-extrabold leading-[1.1] tracking-[-0.02em]">
                 Day 1 of Cycle
               </div>
-              <p className="mt-2 text-[0.75rem] leading-[1.4] opacity-80">
+              <p className="mt-2 text-[0.75rem] leading-[1.4] text-white/80">
                 Your appetite suppression is stable, and energy will be returning.
               </p>
 

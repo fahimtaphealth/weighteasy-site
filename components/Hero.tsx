@@ -69,7 +69,7 @@ export default function Hero() {
             className="relative z-[5] flex-shrink-0"
             style={{
               marginTop: 40,
-              marginRight: -80,
+              marginRight: -40,
               transform: "scale(0.82)",
               transformOrigin: "top center",
             }}
@@ -80,7 +80,7 @@ export default function Hero() {
           <div
             className="relative z-10 flex-shrink-0"
             style={{
-              marginLeft: -80,
+              marginLeft: -40,
               transform: "scale(0.82)",
               transformOrigin: "top center",
             }}

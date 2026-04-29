@@ -67,88 +67,65 @@ export default function Zones() {
 
       {/* Carousel — clipped at bottom */}
       <div className="relative mt-10 overflow-hidden" style={{ height: CONTAINER_H }}>
-        {/* ── SVG layer: dashed circle + animated dots ── */}
-        {/* Using SVG guarantees pixel-perfect centering and correct arc rotation */}
-        <svg
-          className="absolute inset-0 w-full"
-          style={{ height: CONTAINER_H }}
-          viewBox={`0 0 1200 ${CONTAINER_H}`}
-          preserveAspectRatio="xMidYMid meet"
-        >
-          {/* Dashed circle */}
-          <circle
-            cx={600}
-            cy={CY}
-            r={R + 20}
-            fill="none"
-            stroke="#dce1e8"
-            strokeWidth={2}
-            strokeDasharray="8 6"
-          />
+        {/* ── Dashed circle (CSS) ── */}
+        <div
+          className="pointer-events-none absolute z-[1]"
+          style={{
+            left: "50%",
+            top: CY,
+            width: (R + 20) * 2,
+            height: (R + 20) * 2,
+            marginLeft: -(R + 20),
+            marginTop: -(R + 20),
+            border: "2px dashed #dce1e8",
+            borderRadius: "50%",
+          }}
+        />
 
-          {/* Rotating group for dots — rotation around circle center */}
-          <motion.g
-            animate={{ rotate: -rotation }}
-            transition={spring}
-            style={{ transformOrigin: `600px ${CY}px` }}
-          >
-            {stages.map((stage, i) => {
-              const angle = i * 60;
-              const pos = angleToXY(angle, R);
-              const cx = 600 + pos.x;
-              const cy = CY + pos.y;
+        {/* ── HTML dots layer — positioned individually ── */}
+        {stages.map((stage, i) => {
+          const angle = i * 60;
+          const pos = angleToXY(angle, R);
 
-              const visualSlot = ((i - active) % 6 + 6) % 6;
-              if (visualSlot === 0) return null;
+          const visualSlot = ((i - active) % 6 + 6) % 6;
+          if (visualSlot === 0) return null;
 
-              const opacity =
-                visualSlot === 1 || visualSlot === 5
-                  ? 1
-                  : visualSlot === 2 || visualSlot === 4
-                  ? 0.7
-                  : 0.4;
+          const opacity =
+            visualSlot === 1 || visualSlot === 5
+              ? 1
+              : visualSlot === 2 || visualSlot === 4
+              ? 0.7
+              : 0.4;
 
-              return (
-                <g
-                  key={`dot-${stage.num}`}
-                  onClick={() => goTo(i)}
-                  style={{ cursor: "pointer", opacity, transition: "opacity 0.4s" }}
-                >
-                  {/* Dark circle */}
-                  <circle cx={cx} cy={cy} r={36} fill="#1a1d2e" />
-                  {/* Inner glow */}
-                  <circle
-                    cx={cx}
-                    cy={cy}
-                    r={36}
-                    fill="none"
-                    stroke="rgba(255,255,255,0.08)"
-                    strokeWidth={1}
-                  />
-                  {/* Counter-rotate text so it stays upright */}
-                  <motion.g
-                    animate={{ rotate: rotation }}
-                    transition={spring}
-                    style={{ transformOrigin: `${cx}px ${cy}px` }}
-                  >
-                    <text
-                      x={cx}
-                      y={cy}
-                      textAnchor="middle"
-                      dominantBaseline="central"
-                      fill="white"
-                      fontFamily="var(--font-display), system-ui, sans-serif"
-                      fontSize="22"
-                      fontWeight="700"
-                    >
-                      {stage.num}
-                    </text>
-                  </motion.g>
-                </g>
-              );
-            })}
-          </motion.g>
-        </svg>
+          return (
+            <motion.div
+              key={`dot-${stage.num}`}
+              className="absolute cursor-pointer z-[5]"
+              style={{
+                left: "50%",
+                top: CY,
+                width: 72,
+                height: 72,
+                marginLeft: -36,
+                marginTop: -36,
+              }}
+              animate={{
+                x: pos.x,
+                y: pos.y,
+                opacity,
+              }}
+              transition={spring}
+              onClick={() => goTo(i)}
+            >
+              {/* Dark circle background */}
+              <div className="absolute inset-0 rounded-full bg-[#1a1d2e] border border-white/8" />
+              {/* Number text */}
+              <div className="absolute inset-0 flex items-center justify-center font-display text-[1.4rem] font-bold text-white">
+                {stage.num}
+              </div>
+            </motion.div>
+          );
+        })}
 
         {/* ── Chevron buttons — fixed at far left/right ── */}
         <button
@@ -217,30 +194,34 @@ export default function Zones() {
           </div>
         </div>
 
-        {/* ── Active stage pill — on top of phone ── */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={`pill-${current.num}`}
-            className="absolute left-1/2 -translate-x-1/2 z-30 flex items-center justify-center"
-            style={{ top: PILL_TOP }}
-            initial={{ opacity: 0, y: 10, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -10, scale: 0.9 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <div
-              className="flex h-[56px] items-center justify-center rounded-full px-7 font-display text-[1.2rem] font-bold text-white shadow-xl"
-              style={{
-                background: "linear-gradient(135deg, #5EEAD4, #4DB6E5, #3B82F6, #A78BFA)",
-                boxShadow:
-                  "inset 0 8px 30px rgba(255,255,255,0.5), 0 12px 40px rgba(59,130,246,0.35)",
-                minWidth: 110,
-              }}
+        {/* ── Active stage pill — centered on top of phone ── */}
+        {/* Outer wrapper handles centering; inner motion.div handles animation */}
+        <div
+          className="absolute z-30 flex justify-center"
+          style={{ left: 0, right: 0, top: PILL_TOP }}
+        >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`pill-${current.num}`}
+              initial={{ opacity: 0, y: 10, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -10, scale: 0.9 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             >
-              Stage {current.num}
-            </div>
-          </motion.div>
-        </AnimatePresence>
+              <div
+                className="flex h-[56px] items-center justify-center rounded-full px-7 font-display text-[1.2rem] font-bold text-white shadow-xl"
+                style={{
+                  background: "linear-gradient(135deg, #5EEAD4, #4DB6E5, #3B82F6, #A78BFA)",
+                  boxShadow:
+                    "inset 0 8px 30px rgba(255,255,255,0.5), 0 12px 40px rgba(59,130,246,0.35)",
+                  minWidth: 110,
+                }}
+              >
+                Stage {current.num}
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
 
       <div className="h-[60px] bg-gradient-to-b from-white to-bg" />
