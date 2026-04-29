@@ -1,11 +1,15 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import { fadeUp, stagger } from "@/lib/motion";
 import PhoneMockup from "./PhoneMockup";
 import DosePhoneMockup from "./DosePhoneMockup";
 
 export default function Hero() {
+  const phonePairRef = useRef<HTMLDivElement>(null);
+  const phonePairInView = useInView(phonePairRef, { once: false, margin: "0px 0px -150px 0px" });
+
   return (
     <header className="relative overflow-hidden bg-bg pb-12 pt-[72px] sm:pb-20 sm:pt-[90px]">
       <div className="container-x grid items-center gap-10 sm:gap-14 lg:grid-cols-[1.1fr_1fr]">
@@ -69,6 +73,7 @@ export default function Hero() {
           Phone scale: 0.52 mobile → 0.65 sm → 0.72 md → 0.82 lg (via CSS var)
         */}
         <div
+          ref={phonePairRef}
           className="phone-pair relative mx-auto w-full"
           style={{ height: "clamp(440px, 55vw, 580px)" }}
         >
@@ -83,7 +88,7 @@ export default function Hero() {
                 transformOrigin: "top center",
               }}
             >
-              <PhoneMockup />
+              <PhoneMockup active={phonePairInView} />
             </div>
             {/* Right phone — Dose screen (in front, overlapping left phone) */}
             <div
@@ -94,7 +99,7 @@ export default function Hero() {
                 transformOrigin: "top center",
               }}
             >
-              <DosePhoneMockup />
+              <DosePhoneMockup active={phonePairInView} />
             </div>
           </div>
         </div>

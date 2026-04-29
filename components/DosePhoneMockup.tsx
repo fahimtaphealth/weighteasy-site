@@ -11,9 +11,11 @@ import CoachOrb from "./CoachOrb";
  *  1. Dose graph line draws from left → current position (trim path)
  *  2. "Levels are tapering off" card pops in smoothly after graph completes
  */
-export default function DosePhoneMockup() {
+export default function DosePhoneMockup({ active }: { active?: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const selfInView = useInView(ref, { once: true, margin: "-80px" });
+  // If parent passes `active`, use it to gate animations (mobile viewport control)
+  const inView = active !== undefined ? active : selfInView;
 
   return (
     <div ref={ref} className="relative flex items-center justify-center" style={{ height: 680 }}>

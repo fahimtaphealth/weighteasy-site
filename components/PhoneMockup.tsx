@@ -14,9 +14,12 @@ import CoachOrb from "./CoachOrb";
  *  4. Water tracker ring fills → check → button goes tertiary
  *  5. Repeats from Weight
  */
-export default function PhoneMockup() {
+export default function PhoneMockup({ active }: { active?: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: false, margin: "-80px" });
+  const selfInView = useInView(ref, { once: false, margin: "-80px" });
+  // If parent passes `active`, use it to gate animations (mobile viewport control)
+  // Otherwise fall back to self-contained viewport detection
+  const inView = active !== undefined ? active : selfInView;
 
   /* Which tracker is currently animating (0=weight, 1=food, 2=water) */
   const [animatingIdx, setAnimatingIdx] = useState(-1);
