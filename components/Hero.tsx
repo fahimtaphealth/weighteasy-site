@@ -85,14 +85,17 @@ export default function Hero() {
           container with overflow-hidden to prevent phones from pushing the grid wider.
           Phone scale: 0.52 mobile → 0.65 sm → 0.72 md → 0.82 lg (via CSS var)
         */}
-        <div
+        <motion.div
           ref={phonePairRef}
           className="phone-pair relative mx-auto w-full"
           style={{ height: "clamp(440px, 55vw, 580px)" }}
+          initial={{ opacity: 0, y: 32 }}
+          animate={animationsActive ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="absolute inset-0 flex items-start justify-center">
             {/* Left phone — Home screen (behind, slightly left and down) */}
-            <div
+            <motion.div
               className="relative z-[5]"
               style={{
                 marginTop: "var(--phone-offset-top)",
@@ -100,22 +103,28 @@ export default function Hero() {
                 transform: "scale(var(--phone-scale))",
                 transformOrigin: "top center",
               }}
+              initial={{ opacity: 0, y: 24 }}
+              animate={animationsActive ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             >
               <PhoneMockup active={animationsActive} />
-            </div>
+            </motion.div>
             {/* Right phone — Dose screen (in front, overlapping left phone) */}
-            <div
+            <motion.div
               className="relative z-10"
               style={{
                 marginLeft: "var(--phone-overlap)",
                 transform: "scale(var(--phone-scale))",
                 transformOrigin: "top center",
               }}
+              initial={{ opacity: 0, y: 24 }}
+              animate={animationsActive ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             >
               <DosePhoneMockup active={animationsActive} />
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </header>
   );

@@ -84,7 +84,7 @@ export default function DosePhoneMockup({ active }: { active?: boolean }) {
                 }}
                 initial={{ opacity: 0, y: 12, scale: 0.95 }}
                 animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
-                transition={{ duration: 0.6, delay: 2.8, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.5, delay: 1.8, ease: [0.22, 1, 0.36, 1] }}
               >
                 <div className="font-display text-[0.78rem] font-bold text-emerald-300">
                   Levels are tapering off
@@ -119,7 +119,7 @@ export default function DosePhoneMockup({ active }: { active?: boolean }) {
                             x="0" y="0" height="100"
                             initial={{ width: 0 }}
                             animate={inView ? { width: 220 } : {}}
-                            transition={{ duration: 2.2, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                            transition={{ duration: 1.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
                           />
                         </clipPath>
                       </defs>
@@ -146,7 +146,7 @@ export default function DosePhoneMockup({ active }: { active?: boolean }) {
                         strokeLinecap="round"
                         initial={{ pathLength: 0, opacity: 0 }}
                         animate={inView ? { pathLength: 1, opacity: 1 } : {}}
-                        transition={{ duration: 2.2, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                        transition={{ duration: 1.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
                       />
 
                       {/* Light fill under projected dotted line */}
@@ -155,7 +155,7 @@ export default function DosePhoneMockup({ active }: { active?: boolean }) {
                         fill="url(#projFill)"
                         initial={{ opacity: 0 }}
                         animate={inView ? { opacity: 1 } : {}}
-                        transition={{ duration: 0.6, delay: 2.4 }}
+                        transition={{ duration: 0.5, delay: 1.5 }}
                       />
 
                       {/* Dotted projection line — fading gradient */}
@@ -168,7 +168,7 @@ export default function DosePhoneMockup({ active }: { active?: boolean }) {
                         strokeLinecap="round"
                         initial={{ pathLength: 0, opacity: 0 }}
                         animate={inView ? { pathLength: 1, opacity: 1 } : {}}
-                        transition={{ duration: 1.2, delay: 2.4, ease: "easeOut" }}
+                        transition={{ duration: 0.8, delay: 1.5, ease: "easeOut" }}
                       />
 
                       {/* Current position dot */}
@@ -179,7 +179,7 @@ export default function DosePhoneMockup({ active }: { active?: boolean }) {
                         strokeWidth="2.5"
                         initial={{ scale: 0, opacity: 0 }}
                         animate={inView ? { scale: 1, opacity: 1 } : {}}
-                        transition={{ duration: 0.4, delay: 2.0 }}
+                        transition={{ duration: 0.3, delay: 1.2 }}
                       />
                     </svg>
                   </div>
@@ -238,7 +238,7 @@ export default function DosePhoneMockup({ active }: { active?: boolean }) {
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 3.2 }}
+                transition={{ duration: 0.4, delay: 2.0 }}
               >
                 <h3 className="font-display text-[0.92rem] font-extrabold text-ink tracking-[-0.02em]">
                   Recent logs

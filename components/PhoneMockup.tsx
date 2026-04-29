@@ -30,10 +30,10 @@ export default function PhoneMockup({ active }: { active?: boolean }) {
   useEffect(() => {
     if (!inView) return;
 
-    // Start first tracker shortly after progress bar finishes (1.6s + 0.6s delay)
-    const startDelay = 1400;
-    const perTracker = 1400; // time per tracker animation cycle
-    const ringToCheck = 700; // time from ring fill start to check appearing
+    // Start first tracker shortly after progress bar finishes
+    const startDelay = 800;
+    const perTracker = 1000; // time per tracker animation cycle
+    const ringToCheck = 500; // time from ring fill start to check appearing
 
     let cancelled = false;
 
@@ -61,7 +61,7 @@ export default function PhoneMockup({ active }: { active?: boolean }) {
       });
 
       // After all 3 are done, wait then restart
-      const totalCycle = startDelay + 3 * perTracker + 1800;
+      const totalCycle = startDelay + 3 * perTracker + 1200;
       setTimeout(() => {
         if (cancelled) return;
         setAnimatingIdx(-1);
@@ -143,7 +143,7 @@ export default function PhoneMockup({ active }: { active?: boolean }) {
                     className="block h-full rounded-full bg-coach-grad"
                     initial={{ width: "0%" }}
                     animate={inView ? { width: "35%" } : {}}
-                    transition={{ duration: 1.6, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
                   />
                 </div>
                 <motion.button
@@ -161,7 +161,7 @@ export default function PhoneMockup({ active }: { active?: boolean }) {
 
             {/* Body */}
             <motion.div
-              variants={stagger(0.4, 0.12)}
+              variants={stagger(0.2, 0.08)}
               initial="hidden"
               animate={inView ? "show" : "hidden"}
               className="flex flex-col gap-[18px] p-[14px] pt-[18px]"
@@ -260,7 +260,7 @@ export default function PhoneMockup({ active }: { active?: boolean }) {
                         strokeWidth={2}
                         initial={{ pathLength: 0, opacity: 0 }}
                         animate={inView ? { pathLength: 1, opacity: 1 } : {}}
-                        transition={{ duration: 1.4, delay: 1.1, ease: "easeInOut" }}
+                        transition={{ duration: 1, delay: 0.5, ease: "easeInOut" }}
                       />
                       <motion.polyline
                         points="130,14 200,36 280,44"
@@ -270,7 +270,7 @@ export default function PhoneMockup({ active }: { active?: boolean }) {
                         strokeDasharray="2 3"
                         initial={{ pathLength: 0, opacity: 0 }}
                         animate={inView ? { pathLength: 1, opacity: 1 } : {}}
-                        transition={{ duration: 1, delay: 2.3, ease: "easeInOut" }}
+                        transition={{ duration: 0.8, delay: 1.3, ease: "easeInOut" }}
                       />
                       <motion.circle
                         cx={130}
@@ -279,7 +279,7 @@ export default function PhoneMockup({ active }: { active?: boolean }) {
                         fill="var(--primary-default)"
                         initial={{ scale: 0 }}
                         animate={inView ? { scale: 1 } : {}}
-                        transition={{ duration: 0.3, delay: 2.4 }}
+                        transition={{ duration: 0.3, delay: 1.4 }}
                       />
                     </svg>
                   </div>
