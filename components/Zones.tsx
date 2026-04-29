@@ -13,7 +13,7 @@ const stages = [
   { num: 6, name: "Almost Time", note: "Ease back. Light dinner. Calming tea for evening.", icon: "🌙" },
 ];
 
-function angleToPosition(angleDeg: number, radius: number) {
+function angleToXY(angleDeg: number, radius: number) {
   const rad = ((angleDeg - 90) * Math.PI) / 180;
   return {
     x: Math.cos(rad) * radius,
@@ -21,11 +21,10 @@ function angleToPosition(angleDeg: number, radius: number) {
   };
 }
 
-const springConfig = { type: "spring" as const, stiffness: 120, damping: 22 };
+const spring = { type: "spring" as const, stiffness: 120, damping: 22 };
 
 export default function Zones() {
   const [active, setActive] = useState(0);
-  /* Track cumulative rotation so wrapping (5→0, 0→5) takes the short path */
   const [rotation, setRotation] = useState(0);
 
   const next = () => {
@@ -47,9 +46,7 @@ export default function Zones() {
 
   const R = 420;
   const CONTAINER_H = 560;
-  /* Circle center sits near the bottom of the container — overflow-hidden clips the lower arc */
   const CY = CONTAINER_H - 40;
-
   const PHONE_TOP = 80;
   const PILL_TOP = PHONE_TOP + 60;
 
@@ -68,43 +65,40 @@ export default function Zones() {
         />
       </div>
 
-      {/* Carousel container — full width, clipped at bottom */}
-      <div
-        className="relative mt-10 overflow-hidden"
-        style={{ height: CONTAINER_H }}
-      >
-        {/* Dashed circle — centered at CY, clipped by overflow */}
-        <div
-          className="pointer-events-none absolute"
-          style={{
-            top: CY - R - 20,
-            left: "50%",
-            marginLeft: -(R + 20),
-            width: (R + 20) * 2,
-            height: (R + 20) * 2,
-            border: "2px dashed #dce1e8",
-            borderRadius: "50%",
-          }}
-        />
-
-        {/* ── Rotating stage dots ── */}
-        {/* Outer wrapper: fixed at circle center. Inner motion.div rotates the whole ring. */}
-        <div
-          className="absolute"
-          style={{ top: CY, left: "50%", width: 0, height: 0 }}
+      {/* Carousel — clipped at bottom */}
+      <div className="relative mt-10 overflow-hidden" style={{ height: CONTAINER_H }}>
+        {/* ── SVG layer: dashed circle + animated dots ── */}
+        {/* Using SVG guarantees pixel-perfect centering and correct arc rotation */}
+        <svg
+          className="absolute inset-0 w-full"
+          style={{ height: CONTAINER_H }}
+          viewBox={`0 0 1200 ${CONTAINER_H}`}
+          preserveAspectRatio="xMidYMid meet"
         >
-          <motion.div
+          {/* Dashed circle */}
+          <circle
+            cx={600}
+            cy={CY}
+            r={R + 20}
+            fill="none"
+            stroke="#dce1e8"
+            strokeWidth={2}
+            strokeDasharray="8 6"
+          />
+
+          {/* Rotating group for dots — rotation around circle center */}
+          <motion.g
             animate={{ rotate: -rotation }}
-            transition={springConfig}
-            style={{ transformOrigin: "0 0", willChange: "transform" }}
+            transition={spring}
+            style={{ transformOrigin: `600px ${CY}px` }}
           >
             {stages.map((stage, i) => {
               const angle = i * 60;
-              const pos = angleToPosition(angle, R);
+              const pos = angleToXY(angle, R);
+              const cx = 600 + pos.x;
+              const cy = CY + pos.y;
 
-              /* Which visual slot does this stage currently occupy? */
               const visualSlot = ((i - active) % 6 + 6) % 6;
-              /* Hide the active dot (behind phone) */
               if (visualSlot === 0) return null;
 
               const opacity =
@@ -115,36 +109,46 @@ export default function Zones() {
                   : 0.4;
 
               return (
-                <button
+                <g
                   key={`dot-${stage.num}`}
                   onClick={() => goTo(i)}
-                  className="absolute z-20 flex items-center justify-center"
-                  style={{
-                    left: pos.x - 36,
-                    top: pos.y - 36,
-                    opacity,
-                    transition: "opacity 0.4s ease",
-                  }}
-                  aria-label={`Stage ${stage.num}: ${stage.name}`}
+                  style={{ cursor: "pointer", opacity, transition: "opacity 0.4s" }}
                 >
-                  {/* Counter-rotate so numbers stay upright */}
-                  <motion.div
-                    className="flex h-[72px] w-[72px] items-center justify-center rounded-full font-display text-[1.3rem] font-bold text-white transition-transform hover:scale-110"
-                    style={{
-                      background: "#1a1d2e",
-                      boxShadow:
-                        "inset 0 8px 30px rgba(255,255,255,0.15), 0 4px 16px rgba(0,0,0,0.2)",
-                    }}
+                  {/* Dark circle */}
+                  <circle cx={cx} cy={cy} r={36} fill="#1a1d2e" />
+                  {/* Inner glow */}
+                  <circle
+                    cx={cx}
+                    cy={cy}
+                    r={36}
+                    fill="none"
+                    stroke="rgba(255,255,255,0.08)"
+                    strokeWidth={1}
+                  />
+                  {/* Counter-rotate text so it stays upright */}
+                  <motion.g
                     animate={{ rotate: rotation }}
-                    transition={springConfig}
+                    transition={spring}
+                    style={{ transformOrigin: `${cx}px ${cy}px` }}
                   >
-                    {stage.num}
-                  </motion.div>
-                </button>
+                    <text
+                      x={cx}
+                      y={cy}
+                      textAnchor="middle"
+                      dominantBaseline="central"
+                      fill="white"
+                      fontFamily="var(--font-display), system-ui, sans-serif"
+                      fontSize="22"
+                      fontWeight="700"
+                    >
+                      {stage.num}
+                    </text>
+                  </motion.g>
+                </g>
               );
             })}
-          </motion.div>
-        </div>
+          </motion.g>
+        </svg>
 
         {/* ── Chevron buttons — fixed at far left/right ── */}
         <button
@@ -177,10 +181,7 @@ export default function Zones() {
             className="relative overflow-hidden rounded-[40px] border-[8px] border-ink bg-gradient-to-b from-white to-[#f2f5f9]"
             style={{ aspectRatio: "390/844" }}
           >
-            {/* Notch */}
             <div className="absolute left-1/2 top-0 z-10 h-[30px] w-[110px] -translate-x-1/2 rounded-b-[16px] bg-ink" />
-
-            {/* Stage content inside phone */}
             <div className="flex h-full flex-col items-center px-6 pt-20 pb-6">
               <AnimatePresence mode="wait">
                 <motion.div
@@ -200,8 +201,6 @@ export default function Zones() {
                   </p>
                 </motion.div>
               </AnimatePresence>
-
-              {/* Pagination dots */}
               <div className="mt-auto flex gap-2.5">
                 {stages.map((_, i) => (
                   <button
@@ -244,7 +243,6 @@ export default function Zones() {
         </AnimatePresence>
       </div>
 
-      {/* Gradient fade at bottom */}
       <div className="h-[60px] bg-gradient-to-b from-white to-bg" />
     </section>
   );
