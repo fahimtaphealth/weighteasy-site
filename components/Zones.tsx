@@ -191,40 +191,65 @@ export default function Zones() {
                   </p>
                 </motion.div>
               </AnimatePresence>
-              {/* Pagination — mobile: dark pill with active bar, desktop: simple dots */}
-              <div className="mt-auto">
-                {/* Mobile pagination pill */}
-                <div className="flex items-center justify-center gap-[6px] rounded-full bg-[#1a1d2e] px-3 py-2 md:hidden">
-                  {stages.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => goTo(i)}
-                      aria-label={`Stage ${i + 1}`}
-                      className="transition-all duration-300"
-                      style={{
-                        height: 6,
-                        borderRadius: 3,
-                        width: i === active ? 20 : 6,
-                        background: i === active ? "#ffffff" : "rgba(255,255,255,0.25)",
-                      }}
-                    />
-                  ))}
-                </div>
-                {/* Desktop simple dots */}
-                <div className="hidden md:flex gap-2.5 justify-center">
-                  {stages.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => goTo(i)}
-                      className={`h-2 w-2 rounded-full transition-all ${
-                        i === active ? "bg-accent" : "bg-line"
-                      }`}
-                      aria-label={`Stage ${i + 1}`}
-                    />
-                  ))}
-                </div>
+              {/* Desktop-only simple dots inside phone */}
+              <div className="mt-auto hidden md:flex gap-2.5 justify-center">
+                {stages.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => goTo(i)}
+                    className={`h-2 w-2 rounded-full transition-all ${
+                      i === active ? "bg-accent" : "bg-line"
+                    }`}
+                    aria-label={`Stage ${i + 1}`}
+                  />
+                ))}
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* ── Mobile chevron buttons — over the phone ── */}
+        <button
+          onClick={prev}
+          className="absolute z-20 flex md:hidden h-[44px] w-[44px] items-center justify-center rounded-full border-2 border-line bg-white text-muted"
+          style={{ left: 16, top: PHONE_TOP + 200 }}
+          aria-label="Previous stage"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M15 18l-6-6 6-6" />
+          </svg>
+        </button>
+        <button
+          onClick={next}
+          className="absolute z-20 flex md:hidden h-[44px] w-[44px] items-center justify-center rounded-full border-2 border-line bg-white text-muted"
+          style={{ right: 16, top: PHONE_TOP + 200 }}
+          aria-label="Next stage"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </button>
+
+        {/* ── Mobile pagination pill — positioned at bottom of visible phone ── */}
+        <div
+          className="absolute z-30 flex justify-center md:hidden"
+          style={{ left: 0, right: 0, top: CONTAINER_H - 60 }}
+        >
+          <div className="flex items-center gap-[6px] rounded-full bg-[#1a1d2e] px-3 py-2">
+            {stages.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => goTo(i)}
+                aria-label={`Stage ${i + 1}`}
+                className="transition-all duration-300"
+                style={{
+                  height: 6,
+                  borderRadius: 3,
+                  width: i === active ? 20 : 6,
+                  background: i === active ? "#ffffff" : "rgba(255,255,255,0.25)",
+                }}
+              />
+            ))}
           </div>
         </div>
 
