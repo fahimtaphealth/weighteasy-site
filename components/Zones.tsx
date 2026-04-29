@@ -237,6 +237,26 @@ export default function Zones() {
         </div>
       </div>
 
+      {/* Mobile-only pagination indicator */}
+      <div className="flex justify-center py-4 md:hidden">
+        <div className="flex items-center gap-[6px] rounded-full bg-[#1a1d2e] px-3 py-2">
+          {stages.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goTo(i)}
+              aria-label={`Stage ${i + 1}`}
+              className="transition-all duration-300"
+              style={{
+                height: 6,
+                borderRadius: 3,
+                width: i === active ? 20 : 6,
+                background: i === active ? "#ffffff" : "rgba(255,255,255,0.25)",
+              }}
+            />
+          ))}
+        </div>
+      </div>
+
       <div className="h-[60px] bg-gradient-to-b from-white to-bg" />
     </section>
   );
