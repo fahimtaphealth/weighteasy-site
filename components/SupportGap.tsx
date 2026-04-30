@@ -37,8 +37,9 @@ export default function SupportGap() {
         <div className="mx-auto max-w-[760px]">
           <span className="eyebrow">The Problem</span>
           <h2 className="mt-3">
-            Your prescriber saw you for 15 minutes.{" "}
-            <span className="marker-hl">Then what?</span>
+            Filling the gap{" "}
+            <span className="text-accent">between</span> your
+            doctor visits
           </h2>
           <p className="mt-5 max-w-[600px] text-muted">
             We sat down with many people on GLP-1s. No scripts, no leading
