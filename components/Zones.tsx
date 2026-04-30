@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
+import { useState, useRef, useEffect, useCallback } from "react";
 import SectionHead from "./SectionHead";
 
 const stages = [
@@ -26,21 +26,44 @@ const spring = { type: "spring" as const, stiffness: 120, damping: 22 };
 export default function Zones() {
   const [active, setActive] = useState(0);
   const [rotation, setRotation] = useState(0);
+  const [userInteracted, setUserInteracted] = useState(false);
 
-  const next = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const inView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const next = useCallback(() => {
     setActive((a) => (a + 1) % 6);
     setRotation((r) => r + 60);
+  }, []);
+
+  const handleNext = () => {
+    setUserInteracted(true);
+    next();
   };
-  const prev = () => {
+  const handlePrev = () => {
+    setUserInteracted(true);
     setActive((a) => (a + 5) % 6);
     setRotation((r) => r - 60);
   };
-  const goTo = (target: number) => {
+  const handleGoTo = (target: number) => {
+    setUserInteracted(true);
     const diff = ((target - active) % 6 + 6) % 6;
     const shortest = diff <= 3 ? diff : diff - 6;
     setActive(target);
     setRotation((r) => r + shortest * 60);
   };
+
+  // Auto-advance every 2s once in viewport, stop when user interacts
+  useEffect(() => {
+    if (!inView || userInteracted) return;
+    timerRef.current = setTimeout(() => {
+      next();
+    }, 2000);
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, [inView, active, userInteracted, next]);
 
   const current = stages[active];
 
@@ -51,7 +74,7 @@ export default function Zones() {
   const PILL_TOP = PHONE_TOP + 60;
 
   return (
-    <section id="how" className="relative border-t border-line bg-white pb-0 pt-[100px] overflow-hidden">
+    <section ref={sectionRef} id="how" className="relative border-t border-line bg-white pb-0 pt-[100px] overflow-hidden">
       <div className="container-x">
         <SectionHead
           eyebrow="How WeightEasy works"
@@ -120,7 +143,7 @@ export default function Zones() {
                     }}
                     animate={{ opacity }}
                     transition={spring}
-                    onClick={() => goTo(i)}
+                    onClick={() => handleGoTo(i)}
                   >
                     {/* Counter-rotate to keep text upright */}
                     <motion.div
@@ -144,9 +167,9 @@ export default function Zones() {
 
           {/* ── Desktop chevron buttons — sized to match number dots (72px) ── */}
           <button
-            onClick={prev}
+            onClick={handlePrev}
             className="absolute z-20 hidden md:flex h-[72px] w-[72px] items-center justify-center rounded-full border-2 border-line bg-white text-muted transition-colors hover:bg-bg hover:text-ink"
-            style={{ left: 120, top: CONTAINER_H * 0.48 - 36 }}
+            style={{ left: 120, top: CONTAINER_H * 0.35 - 36 }}
             aria-label="Previous stage"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -154,9 +177,9 @@ export default function Zones() {
             </svg>
           </button>
           <button
-            onClick={next}
+            onClick={handleNext}
             className="absolute z-20 hidden md:flex h-[72px] w-[72px] items-center justify-center rounded-full border-2 border-line bg-white text-muted transition-colors hover:bg-bg hover:text-ink"
-            style={{ right: 120, top: CONTAINER_H * 0.48 - 36 }}
+            style={{ right: 120, top: CONTAINER_H * 0.35 - 36 }}
             aria-label="Next stage"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -198,7 +221,7 @@ export default function Zones() {
                   {stages.map((_, i) => (
                     <button
                       key={i}
-                      onClick={() => goTo(i)}
+                      onClick={() => handleGoTo(i)}
                       className={`h-2 w-2 rounded-full transition-all ${
                         i === active ? "bg-accent" : "bg-line"
                       }`}
@@ -241,7 +264,7 @@ export default function Zones() {
 
         {/* ── Mobile chevron buttons — OUTSIDE overflow-hidden ── */}
         <button
-          onClick={prev}
+          onClick={handlePrev}
           className="absolute z-20 flex md:hidden h-[44px] w-[44px] items-center justify-center rounded-full border-2 border-line bg-white text-muted shadow-md"
           style={{ left: 16, top: PHONE_TOP + 200 }}
           aria-label="Previous stage"
@@ -251,7 +274,7 @@ export default function Zones() {
           </svg>
         </button>
         <button
-          onClick={next}
+          onClick={handleNext}
           className="absolute z-20 flex md:hidden h-[44px] w-[44px] items-center justify-center rounded-full border-2 border-line bg-white text-muted shadow-md"
           style={{ right: 16, top: PHONE_TOP + 200 }}
           aria-label="Next stage"
@@ -270,7 +293,7 @@ export default function Zones() {
             {stages.map((_, i) => (
               <button
                 key={i}
-                onClick={() => goTo(i)}
+                onClick={() => handleGoTo(i)}
                 aria-label={`Stage ${i + 1}`}
                 className="transition-all duration-300"
                 style={{
