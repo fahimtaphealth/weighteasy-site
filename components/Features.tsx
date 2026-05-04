@@ -342,9 +342,9 @@ function SideEffectsCard() {
       </div>
 
       {/* Remedy cards - sliding marquee animation */}
-      <div className="absolute bottom-[40px] left-[200px] right-0 z-10 overflow-hidden sm:left-[240px] md:left-[310px]">
+      <div className="absolute bottom-[40px] left-[200px] right-0 z-10 overflow-hidden sm:left-[240px] md:left-[290px]">
         <div
-          className="flex gap-3 pl-3"
+          className="flex gap-3"
           style={{
             animation: "slideRemedies 18s linear infinite",
             width: "max-content",
