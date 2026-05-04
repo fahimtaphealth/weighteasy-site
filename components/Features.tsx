@@ -274,13 +274,14 @@ function TrackWeightCard() {
       }}
     >
       {/* Phone mockup - centered, protruding from top */}
-      <div className="absolute left-1/2 -translate-x-1/2 -top-[170px]">
+      <div className="absolute left-1/2 -translate-x-1/2 -top-[70px]">
         <div className="w-[197px] h-[438px] rounded-[29px] border-[5px] border-black/15 overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={imgScreen1}
             alt="Weight tracking screen"
-            className="w-full h-full object-cover"
+            className="w-full object-cover object-bottom"
+            style={{ height: "auto", minHeight: "100%" }}
           />
         </div>
       </div>
