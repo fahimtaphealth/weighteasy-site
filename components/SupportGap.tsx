@@ -6,7 +6,7 @@ import { stagger, fadeUp, viewportOnce } from "@/lib/motion";
 const items = [
   {
     q: "\u201cMy doctor prescribed it. Then disappeared.\u201d",
-    a: "Day four, nausea hit. Her clinic portal took 72 hours to reply. With WeightEasy, she\u2019d have had an answer in minutes.",
+    a: "My telehealth call was 15 minutes. Day four, the nausea hit hard. My clinic portal took 72 hours to reply, but WeightEasy got me an answer in minutes. That's why I didn't quit.",
     label: "the hand-off",
     who: "Meagan, Austin",
     photo:
@@ -14,7 +14,7 @@ const items = [
   },
   {
     q: "\u201cI couldn\u2019t reach my doctor. So I asked Reddit.\u201d",
-    a: "Two hours sorting strangers\u2019 opinions from facts at 1am. WeightEasy gives medically-grounded answers in seconds - any hour.",
+    a: "It was 1am. My dose was wearing off - or maybe I was getting sick, I couldn\u2019t tell. My doctor\u2019s office was closed and two hours of Reddit got me nowhere. Now I just ask WeightEasy. I get a clear answer in seconds.",
     label: "the 1am google",
     who: "Brian, Cleveland",
     photo:
@@ -22,7 +22,7 @@ const items = [
   },
   {
     q: "\u201cThe clinic\u2019s meal plan didn\u2019t match how I felt.\u201d",
-    a: "Grilled chicken and rice on dose day - she couldn\u2019t eat for six hours. WeightEasy tunes meals to your dose cycle.",
+    a: "My doctor's clinic handed me grilled chicken and rice for dose day. I couldn't look at food for six hours. WeightEasy shifts my meals with my dose cycle now - light when food feels impossible, fuel when my appetite's back.",
     label: "the food problem",
     who: "Tricia, Portland",
     photo:

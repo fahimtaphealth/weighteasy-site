@@ -212,7 +212,7 @@ function MealPlansCard() {
 }
 
 /* ── Row 2, Left: Track your weight (yellow icon card - 564px, 220px in Figma) ── */
-function TrackWeightIconCard() {
+function TrackMealsIconCard() {
   return (
     <motion.article
       variants={fadeUp}
@@ -223,20 +223,20 @@ function TrackWeightIconCard() {
         height: 220,
       }}
     >
-      {/* Weight scale icon - matches Figma */}
+      {/* Utensils icon for meals */}
       <div className="w-[44px] h-[44px]">
         <svg viewBox="0 0 44 44" fill="none" className="w-full h-full">
-          <rect x="6" y="10" width="32" height="26" rx="4" stroke="#252e49" strokeWidth="2" />
-          <path d="M14 24a8 8 0 0 1 16 0" stroke="#252e49" strokeWidth="2" strokeLinecap="round" />
-          <line x1="22" y1="24" x2="27" y2="19" stroke="#252e49" strokeWidth="2" strokeLinecap="round" />
-          <circle cx="22" cy="24" r="2" fill="#252e49" />
+          <path d="M14 8v10c0 2.2 1.8 4 4 4h0v14" stroke="#252e49" strokeWidth="2" strokeLinecap="round" />
+          <path d="M14 8v6" stroke="#252e49" strokeWidth="2" strokeLinecap="round" />
+          <path d="M18 8v6" stroke="#252e49" strokeWidth="2" strokeLinecap="round" />
+          <path d="M30 8c0 0 2 2 2 6s-2 6-2 6v16" stroke="#252e49" strokeWidth="2" strokeLinecap="round" />
         </svg>
       </div>
       <h3 className="font-display text-[1.35rem] font-bold text-ink tracking-[-0.4px]">
-        Track your weight
+        Track your meals
       </h3>
       <p className="text-[0.95rem] leading-[1.55] text-muted">
-        Stop the daily scale drama. We nudge you according to your dose cycle, same time, same conditions - so the trend is real.
+        Check macros in your meal - protein, fiber, and balance it all according to your dose cycle.
       </p>
     </motion.article>
   );
@@ -275,7 +275,7 @@ function FitnessIconCard() {
 }
 
 /* ── Row 3, Left: Weight chart (green card, narrow - 411px in Figma) ── */
-function WeightChartCard() {
+function TrackWeightCard() {
   return (
     <motion.article
       variants={fadeUp}
@@ -301,10 +301,10 @@ function WeightChartCard() {
       {/* Text at bottom */}
       <div className="absolute left-[40px] bottom-[40px] w-[313px]">
         <h3 className="font-display text-[1.35rem] font-bold text-ink tracking-[-0.4px]">
-          Track your meals
+          Track your weight
         </h3>
         <p className="mt-2 text-[0.95rem] leading-[1.55] text-muted">
-          Check macros in your meal - protein, fiber, and balance it all according to your dose cycle.
+          Stop the daily scale drama. We nudge you according to your dose cycle, same time, same conditions - so the trend is real.
         </p>
       </div>
     </motion.article>
@@ -354,9 +354,9 @@ function SideEffectsCard() {
       </div>
 
       {/* Remedy cards - sliding marquee animation */}
-      <div className="absolute bottom-[40px] left-[200px] right-0 z-10 overflow-hidden sm:left-[240px] md:left-[300px]">
+      <div className="absolute bottom-[40px] left-[200px] right-0 z-10 overflow-hidden sm:left-[240px] md:left-[310px]">
         <div
-          className="flex gap-3"
+          className="flex gap-3 pl-3"
           style={{
             animation: "slideRemedies 18s linear infinite",
             width: "max-content",
@@ -412,13 +412,13 @@ export default function Features() {
 
           {/* Row 2: Two equal short cards */}
           <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6">
-            <TrackWeightIconCard />
+            <TrackMealsIconCard />
             <FitnessIconCard />
           </div>
 
           {/* Row 3: Narrow (36.5%) + Wide (63.5%) - reversed */}
           <div className="w-full grid grid-cols-1 md:grid-cols-[1fr_1.74fr] gap-6">
-            <WeightChartCard />
+            <TrackWeightCard />
             <SideEffectsCard />
           </div>
         </motion.div>
