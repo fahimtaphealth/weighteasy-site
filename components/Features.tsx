@@ -377,8 +377,8 @@ export default function Features() {
           eyebrow="Your personalized plan includes"
           title={
             <>
-              Everything your GLP-1 journey needs.{" "}
-              <span className="text-accent">Nothing it doesn&apos;t.</span>
+              Features built for every{" "}
+              <span className="text-accent">GLP-1 day.</span>
             </>
           }
         />
