@@ -18,13 +18,14 @@ export default function Integrations() {
     <section className="bg-bg py-[100px]">
       <div className="container-x">
         <SectionHead
-          eyebrow="Already in your life"
+          eyebrow="Data screen"
           title={
             <>
-              Your data already lives in your watch and scale.{" "}
-              <span className="text-accent">We listen to help you.</span>
+              Your watch tracks. Your scale weighs.{" "}
+              <span className="text-accent">WeightEasy listens.</span>
             </>
           }
+          body="Connect once. We read your sleep, steps, weight, and heart rate - and tune your plan around how your body's actually responding."
         />
         <motion.div
           variants={stagger(0.05, 0.07)}

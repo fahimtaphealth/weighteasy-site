@@ -9,13 +9,13 @@ const messages = [
   {
     who: "bot",
     text:
-      "That sounds rough. Day 4 nausea like this is within normal range for your 5mg dose \u2014 but twice in one night is the upper edge. Sip ginger tea, skip dinner, text me at 7am. If you vomit again tonight, call your prescriber.",
+      "That sounds rough. Day 4 nausea like this is within normal range for your 5mg dose - but twice in one night is the upper edge. Sip ginger tea, skip dinner, text me at 7am. If you vomit again tonight, call your prescriber.",
   },
   { who: "user", text: "okay. thank you. i really thought i was dying lol" },
   {
     who: "bot",
     text:
-      "You\u2019re not. You\u2019re on Day 4. Also \u2014 72% of people on your dose feel exactly this at this point. You\u2019re not broken, you\u2019re just in Zone B.",
+      "You\u2019re not. You\u2019re on Day 4. Also - 72% of people on your dose feel exactly this at this point. You\u2019re not broken, you\u2019re just in Zone B.",
   },
 ];
 

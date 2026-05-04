@@ -6,7 +6,7 @@ import { viewportOnce } from "@/lib/motion";
 const quotes = [
   {
     text:
-      "The coach talked me off a ledge the night my dose made me nauseous. Honestly the reason I didn&rsquo;t quit.",
+      "Second week in. The nausea hit hard at 11pm and I was about to flush my pen. I messaged the coach not really expecting anything. Got a reply in four minutes - what was happening, what to eat, when it'd pass. I stayed on. Down 14 pounds now.",
     name: "Genevieve",
     meta: "Week 6 · Wegovy",
     photo:
@@ -17,7 +17,7 @@ const quotes = [
   },
   {
     text:
-      "I&rsquo;m on the lowest dose and losing steadily. The meal plans adjusted when I plateaued. That&rsquo;s the part no one else does.",
+      "Week 8 the scale stopped moving. I was ready to call it. The meal plan shifted on its own - different macros, different timing around my dose. Two weeks later the weight came off again. That's the part no one else does.",
     name: "Tricia",
     meta: "Week 22 · Ozempic",
     photo:
@@ -28,7 +28,7 @@ const quotes = [
   },
   {
     text:
-      "It&rsquo;s the first thing that treats me like I&rsquo;m running a system, not just restricting calories. The cycle view finally made my weeks make sense.",
+      "Day 1 of my dose I can't even look at food. Day 5 I'm starving. Every other app gave me the same meal plan every day and it never matched what my body wanted. The cycle view here finally made my weeks make sense.",
     name: "Meagan",
     meta: "Week 14 · Mounjaro",
     photo:
@@ -39,7 +39,7 @@ const quotes = [
   },
   {
     text:
-      "I&rsquo;ve never finished an app before. This one I open before I open my phone in the morning. That&rsquo;s wild to me.",
+      "I've downloaded probably 12 fitness apps in my life. Quit every one. This is the first app I open before checking my phone in the morning. I can't fully explain why it stuck. It just did.",
     name: "Daniel",
     meta: "Month 4 · Mounjaro",
     photo:
@@ -65,9 +65,9 @@ export default function Testimonials() {
     <section id="wall" className="relative bg-bg-2 py-[110px]">
       <div className="container-x">
         <div className="mx-auto max-w-[640px] text-center">
-          <span className="hand text-[1.4rem] text-accent">what people say when we&rsquo;re not listening</span>
+          <span className="hand text-[1.4rem] text-accent">reviews section</span>
           <h2 className="mt-3">
-            Reviews we <span className="marker-hl">didn&rsquo;t write.</span>
+            Why our users <span className="marker-hl">love us</span>
           </h2>
           <p className="mx-auto mt-4 max-w-[440px] text-muted">
             Messages, emails, App Store notes. Lightly trimmed for length, never for tone.

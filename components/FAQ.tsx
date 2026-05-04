@@ -7,24 +7,32 @@ import { fadeUp, stagger, viewportOnce } from "@/lib/motion";
 
 const faqs = [
   {
+    q: "What is a GLP-1 medication?",
+    a: "GLP-1 medications (like Ozempic, Wegovy, Mounjaro, and Zepbound) are prescription drugs that help regulate appetite and blood sugar. They work by mimicking a hormone your body naturally produces, helping you feel full longer and reducing cravings.",
+  },
+  {
+    q: "What does WeightEasy do?",
+    a: "WeightEasy is a companion app for people on GLP-1 medications. It tracks your dose cycle, adjusts your meals and fitness to match how your body feels each day, manages side effects with real remedies, and gives you an AI coach available any time.",
+  },
+  {
     q: "Do I need a prescription to use WeightEasy?",
-    a: "Yes - WeightEasy is a companion app designed to work alongside a GLP-1 medication you already have prescribed (Ozempic, Wegovy, Mounjaro, Zepbound, Rybelsus, Trulicity, compounded semaglutide/tirzepatide, and more). We don't prescribe or sell medication.",
+    a: "Yes. WeightEasy is designed to work alongside a GLP-1 medication you already have prescribed. We don't prescribe or sell medication.",
   },
   {
-    q: "How is this different from MyFitnessPal or Noom?",
-    a: "Those apps assume a steady-state metabolism. GLP-1 creates a cycle - appetite, energy, and nausea shift day to day. WeightEasy is the only plan we know of that moves with you.",
+    q: "What side effects can I expect on GLP-1?",
+    a: "Common side effects include nausea, fatigue, constipation, and reduced appetite - especially in the first few weeks or after a dose increase. Most people find these manageable over time. WeightEasy helps you track and manage them day by day.",
   },
   {
-    q: "What if my side effects are serious?",
-    a: "Always talk to your prescriber about serious side effects. WeightEasy is not a replacement for medical care - we're the in-between companion that helps you understand what's normal and when to call.",
+    q: "How does the meal plan work?",
+    a: "Your meal plan shifts based on where you are in your dose cycle. On dose days when appetite is low, we suggest lighter meals. On your best days, we push protein and variety. The plan adapts automatically as your body changes.",
   },
   {
     q: "How does the free trial work?",
     a: "You get 7 days of full access to every feature. Cancel anytime, no charge. After that, it's $9.99/month or $49.99/year. If you try it for 90 days and it's not for you, we refund you - no questions.",
   },
   {
-    q: "Do you share my data?",
-    a: "No. We don't sell or share individual-level health data. Aggregated, anonymized research uses are opt-in only.",
+    q: "Is my health data private?",
+    a: "Yes. We don't sell or share individual-level health data. All data is encrypted, and any aggregated research uses are opt-in only.",
   },
 ];
 

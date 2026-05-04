@@ -301,10 +301,10 @@ function WeightChartCard() {
       {/* Text at bottom */}
       <div className="absolute left-[40px] bottom-[40px] w-[313px]">
         <h3 className="font-display text-[1.35rem] font-bold text-ink tracking-[-0.4px]">
-          Track your weight
+          Track your meals
         </h3>
         <p className="mt-2 text-[0.95rem] leading-[1.55] text-muted">
-          Discover trends, not noise - we smooth the daily swings.
+          Check macros in your meal - protein, fiber, and balance it all according to your dose cycle.
         </p>
       </div>
     </motion.article>

@@ -14,7 +14,7 @@ const items = [
   },
   {
     q: "\u201cI couldn\u2019t reach my doctor. So I asked Reddit.\u201d",
-    a: "Two hours sorting strangers\u2019 opinions from facts at 1am. WeightEasy gives medically-grounded answers in seconds \u2014 any hour.",
+    a: "Two hours sorting strangers\u2019 opinions from facts at 1am. WeightEasy gives medically-grounded answers in seconds - any hour.",
     label: "the 1am google",
     who: "Brian, Cleveland",
     photo:
@@ -22,7 +22,7 @@ const items = [
   },
   {
     q: "\u201cThe clinic\u2019s meal plan didn\u2019t match how I felt.\u201d",
-    a: "Grilled chicken and rice on dose day \u2014 she couldn\u2019t eat for six hours. WeightEasy tunes meals to your dose cycle.",
+    a: "Grilled chicken and rice on dose day - she couldn\u2019t eat for six hours. WeightEasy tunes meals to your dose cycle.",
     label: "the food problem",
     who: "Tricia, Portland",
     photo:
