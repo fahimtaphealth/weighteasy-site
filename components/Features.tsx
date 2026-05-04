@@ -23,6 +23,8 @@ const imgFoodPhoto1 = "https://www.figma.com/api/mcp/asset/8a468fb9-48e4-4597-bb
 const imgFoodPhoto2 = "https://www.figma.com/api/mcp/asset/814fe641-1bd4-408a-b8d1-18dbea52e3e6";
 const imgScreen1 = "https://www.figma.com/api/mcp/asset/69461f97-7abc-4c5d-b2d5-8116eab8f64f";
 const imgScreen2 = "https://www.figma.com/api/mcp/asset/f813ad40-09a6-45c5-bf3d-ddffae051c5d";
+const imgIconDinner = "https://www.figma.com/api/mcp/asset/8bf22073-16a6-48e5-a70f-a3c89bbb0473";
+const imgIconSteps = "https://www.figma.com/api/mcp/asset/f095ecd1-21ba-451c-abb1-b09f30a8a3db";
 
 /* ── Row 1, Left: Tracking doses (dark teal card, wide - 717px in Figma) ── */
 function DoseTrackingCard() {
@@ -223,15 +225,8 @@ function TrackMealsIconCard() {
         height: 220,
       }}
     >
-      {/* Utensils icon for meals */}
-      <div className="w-[44px] h-[44px]">
-        <svg viewBox="0 0 44 44" fill="none" className="w-full h-full">
-          <path d="M14 8v10c0 2.2 1.8 4 4 4h0v14" stroke="#252e49" strokeWidth="2" strokeLinecap="round" />
-          <path d="M14 8v6" stroke="#252e49" strokeWidth="2" strokeLinecap="round" />
-          <path d="M18 8v6" stroke="#252e49" strokeWidth="2" strokeLinecap="round" />
-          <path d="M30 8c0 0 2 2 2 6s-2 6-2 6v16" stroke="#252e49" strokeWidth="2" strokeLinecap="round" />
-        </svg>
-      </div>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={imgIconDinner} alt="" width={44} height={44} className="w-[44px] h-[44px]" />
       <h3 className="font-display text-[1.35rem] font-bold text-ink tracking-[-0.4px]">
         Track your meals
       </h3>
@@ -254,16 +249,8 @@ function FitnessIconCard() {
         height: 220,
       }}
     >
-      {/* Dumbbell/fitness icon - matches Figma */}
-      <div className="w-[44px] h-[44px]">
-        <svg viewBox="0 0 44 44" fill="none" className="w-full h-full">
-          <rect x="5" y="16" width="8" height="12" rx="2" stroke="#252e49" strokeWidth="2" />
-          <rect x="31" y="16" width="8" height="12" rx="2" stroke="#252e49" strokeWidth="2" />
-          <rect x="10" y="13" width="6" height="18" rx="2" stroke="#252e49" strokeWidth="2" />
-          <rect x="28" y="13" width="6" height="18" rx="2" stroke="#252e49" strokeWidth="2" />
-          <line x1="16" y1="22" x2="28" y2="22" stroke="#252e49" strokeWidth="2" strokeLinecap="round" />
-        </svg>
-      </div>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={imgIconSteps} alt="" width={44} height={44} className="w-[44px] h-[44px]" />
       <h3 className="font-display text-[1.35rem] font-bold text-ink tracking-[-0.4px]">
         Fitness that fits your cycle
       </h3>
