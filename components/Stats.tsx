@@ -5,9 +5,9 @@ import SectionHead from "./SectionHead";
 import { fadeUp, stagger, viewportOnce } from "@/lib/motion";
 
 const stats = [
-  { display: "1.5x", label: "more weight loss", sub: "when GLP-1 users take a guided journey*" },
-  { display: "30%", label: "less nausea", sub: "when your dose is timed to your body, not a generic schedule*" },
-  { display: "9 in 10", label: "stay on their dose", sub: "with gradual support vs. only 6 in 10 without support*" },
+  { display: "1.5x", label: "more weight loss", sub: "When GLP-1 users take a guided journey, they experience more weight loss than others.*" },
+  { display: "30%", label: "less nausea", sub: "When the meal is custom to user's body, not a generic plan, users see 30% relief in symptoms.*" },
+  { display: "9 in 10", label: "stay on their dose", sub: "9 in 10 users stay on GLP-1 with support, vs. only 6 in 10 stay on GLP-1 without support.*" },
 ];
 
 export default function Stats() {
