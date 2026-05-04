@@ -44,8 +44,8 @@ const config: Config = {
         purple: "var(--color-purple-500)",
       },
       fontFamily: {
-        display: ['"Plus Jakarta Sans"', '"Inter"', "system-ui", "sans-serif"],
-        sans: ['"Inter"', "system-ui", "-apple-system", "Segoe UI", "Roboto", "sans-serif"],
+        display: ['"Google Sans Display"', '"Google Sans"', "system-ui", "sans-serif"],
+        sans: ['"Google Sans"', "system-ui", "-apple-system", "Segoe UI", "Roboto", "sans-serif"],
       },
       letterSpacing: {
         tightest: "-0.04em",

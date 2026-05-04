@@ -13,8 +13,8 @@
 }
 
 :root {
-  --font-display: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
-  --font-sans: "Inter", system-ui, sans-serif;
+  --font-display: "Google Sans Display", "Google Sans", system-ui, sans-serif;
+  --font-sans: "Google Sans", system-ui, sans-serif;
   --font-hand: "Caveat", "Bradley Hand", cursive;
 
   /* ─── Pulse DS · Semantic Colors (WeightEasy-Light mode) ─── */
