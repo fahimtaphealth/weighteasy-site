@@ -84,11 +84,11 @@ export default function Zones() {
               <span className="text-accent">every day of your GLP-1 dose cycle.</span>
             </>
           }
-          body="Some days you're starving. Some days food is the enemy. WeightEasy knows the difference — and shifts your meals, coaching, and reminders to match."
+          body="Some days you're starving. Some days food is the enemy. WeightEasy knows the difference - and shifts your meals, coaching, and reminders to match."
         />
       </div>
 
-      {/* Carousel + mobile controls wrapper — relative so mobile controls can sit outside overflow-hidden */}
+      {/* Carousel + mobile controls wrapper - relative so mobile controls can sit outside overflow-hidden */}
       <div className="relative mt-10" style={{ height: CONTAINER_H }}>
         {/* Inner clipped area for circle/dots/phone */}
         <div className="absolute inset-0 overflow-hidden">
@@ -107,7 +107,7 @@ export default function Zones() {
             }}
           />
 
-          {/* ── Rotating dots container — centered at circle origin ── */}
+          {/* ── Rotating dots container - centered at circle origin ── */}
           <div
             className="absolute z-[5]"
             style={{ left: "50%", top: CY, width: 0, height: 0 }}
@@ -165,7 +165,7 @@ export default function Zones() {
             </motion.div>
           </div>
 
-          {/* ── Desktop chevron buttons — sized to match number dots (72px) ── */}
+          {/* ── Desktop chevron buttons - sized to match number dots (72px) ── */}
           <button
             onClick={handlePrev}
             className="absolute z-20 hidden md:flex h-[72px] w-[72px] items-center justify-center rounded-full border-2 border-line bg-white text-muted transition-colors hover:bg-bg hover:text-ink"
@@ -187,7 +187,7 @@ export default function Zones() {
             </svg>
           </button>
 
-          {/* ── Phone frame — centered ── */}
+          {/* ── Phone frame - centered ── */}
           <div
             className="absolute left-1/2 -translate-x-1/2 z-10"
             style={{ top: PHONE_TOP, width: 300 }}
@@ -233,7 +233,7 @@ export default function Zones() {
             </div>
           </div>
 
-          {/* ── Active stage pill — centered on top of phone ── */}
+          {/* ── Active stage pill - centered on top of phone ── */}
           <div
             className="absolute z-30 flex justify-center"
             style={{ left: 0, right: 0, top: PILL_TOP }}
@@ -262,7 +262,7 @@ export default function Zones() {
           </div>
         </div>
 
-        {/* ── Mobile chevron buttons — OUTSIDE overflow-hidden ── */}
+        {/* ── Mobile chevron buttons - OUTSIDE overflow-hidden ── */}
         <button
           onClick={handlePrev}
           className="absolute z-20 flex md:hidden h-[44px] w-[44px] items-center justify-center rounded-full border-2 border-line bg-white text-muted shadow-md"
@@ -284,7 +284,7 @@ export default function Zones() {
           </svg>
         </button>
 
-        {/* ── Mobile pagination pill — OUTSIDE overflow-hidden ── */}
+        {/* ── Mobile pagination pill - OUTSIDE overflow-hidden ── */}
         <div
           className="absolute z-30 flex justify-center md:hidden"
           style={{ left: 0, right: 0, top: CONTAINER_H - 60 }}

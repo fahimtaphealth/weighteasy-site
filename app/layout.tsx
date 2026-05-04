@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "WeightEasy — Your GLP-1 Companion",
+  title: "WeightEasy - Your GLP-1 Companion",
   description:
     "An AI coach, cycle-aware nutrition plans, dose and symptom tracking designed for people on Ozempic, Wegovy, Mounjaro, Zepbound and more.",
 };

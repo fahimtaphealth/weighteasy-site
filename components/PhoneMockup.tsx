@@ -6,7 +6,7 @@ import { stagger } from "@/lib/motion";
 import CoachOrb from "./CoachOrb";
 
 /**
- * Left phone — WeightEasy Home screen.
+ * Left phone - WeightEasy Home screen.
  * Animations:
  *  1. Progress bar fills
  *  2. Weight tracker ring fills → check → button goes tertiary
@@ -131,7 +131,7 @@ export default function PhoneMockup() {
                 style={{ boxShadow: "0 8px 18px -12px rgba(0,0,0,.3)" }}
               >
                 <div className="text-[0.65rem] font-medium text-muted">
-                  Next Dose — Ozempic • 0.5mg
+                  Next Dose - Ozempic • 0.5mg
                 </div>
                 <div className="mt-px font-display text-[1.15rem] font-extrabold text-ink tracking-[-0.02em]">
                   Due today
@@ -428,7 +428,7 @@ function AnimatedTracker({
         <span className="mt-px block text-[0.66rem] text-muted">{value}</span>
       </div>
 
-      {/* "+" button — always present */}
+      {/* "+" button - always present */}
       <span
         className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full text-[1.1rem] leading-none text-ink"
       >

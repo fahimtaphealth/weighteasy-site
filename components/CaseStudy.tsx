@@ -43,7 +43,7 @@ export default function CaseStudy() {
               <span className="text-accent">Story of Meagan</span>
             </>
           }
-          body="Not a curated before/after. The actual arc &mdash; the good, the bad and the scary."
+          body="Not a curated before/after. The actual arc - the good, the bad and the scary."
         />
 
         {/* Video-style hero card */}
@@ -95,52 +95,56 @@ export default function CaseStudy() {
           </div>
         </motion.div>
 
-        {/* Horizontal scrolling timeline */}
-        <div className="relative mt-10">
-          <motion.div
-            variants={stagger(0.1, 0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={viewportOnce}
-            className="flex gap-5 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide"
-          >
-            {chapters.map((c, i) => (
-              <motion.div
-                key={c.when}
-                variants={fadeUp}
-                className="relative flex-shrink-0 snap-start flex flex-col gap-3 rounded-[22px] border border-line bg-white p-7"
-                style={{ width: "min(320px, 80vw)" }}
-              >
-                <div className="flex items-center justify-between">
-                  <span className="text-[0.78rem] font-semibold uppercase tracking-[0.12em] text-accent">
-                    {c.when}
-                  </span>
-                  <span className="text-[1.4rem]" aria-hidden>
-                    {c.mood}
-                  </span>
-                </div>
-                <h3 className="font-display text-[1.2rem] font-extrabold leading-[1.2] text-ink">
-                  {c.title}
-                </h3>
-                <p className="text-[0.9rem] leading-[1.6] text-muted">
-                  {c.body}
-                </p>
-                {/* Dashed connector */}
-                {i < chapters.length - 1 && (
-                  <div
-                    className="absolute -right-3.5 top-1/2 hidden w-5 border-t-2 border-dashed border-line md:block"
-                    aria-hidden
-                  />
-                )}
-              </motion.div>
-            ))}
-          </motion.div>
+      </div>
 
-          {/* Scroll indicator */}
-          <div className="mt-2 flex justify-center gap-1.5">
-            <div className="h-1 w-8 rounded-full bg-ink" />
-            <div className="h-1 w-2 rounded-full bg-line" />
-          </div>
+      {/* Horizontal scrolling timeline - outside container-x to prevent edge clipping */}
+      <div className="relative mt-10 max-w-[1280px] mx-auto">
+        <motion.div
+          variants={stagger(0.1, 0.1)}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+          className="flex gap-5 overflow-x-auto pb-6 pt-2 pl-6 snap-x snap-mandatory scrollbar-hide md:justify-center md:overflow-visible md:pl-0"
+          style={{ overscrollBehaviorX: "contain" }}
+        >
+          {chapters.map((c, i) => (
+            <motion.div
+              key={c.when}
+              variants={fadeUp}
+              className="relative flex-shrink-0 snap-start flex flex-col gap-3 rounded-[22px] border border-line bg-white p-7 md:flex-shrink"
+              style={{ width: "min(320px, 75vw)" }}
+            >
+              <div className="flex items-center justify-between">
+                <span className="text-[0.78rem] font-semibold uppercase tracking-[0.12em] text-accent">
+                  {c.when}
+                </span>
+                <span className="text-[1.4rem]" aria-hidden>
+                  {c.mood}
+                </span>
+              </div>
+              <h3 className="font-display text-[1.2rem] font-extrabold leading-[1.2] text-ink">
+                {c.title}
+              </h3>
+              <p className="text-[0.9rem] leading-[1.6] text-muted">
+                {c.body}
+              </p>
+              {/* Dashed connector */}
+              {i < chapters.length - 1 && (
+                <div
+                  className="absolute -right-3.5 top-1/2 hidden w-5 border-t-2 border-dashed border-line md:block"
+                  aria-hidden
+                />
+              )}
+            </motion.div>
+          ))}
+          {/* End spacer so last card can scroll fully into view */}
+          <div className="flex-shrink-0 w-6 md:hidden" aria-hidden />
+        </motion.div>
+
+        {/* Scroll indicator */}
+        <div className="mt-2 flex justify-center gap-1.5">
+          <div className="h-1 w-8 rounded-full bg-ink" />
+          <div className="h-1 w-2 rounded-full bg-line" />
         </div>
       </div>
     </section>

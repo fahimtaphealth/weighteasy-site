@@ -16,7 +16,7 @@ export default function Hero() {
           className="relative text-center lg:text-left"
         >
           <motion.span variants={fadeUp} className="eyebrow">
-            WeightEasy — Tracker and Coach
+            WeightEasy - Tracker and Coach
           </motion.span>
 
           <motion.h1 variants={fadeUp} className="mt-5">
@@ -61,7 +61,7 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Two phone mockups — overlapping, dose phone in front staggered top-right */}
+        {/* Two phone mockups - overlapping, dose phone in front staggered top-right */}
         {/*
           transform: scale() doesn't shrink layout box, so we use a fixed-height
           container with overflow-hidden to prevent phones from pushing the grid wider.
@@ -72,7 +72,7 @@ export default function Hero() {
           style={{ height: "clamp(440px, 55vw, 580px)" }}
         >
           <div className="absolute inset-0 flex items-start justify-center">
-            {/* Left phone — Home screen (behind, slightly left and down) */}
+            {/* Left phone - Home screen (behind, slightly left and down) */}
             <div
               className="relative z-[5]"
               style={{
@@ -84,7 +84,7 @@ export default function Hero() {
             >
               <PhoneMockup />
             </div>
-            {/* Right phone — Dose screen (in front, overlapping left phone) */}
+            {/* Right phone - Dose screen (in front, overlapping left phone) */}
             <div
               className="relative z-10"
               style={{

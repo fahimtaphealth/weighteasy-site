@@ -63,7 +63,7 @@ export default function FounderNote() {
               variants={fadeUp}
               className="mt-4 text-[1.02rem] leading-[1.65] text-muted"
             >
-              If you try it and it doesn&rsquo;t help — tell me. Seriously. My
+              If you try it and it doesn&rsquo;t help - tell me. Seriously. My
               email&rsquo;s below and I still read every one.
             </motion.p>
             <motion.div

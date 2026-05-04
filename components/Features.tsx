@@ -24,7 +24,7 @@ const imgFoodPhoto2 = "https://www.figma.com/api/mcp/asset/814fe641-1bd4-408a-b8
 const imgScreen1 = "https://www.figma.com/api/mcp/asset/69461f97-7abc-4c5d-b2d5-8116eab8f64f";
 const imgScreen2 = "https://www.figma.com/api/mcp/asset/f813ad40-09a6-45c5-bf3d-ddffae051c5d";
 
-/* ── Row 1, Left: Tracking doses (dark teal card, wide — 717px in Figma) ── */
+/* ── Row 1, Left: Tracking doses (dark teal card, wide - 717px in Figma) ── */
 function DoseTrackingCard() {
   return (
     <motion.article
@@ -46,7 +46,7 @@ function DoseTrackingCard() {
         </p>
       </div>
 
-      {/* Phone mockup — right side */}
+      {/* Phone mockup - right side */}
       <div className="absolute right-[20px] top-[130px] md:right-[40px] md:top-[106px]">
         {/* Screen */}
         <div className="absolute left-[7px] top-[5px] w-[241px] h-[536px] rounded-[29px] overflow-hidden">
@@ -123,7 +123,7 @@ function DoseTrackingCard() {
   );
 }
 
-/* ── Row 1, Right: Cycle-aware meal plans (purple card, narrow — 411px in Figma) ── */
+/* ── Row 1, Right: Cycle-aware meal plans (purple card, narrow - 411px in Figma) ── */
 function MealPlansCard() {
   return (
     <motion.article
@@ -145,7 +145,7 @@ function MealPlansCard() {
         </p>
       </div>
 
-      {/* Meal cards — centered at bottom */}
+      {/* Meal cards - centered at bottom */}
       <div
         className="absolute left-1/2 -translate-x-1/2 top-[120px] md:top-[191px] flex items-center justify-center gap-4"
         style={{ filter: "drop-shadow(0 -27px 30px rgba(0,0,0,0.05))" }}
@@ -211,7 +211,7 @@ function MealPlansCard() {
   );
 }
 
-/* ── Row 2, Left: Track your weight (yellow icon card — 564px, 220px in Figma) ── */
+/* ── Row 2, Left: Track your weight (yellow icon card - 564px, 220px in Figma) ── */
 function TrackWeightIconCard() {
   return (
     <motion.article
@@ -223,7 +223,7 @@ function TrackWeightIconCard() {
         height: 220,
       }}
     >
-      {/* Weight scale icon — matches Figma */}
+      {/* Weight scale icon - matches Figma */}
       <div className="w-[44px] h-[44px]">
         <svg viewBox="0 0 44 44" fill="none" className="w-full h-full">
           <rect x="6" y="10" width="32" height="26" rx="4" stroke="#252e49" strokeWidth="2" />
@@ -236,13 +236,13 @@ function TrackWeightIconCard() {
         Track your weight
       </h3>
       <p className="text-[0.95rem] leading-[1.55] text-muted">
-        Stop the daily scale drama. We nudge you according to your dose cycle, same time, same conditions — so the trend is real.
+        Stop the daily scale drama. We nudge you according to your dose cycle, same time, same conditions - so the trend is real.
       </p>
     </motion.article>
   );
 }
 
-/* ── Row 2, Right: Fitness (red/pink icon card — 564px, 220px in Figma) ── */
+/* ── Row 2, Right: Fitness (red/pink icon card - 564px, 220px in Figma) ── */
 function FitnessIconCard() {
   return (
     <motion.article
@@ -254,7 +254,7 @@ function FitnessIconCard() {
         height: 220,
       }}
     >
-      {/* Dumbbell/fitness icon — matches Figma */}
+      {/* Dumbbell/fitness icon - matches Figma */}
       <div className="w-[44px] h-[44px]">
         <svg viewBox="0 0 44 44" fill="none" className="w-full h-full">
           <rect x="5" y="16" width="8" height="12" rx="2" stroke="#252e49" strokeWidth="2" />
@@ -274,7 +274,7 @@ function FitnessIconCard() {
   );
 }
 
-/* ── Row 3, Left: Weight chart (green card, narrow — 411px in Figma) ── */
+/* ── Row 3, Left: Weight chart (green card, narrow - 411px in Figma) ── */
 function WeightChartCard() {
   return (
     <motion.article
@@ -286,7 +286,7 @@ function WeightChartCard() {
         height: 416,
       }}
     >
-      {/* Phone mockup — centered, protruding from top */}
+      {/* Phone mockup - centered, protruding from top */}
       <div className="absolute left-1/2 -translate-x-1/2 -top-[170px]">
         <div className="w-[197px] h-[438px] rounded-[29px] border-[5px] border-black/15 overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -304,14 +304,14 @@ function WeightChartCard() {
           Track your weight
         </h3>
         <p className="mt-2 text-[0.95rem] leading-[1.55] text-muted">
-          Discover trends, not noise — we smooth the daily swings.
+          Discover trends, not noise - we smooth the daily swings.
         </p>
       </div>
     </motion.article>
   );
 }
 
-/* ── Row 3, Right: Side effects (blue card, wide — 717px in Figma) ── */
+/* ── Row 3, Right: Side effects (blue card, wide - 717px in Figma) ── */
 function SideEffectsCard() {
   return (
     <motion.article
@@ -323,17 +323,17 @@ function SideEffectsCard() {
         minHeight: 416,
       }}
     >
-      {/* Text content — flows in document on mobile, absolute on desktop */}
+      {/* Text content - flows in document on mobile, absolute on desktop */}
       <div className="relative px-6 pt-8 pb-4 md:absolute md:right-[40px] md:top-[42px] md:w-[313px] md:px-0 md:pt-0 md:pb-0">
         <h3 className="font-display text-[1.35rem] font-bold text-ink tracking-[-0.4px]">
           Manage side effects
         </h3>
         <p className="mt-2 text-[0.95rem] leading-[1.55] text-muted">
-          Tap what you&apos;re feeling. Get a fix in seconds — ginger tea for nausea, crackers for heartburn. Real relief, no Reddit.
+          Tap what you&apos;re feeling. Get a fix in seconds - ginger tea for nausea, crackers for heartburn. Real relief, no Reddit.
         </p>
       </div>
 
-      {/* Phone mockup — left side */}
+      {/* Phone mockup - left side */}
       <div className="absolute left-[32px] top-[130px] md:top-[106px]">
         {/* Screen */}
         <div className="absolute left-[7px] top-[5px] w-[241px] h-[536px] rounded-[29px] overflow-hidden">
@@ -353,7 +353,7 @@ function SideEffectsCard() {
         />
       </div>
 
-      {/* Remedy cards — sliding marquee animation */}
+      {/* Remedy cards - sliding marquee animation */}
       <div className="absolute bottom-[40px] left-[200px] right-0 z-10 overflow-hidden sm:left-[240px] md:left-[300px]">
         <div
           className="flex gap-3"
@@ -416,7 +416,7 @@ export default function Features() {
             <FitnessIconCard />
           </div>
 
-          {/* Row 3: Narrow (36.5%) + Wide (63.5%) — reversed */}
+          {/* Row 3: Narrow (36.5%) + Wide (63.5%) - reversed */}
           <div className="w-full grid grid-cols-1 md:grid-cols-[1fr_1.74fr] gap-6">
             <WeightChartCard />
             <SideEffectsCard />

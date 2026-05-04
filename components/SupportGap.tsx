@@ -42,8 +42,8 @@ export default function SupportGap() {
           </h2>
           <p className="mt-5 max-w-[600px] text-muted">
             The prescription is the easy part. The questions that come
-            after &mdash; at 1am, on day four, or at the dinner
-            table &mdash; are where people are alone. That&rsquo;s where we
+            after - at 1am, on day four, or at the dinner
+            table - are where people are alone. That&rsquo;s where we
             come in.
           </p>
         </div>

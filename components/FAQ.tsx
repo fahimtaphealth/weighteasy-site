@@ -8,19 +8,19 @@ import { fadeUp, stagger, viewportOnce } from "@/lib/motion";
 const faqs = [
   {
     q: "Do I need a prescription to use WeightEasy?",
-    a: "Yes — WeightEasy is a companion app designed to work alongside a GLP-1 medication you already have prescribed (Ozempic, Wegovy, Mounjaro, Zepbound, Rybelsus, Trulicity, compounded semaglutide/tirzepatide, and more). We don't prescribe or sell medication.",
+    a: "Yes - WeightEasy is a companion app designed to work alongside a GLP-1 medication you already have prescribed (Ozempic, Wegovy, Mounjaro, Zepbound, Rybelsus, Trulicity, compounded semaglutide/tirzepatide, and more). We don't prescribe or sell medication.",
   },
   {
     q: "How is this different from MyFitnessPal or Noom?",
-    a: "Those apps assume a steady-state metabolism. GLP-1 creates a cycle — appetite, energy, and nausea shift day to day. WeightEasy is the only plan we know of that moves with you.",
+    a: "Those apps assume a steady-state metabolism. GLP-1 creates a cycle - appetite, energy, and nausea shift day to day. WeightEasy is the only plan we know of that moves with you.",
   },
   {
     q: "What if my side effects are serious?",
-    a: "Always talk to your prescriber about serious side effects. WeightEasy is not a replacement for medical care — we're the in-between companion that helps you understand what's normal and when to call.",
+    a: "Always talk to your prescriber about serious side effects. WeightEasy is not a replacement for medical care - we're the in-between companion that helps you understand what's normal and when to call.",
   },
   {
     q: "How does the free trial work?",
-    a: "You get 7 days of full access to every feature. Cancel anytime, no charge. After that, it's $9.99/month or $49.99/year. If you try it for 90 days and it's not for you, we refund you — no questions.",
+    a: "You get 7 days of full access to every feature. Cancel anytime, no charge. After that, it's $9.99/month or $49.99/year. If you try it for 90 days and it's not for you, we refund you - no questions.",
   },
   {
     q: "Do you share my data?",

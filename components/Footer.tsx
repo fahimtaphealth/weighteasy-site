@@ -18,7 +18,7 @@ export default function Footer() {
               <Logo inverted />
             </div>
             <p className="max-w-[320px] leading-[1.6] text-white/60">
-              Your GLP-1 Companion. An AI coach, cycle-aware nutrition, and everything else your journey needs — in one app.
+              Your GLP-1 Companion. An AI coach, cycle-aware nutrition, and everything else your journey needs - in one app.
             </p>
           </div>
           <FooterCol title="Product" links={["How it works", "Medications", "Features", "Pricing"]} />

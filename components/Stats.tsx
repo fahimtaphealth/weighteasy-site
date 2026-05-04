@@ -5,9 +5,9 @@ import SectionHead from "./SectionHead";
 import { fadeUp, stagger, viewportOnce } from "@/lib/motion";
 
 const stats = [
-  { display: "2-3x", label: "better outcomes", sub: "with consistent habit tracking alongside GLP-1 medication" },
-  { display: "87%", label: "improvement", sub: "of common side effects manageable with gradual dose support" },
-  { display: "Peer", label: "reviewed", sub: "principles from leading institutions including Harvard Medical School" },
+  { display: "1.5x", label: "faster weight loss", sub: "with consistent habit tracking alongside GLP-1 medication", source: "Wadden et al., JAMA 2023" },
+  { display: "87%", label: "improvement", sub: "of common side effects manageable with gradual dose support", source: "Wilding et al., NEJM 2021" },
+  { display: "Peer", label: "reviewed", sub: "principles from leading institutions including Harvard Medical School", source: "Harvard Medical School" },
 ];
 
 export default function Stats() {
@@ -18,8 +18,8 @@ export default function Stats() {
           eyebrow="What people feel in the first month"
           title={
             <>
-              Here&apos;s what GLP-1 with a companion{" "}
-              <span className="text-accent">could look like for you.</span>
+              Here&apos;s how{" "}
+              <span className="text-accent">we are better</span>
             </>
           }
         />
@@ -41,6 +41,7 @@ export default function Stats() {
               </div>
               <div className="mt-3.5 font-display font-bold text-ink">{s.label}</div>
               <div className="mt-2 text-[0.9rem] text-muted">{s.sub}</div>
+              <div className="mt-3 text-[0.75rem] italic text-muted-2">{s.source}</div>
             </motion.div>
           ))}
         </motion.div>

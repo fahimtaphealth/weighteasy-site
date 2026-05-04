@@ -3,38 +3,40 @@
 import { motion } from "framer-motion";
 import { fadeUp, stagger, viewportOnce } from "@/lib/motion";
 
+/* Figma asset URLs (valid for 7 days) */
+const imgLaura = "https://www.figma.com/api/mcp/asset/b0098088-ae25-4692-9e28-42e953df7ade";
+const imgJames = "https://www.figma.com/api/mcp/asset/6d5acd97-caa4-4fc5-a5f9-e05d8f5f88ab";
+const imgMarcus = "https://www.figma.com/api/mcp/asset/4317774c-08ae-4718-88dd-2000429184bc";
+const imgMerke = "https://www.figma.com/api/mcp/asset/22849128-7573-47e2-8030-1386f8e9e42c";
+
 const types = [
   {
-    photo:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=480&fit=crop&crop=faces&q=80",
+    photo: imgLaura,
     name: "Laura, 3 days",
     title: "Just prescribed",
     body:
-      "You got the script. You left the office with questions. We’ll walk you through week one, hour by hour if you need it.",
+      "I got the script and left with a hundred questions. WeightEasy walked me through week one hour by hour. I didn’t feel alone once.",
   },
   {
-    photo:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=480&fit=crop&crop=faces&q=80",
+    photo: imgJames,
     name: "James, 3 wk",
     title: "Ramping up doses",
     body:
-      "Every titration changes your appetite, your energy, your sleep. We’ll adjust your plan at every step, not every quarter.",
+      "Every time my dose went up, my appetite and energy shifted completely. The app adjusted my plan each time before I even had to ask.",
   },
   {
-    photo:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=480&fit=crop&crop=faces&q=80",
+    photo: imgMarcus,
     name: "Marcus, 11 mo",
     title: "Hit a plateau",
     body:
-      "Plateaus are expected, not a failure. Our coach reads your data and suggests the smallest change that tends to work.",
+      "My weight didn’t move for 9 days and I almost quit. The coach showed me one small change and the scale started moving again within a week.",
   },
   {
-    photo:
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=480&fit=crop&crop=faces&q=80",
+    photo: imgMerke,
     name: "Merke, 14 mo",
     title: "Coming off GLP-1",
     body:
-      "The hardest part: protecting your progress after the medication. We have a 12-week transition plan for exactly this.",
+      "Coming off the medication was the scariest part. The 12-week transition plan kept me on track. I’ve kept the weight off for 3 months now.",
   },
 ];
 
@@ -44,7 +46,7 @@ export default function WhoItsFor() {
       <div className="container-x">
         <div className="mx-auto max-w-[720px] text-center">
           <h2 className="mt-3">
-            <span className="marker-hl">Built for four kinds of GLP-1 people.</span>
+            WeightEasy is <span className="marker-hl">built for everybody on GLP-1.</span>
           </h2>
           <p className="mt-4 text-muted">
             Week one looks nothing like month six. Your app shouldn&rsquo;t

@@ -30,7 +30,7 @@ export default function CoachBand() {
           <h2 className="mt-3 !text-white">
             AI-powered Coach.
             <br />
-            <span style={{ color: "var(--color-teal-300)" }}>Trained on GLP-1.</span>
+            <span className="text-[#c4b5fd]">Trained on GLP-1.</span>
           </h2>
           <p className="mx-auto mt-5 max-w-[560px] text-white/70">
             Knows what dose you&rsquo;re on. Knows what day of your cycle it is.
