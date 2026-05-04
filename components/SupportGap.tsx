@@ -34,13 +34,13 @@ export default function SupportGap() {
   return (
     <section className="bg-bg py-[100px]">
       <div className="container-x">
-        <div className="mx-auto max-w-[760px]">
+        <div className="mx-auto max-w-[760px] text-center">
           <h2 className="mt-3">
             We fill the gap{" "}
             <span className="text-accent">between</span> your
             doctor visits
           </h2>
-          <p className="mt-5 max-w-[600px] text-muted">
+          <p className="mx-auto mt-5 max-w-[600px] text-muted">
             The prescription is the easy part. The questions that come
             after - at 1am, on day four, or at the dinner
             table - are where people are alone. That&rsquo;s where we

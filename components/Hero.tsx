@@ -16,7 +16,7 @@ export default function Hero() {
           className="relative text-center lg:text-left"
         >
           <motion.span variants={fadeUp} className="eyebrow">
-            WeightEasy - GLP-1 Tracker and Coach
+            WeightEasy - GLP1 Tracker and Coach
           </motion.span>
 
           <motion.h1 variants={fadeUp} className="mt-5">
