@@ -39,10 +39,10 @@ const faqs = [
 function Item({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <motion.div variants={fadeUp} className="border-b border-line py-5">
+    <motion.div variants={fadeUp} className="border-b border-line">
       <button
         onClick={() => setOpen((o) => !o)}
-        className="flex w-full items-center justify-between text-left"
+        className="flex w-full items-center justify-between py-5 text-left"
       >
         <span className="font-display text-[1.08rem] font-bold text-ink">{q}</span>
         <motion.span
