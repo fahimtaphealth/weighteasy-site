@@ -5,9 +5,9 @@ import SectionHead from "./SectionHead";
 import { fadeUp, stagger, viewportOnce } from "@/lib/motion";
 
 const stats = [
-  { display: "1.5x", label: "faster weight loss", sub: "with consistent habit tracking alongside GLP-1 medication", source: "Wadden et al., JAMA 2023" },
-  { display: "87%", label: "improvement", sub: "of common side effects manageable with gradual dose support", source: "Wilding et al., NEJM 2021" },
-  { display: "Peer", label: "reviewed", sub: "principles from leading institutions including Harvard Medical School", source: "Harvard Medical School" },
+  { display: "1.5x", label: "more weight loss", sub: "when GLP-1 users take a guided journey", source: "" },
+  { display: "30%", label: "less nausea", sub: "when your dose is timed to your body, not a generic schedule", source: "2025" },
+  { display: "9 in 10", label: "stay on their dose", sub: "with gradual support vs. only 6 in 10 without support", source: "2025" },
 ];
 
 export default function Stats() {
@@ -15,11 +15,11 @@ export default function Stats() {
     <section className="bg-bg py-[100px]">
       <div className="container-x">
         <SectionHead
-          eyebrow="What people feel in the first month"
+          eyebrow="Based on research study"
           title={
             <>
-              Here&apos;s how{" "}
-              <span className="text-accent">we are better</span>
+              Support that can actually<br />
+              <span className="text-accent">improve your results</span>
             </>
           }
         />
