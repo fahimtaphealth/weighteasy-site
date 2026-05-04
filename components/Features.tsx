@@ -262,39 +262,22 @@ function FitnessIconCard() {
 }
 
 /* ── Row 3, Left: Weight chart (green card, narrow - 411px in Figma) ── */
+const imgTrackWeightCard = "https://www.figma.com/api/mcp/asset/831eceeb-8d34-4dab-ab3d-32e27a10176b";
+
 function TrackWeightCard() {
   return (
     <motion.article
       variants={fadeUp}
       whileHover={{ y: -4, transition: { duration: 0.2 } }}
       className="relative overflow-hidden rounded-[24px]"
-      style={{
-        background: "radial-gradient(ellipse at bottom right, #dcfce7, #f0fdf4)",
-        height: 416,
-      }}
+      style={{ height: 416 }}
     >
-      {/* Phone mockup - centered, protruding from top */}
-      <div className="absolute left-1/2 -translate-x-1/2 -top-[70px]">
-        <div className="w-[197px] h-[438px] rounded-[29px] border-[5px] border-black/15 overflow-hidden">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={imgScreen1}
-            alt="Weight tracking screen"
-            className="w-full object-cover object-bottom"
-            style={{ height: "auto", minHeight: "100%" }}
-          />
-        </div>
-      </div>
-
-      {/* Text at bottom */}
-      <div className="absolute left-[40px] bottom-[40px] w-[313px]">
-        <h3 className="font-display text-[1.35rem] font-bold text-ink tracking-[-0.4px]">
-          Track your weight
-        </h3>
-        <p className="mt-2 text-[0.95rem] leading-[1.55] text-muted">
-          Discover trends, not noise - we smooth the daily swings.
-        </p>
-      </div>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={imgTrackWeightCard}
+        alt="Track your weight"
+        className="w-full h-full object-cover"
+      />
     </motion.article>
   );
 }
