@@ -18,7 +18,7 @@ export default function Integrations() {
     <section className="bg-bg py-[100px]">
       <div className="container-x">
         <SectionHead
-          eyebrow="Data screen"
+          eyebrow="Connects with you at every step"
           title={
             <>
               Your watch tracks. Your scale weighs.{" "}
