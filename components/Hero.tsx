@@ -25,10 +25,9 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p variants={fadeUp} className="mx-auto mt-5 max-w-[540px] text-[1rem] text-muted sm:mt-7 sm:text-[1.13rem] lg:mx-0">
-            We know day 3 hits hardest. We know the nausea peaks at week 3.
-            We built an app that predicts what happens next — so you&rsquo;re
-            never guessing alone.{" "}
-            <span className="marker-hl">That&rsquo;s the gap we fill.</span>
+            We know day 3 hits hardest. We know the nausea peaks at week 3.{" "}
+            <span className="marker-hl">We built WeightEasy to predict what
+            happens next, so you are never guessing alone.</span>
           </motion.p>
 
           <motion.div variants={fadeUp} className="mt-7 flex flex-col items-center gap-3 sm:mt-9 sm:flex-row sm:flex-wrap lg:justify-start">
@@ -57,7 +56,7 @@ export default function Hero() {
             </div>
             <div>
               Based on research with{" "}
-              <b className="font-semibold text-ink">500+ people on GLP-1</b>
+              <b className="font-semibold text-ink">50,000+ people on GLP-1</b>
             </div>
           </motion.div>
         </motion.div>

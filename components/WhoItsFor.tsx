@@ -7,15 +7,15 @@ const types = [
   {
     photo:
       "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=480&fit=crop&crop=faces&q=80",
-    name: "Laura, day 3",
+    name: "Laura, 3 days",
     title: "Just prescribed",
     body:
       "You got the script. You left the office with questions. We’ll walk you through week one, hour by hour if you need it.",
   },
   {
     photo:
-      "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=400&h=480&fit=crop&crop=faces&q=80",
-    name: "Priya, 7 mo",
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=480&fit=crop&crop=faces&q=80",
+    name: "James, 3 wk",
     title: "Ramping up doses",
     body:
       "Every titration changes your appetite, your energy, your sleep. We’ll adjust your plan at every step, not every quarter.",
@@ -30,8 +30,8 @@ const types = [
   },
   {
     photo:
-      "https://images.unsplash.com/photo-1504257432389-52343af06ae3?w=400&h=480&fit=crop&crop=faces&q=80",
-    name: "James, 14 mo",
+      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=480&fit=crop&crop=faces&q=80",
+    name: "Merke, 14 mo",
     title: "Coming off GLP-1",
     body:
       "The hardest part: protecting your progress after the medication. We have a 12-week transition plan for exactly this.",

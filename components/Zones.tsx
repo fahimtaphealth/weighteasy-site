@@ -81,10 +81,10 @@ export default function Zones() {
           title={
             <>
               WeightEasy helps you{" "}
-              <span className="text-accent">every day of the cycle.</span>
+              <span className="text-accent">every day of your GLP-1 dose cycle.</span>
             </>
           }
-          body="The engine underneath WeightEasy understands the pharmacokinetics of your medication and maps each day of your cycle to one of six zones. Your coach, meals, and reminders shift automatically."
+          body="Some days you're starving. Some days food is the enemy. WeightEasy knows the difference — and shifts your meals, coaching, and reminders to match."
         />
       </div>
 

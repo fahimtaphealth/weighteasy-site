@@ -4,6 +4,17 @@ import { motion } from "framer-motion";
 import SectionHead from "./SectionHead";
 import { fadeUp, stagger, viewportOnce } from "@/lib/motion";
 
+const remedies = [
+  { emoji: "🍵", name: "Ginger Tea", tip: "Sip slowly to calm stomach lining." },
+  { emoji: "🧂", name: "Saltine Crackers", tip: "Dry carbs to absorb acidity." },
+  { emoji: "🌿", name: "Peppermint Tea", tip: "Eases trapped gas and bloating." },
+  { emoji: "🍳", name: "Protein Breakfast", tip: "Steadies energy for the whole day." },
+  { emoji: "🫐", name: "Chia Seed Pudding", tip: "Fiber + hydration in one bowl." },
+  { emoji: "🥜", name: "Almonds", tip: "A small handful neutralizes stomach acid." },
+  { emoji: "🍌", name: "Banana", tip: "Natural antacid, gentle on your stomach." },
+  { emoji: "🍧", name: "Frozen Fruit", tip: "Cold + bland, easy to keep down." },
+];
+
 /* ── Figma asset URLs (valid for 7 days) ── */
 const imgScreen = "https://www.figma.com/api/mcp/asset/95cd8321-3000-47d6-8400-801871450bc9";
 const imgIphoneOverlay1 = "https://www.figma.com/api/mcp/asset/a6db565c-bb94-4f0b-9bae-c4354d425464";
@@ -31,7 +42,7 @@ function DoseTrackingCard() {
           Tracking doses made easy
         </h3>
         <p className="mt-2 text-[0.95rem] leading-[1.55] text-white/60">
-          Track your injection, fullness window, nausea level and mood in 10 seconds.
+          Tap your dose, weight, mood. Done. We figure out the rest for you before it happens.
         </p>
       </div>
 
@@ -225,7 +236,7 @@ function TrackWeightIconCard() {
         Track your weight
       </h3>
       <p className="text-[0.95rem] leading-[1.55] text-muted">
-        Log your weight and discover trends, not noise — we smooth the daily swings. Watch your weight go down.
+        Stop the daily scale drama. We nudge you according to your dose cycle, same time, same conditions — so the trend is real.
       </p>
     </motion.article>
   );
@@ -257,7 +268,7 @@ function FitnessIconCard() {
         Fitness that fits your cycle
       </h3>
       <p className="text-[0.95rem] leading-[1.55] text-muted">
-        Strength on your best days, gentle walks after a dose. Protein targets that actually move.
+        Strength training on your best days, gentle walks after a dose. Protein targets that actually move.
       </p>
     </motion.article>
   );
@@ -318,7 +329,7 @@ function SideEffectsCard() {
           Manage side effects
         </h3>
         <p className="mt-2 text-[0.95rem] leading-[1.55] text-muted">
-          Track your injection, fullness window, nausea level and mood in 10 seconds.
+          Tap what you&apos;re feeling. Get a fix in seconds — ginger tea for nausea, crackers for heartburn. Real relief, no Reddit.
         </p>
       </div>
 
@@ -342,14 +353,17 @@ function SideEffectsCard() {
         />
       </div>
 
-      {/* Remedy cards — peek row, shows ~1.5 cards on mobile, flush right on desktop */}
+      {/* Remedy cards — sliding marquee animation */}
       <div className="absolute bottom-[40px] left-[200px] right-0 z-10 overflow-hidden sm:left-[240px] md:left-[300px]">
-        <div className="flex gap-3">
-          {[
-            { emoji: "🍵", name: "Ginger Tea", tip: "Sip slowly to calm stomach lining." },
-            { emoji: "🧂", name: "Saltine Crackers", tip: "Dry carbs to absorb acidity." },
-            { emoji: "🧂", name: "Saltine Crackers", tip: "Dry carbs to absorb acidity." },
-          ].map((item, i) => (
+        <div
+          className="flex gap-3"
+          style={{
+            animation: "slideRemedies 18s linear infinite",
+            width: "max-content",
+          }}
+        >
+          {/* Double the items for seamless looping */}
+          {[...remedies, ...remedies].map((item, i) => (
             <div
               key={i}
               className="flex-shrink-0 w-[140px] rounded-[16px] bg-white border border-[#dce1e8] p-4"

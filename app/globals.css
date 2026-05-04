@@ -129,6 +129,12 @@ body {
   padding: 0 2px;
 }
 
+/* sliding remedies marquee */
+@keyframes slideRemedies {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 /* wiggle anim for sticky notes on hover */
 @keyframes gentle-wiggle {
   0%, 100% { transform: rotate(var(--r, -3deg)); }

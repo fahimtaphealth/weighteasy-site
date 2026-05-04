@@ -5,24 +5,24 @@ import { stagger, fadeUp, viewportOnce } from "@/lib/motion";
 
 const items = [
   {
-    q: "\u201cThey prescribed it without explaining why I was on such a low dose.\u201d",
-    a: "A 15-minute telehealth call, a prescription, then silence. When the nausea hit on day four, the portal took 72 hours to reply. She figured it out alone.",
+    q: "\u201cMy doctor prescribed it. Then disappeared.\u201d",
+    a: "Day four, nausea hit. Her clinic portal took 72 hours to reply. With WeightEasy, she\u2019d have had an answer in minutes.",
     label: "the hand-off",
     who: "Meagan, Austin",
     photo:
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=160&h=160&fit=crop&crop=faces&q=80",
   },
   {
-    q: "\u201cI had no idea if what I was feeling was normal.\u201d",
-    a: "Is this the dose wearing off or am I getting sick? Should I skip tomorrow&rsquo;s shot? He spent two hours on Reddit at 1am. We&rsquo;ve all done this.",
+    q: "\u201cI couldn\u2019t reach my doctor. So I asked Reddit.\u201d",
+    a: "Two hours sorting strangers\u2019 opinions from facts at 1am. WeightEasy gives medically-grounded answers in seconds \u2014 any hour.",
     label: "the 1am google",
     who: "Brian, Cleveland",
     photo:
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=160&h=160&fit=crop&crop=faces&q=80",
   },
   {
-    q: "\u201cNothing I was eating made sense for how my body felt.\u201d",
-    a: "The meal plan said &ldquo;grilled chicken and rice&rdquo; on dose day. She couldn&rsquo;t look at food for six hours. Generic plans ignore that your body runs on a cycle.",
+    q: "\u201cThe clinic\u2019s meal plan didn\u2019t match how I felt.\u201d",
+    a: "Grilled chicken and rice on dose day \u2014 she couldn\u2019t eat for six hours. WeightEasy tunes meals to your dose cycle.",
     label: "the food problem",
     who: "Tricia, Portland",
     photo:
@@ -35,17 +35,16 @@ export default function SupportGap() {
     <section className="bg-bg py-[100px]">
       <div className="container-x">
         <div className="mx-auto max-w-[760px]">
-          <span className="eyebrow">The Problem</span>
           <h2 className="mt-3">
-            Filling the gap{" "}
+            We fill the gap{" "}
             <span className="text-accent">between</span> your
             doctor visits
           </h2>
           <p className="mt-5 max-w-[600px] text-muted">
-            We sat down with many people on GLP-1s. No scripts, no leading
-            questions, no &ldquo;what features would you want.&rdquo; Just:
-            &ldquo;how&rsquo;s it going?&rdquo; Three things came up in every
-            conversation.
+            The prescription is the easy part. The questions that come
+            after &mdash; at 1am, on day four, or at the dinner
+            table &mdash; are where people are alone. That&rsquo;s where we
+            come in.
           </p>
         </div>
 
