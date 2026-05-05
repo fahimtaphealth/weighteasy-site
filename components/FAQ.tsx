@@ -7,10 +7,6 @@ import { fadeUp, stagger, viewportOnce } from "@/lib/motion";
 
 const faqs = [
   {
-    q: "What is a GLP-1 medication?",
-    a: "GLP-1 medications (like Ozempic, Wegovy, Mounjaro, and Zepbound) are prescription drugs that help regulate appetite and blood sugar. They work by mimicking a hormone your body naturally produces, helping you feel full longer and reducing cravings.",
-  },
-  {
     q: "What does WeightEasy do?",
     a: "WeightEasy is a companion app for people on GLP-1 medications. It tracks your dose cycle, adjusts your meals and fitness to match how your body feels each day, manages side effects with real remedies, and gives you an AI coach available any time.",
   },
@@ -19,8 +15,16 @@ const faqs = [
     a: "Yes. WeightEasy is designed to work alongside a GLP-1 medication you already have prescribed. We don't prescribe or sell medication.",
   },
   {
-    q: "What side effects can I expect on GLP-1?",
-    a: "Common side effects include nausea, fatigue, constipation, and reduced appetite - especially in the first few weeks or after a dose increase. Most people find these manageable over time. WeightEasy helps you track and manage them day by day.",
+    q: "Do I get symptom dependent guidance on the platform?",
+    a: "Yes. When you log a symptom like nausea, fatigue, or constipation, WeightEasy immediately suggests remedies tailored to what you're feeling and where you are in your dose cycle. The guidance updates as your symptoms change.",
+  },
+  {
+    q: "How does the fitness plan work on the platform?",
+    a: "Your fitness plan adapts to your dose cycle. On days when energy is low, we suggest gentle walks or stretching. On your stronger days, we push strength training and higher protein targets. Everything adjusts automatically as your body responds.",
+  },
+  {
+    q: "How can the AI coach help me in my journey?",
+    a: "The AI coach is available 24/7 and trained specifically on GLP-1 medications. It can answer questions about your symptoms, suggest meal swaps, explain what to expect at each dose level, and help you stay on track when things get tough.",
   },
   {
     q: "How does the meal plan work?",
@@ -28,7 +32,7 @@ const faqs = [
   },
   {
     q: "How does the free trial work?",
-    a: "You get 7 days of full access to every feature. Cancel anytime, no charge. After that, it's $9.99/month or $49.99/year. If you try it for 90 days and it's not for you, we refund you - no questions.",
+    a: "You get 7 days of full access to every feature. Cancel anytime, no charge. After that, it's $9.99/month or $49.99/year.",
   },
   {
     q: "Is my health data private?",
