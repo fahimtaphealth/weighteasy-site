@@ -10,8 +10,6 @@ const features = [
   "Cycle-aware meal plans",
   "Dose, symptom, food & fitness tracking",
   "Weekly progress reviews",
-  "7-day free trial",
-  "90-day money-back guarantee",
 ];
 
 const plans = [
