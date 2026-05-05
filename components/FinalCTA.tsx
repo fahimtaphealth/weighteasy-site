@@ -61,12 +61,15 @@ export default function FinalCTA() {
           >
             Start the 7 days →
           </motion.a>
-          <motion.p
+          <motion.div
             variants={fadeUp}
-            className="mx-auto mt-6 hand text-[1.2rem] text-white/70"
+            className="mt-9 flex items-center justify-center gap-4"
           >
-            no credit card for the first 48 hours.
-          </motion.p>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <a href="#"><img src="https://www.figma.com/api/mcp/asset/71782312-95d6-4b95-8e3a-8fd77e67e8c6" alt="Download on the App Store" className="h-[48px] w-auto" /></a>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <a href="#"><img src="https://www.figma.com/api/mcp/asset/9a58a29f-381e-44c5-bcfc-5220db8d03f2" alt="Get it on Google Play" className="h-[48px] w-auto" /></a>
+          </motion.div>
           <motion.p
             variants={fadeUp}
             className="mx-auto mt-10 max-w-[520px] text-[0.82rem] text-white/45"
