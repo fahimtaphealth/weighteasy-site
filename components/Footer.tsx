@@ -12,7 +12,7 @@ export default function Footer() {
       }}
     >
       <div className="container-x">
-        <div className="grid gap-10 md:grid-cols-[1.3fr_1fr_1fr_1fr]">
+        <div className="grid gap-10 md:grid-cols-[1.3fr_1fr_1fr]">
           <div>
             <div className="mb-5">
               <Logo inverted />
@@ -25,9 +25,6 @@ export default function Footer() {
             { label: "How it works", href: "#story" },
             { label: "Features", href: "#features" },
             { label: "Pricing", href: "#pricing" },
-          ]} />
-          <FooterCol title="Company" links={[
-            { label: "About", href: "#" },
           ]} />
           <FooterCol title="Support" links={[
             { label: "FAQ", href: "#faq" },
