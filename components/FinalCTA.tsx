@@ -12,7 +12,7 @@ export default function FinalCTA() {
         <StickyNote rotate={-8} color="yellow">
           p.s. we read every email.
           <br />
-          meagan@weighteasy.app
+          care@weighteasy.app
         </StickyNote>
       </div>
       <div className="pointer-events-none absolute right-[7%] top-[22%] hidden md:block">

@@ -87,7 +87,7 @@ export default function FounderNote() {
               <div className="text-[0.86rem] text-muted">
                 <b className="font-display font-bold text-ink">Meagan Ruiz</b>,
                 founder
-                <div className="text-muted-2">meagan@weighteasy.app · Austin, TX</div>
+                <div className="text-muted-2">care@weighteasy.app · Austin, TX</div>
               </div>
             </motion.div>
           </div>
