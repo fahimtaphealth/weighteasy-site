@@ -104,14 +104,14 @@ export default function CaseStudy() {
           initial="hidden"
           whileInView="show"
           viewport={viewportOnce}
-          className="flex gap-5 overflow-x-auto pb-6 pt-2 px-6 snap-x snap-mandatory scrollbar-hide md:justify-center md:overflow-visible md:px-0"
+          className="flex gap-5 overflow-x-auto pb-6 pt-2 px-6 snap-x snap-mandatory scrollbar-hide lg:justify-center lg:overflow-visible lg:px-0"
           style={{ overscrollBehaviorX: "contain" }}
         >
           {chapters.map((c, i) => (
             <motion.div
               key={c.when}
               variants={fadeUp}
-              className="relative flex-shrink-0 snap-start flex flex-col gap-3 rounded-[22px] border border-line bg-white p-7 md:flex-shrink"
+              className="relative flex-shrink-0 snap-start flex flex-col gap-3 rounded-[22px] border border-line bg-white p-7 lg:flex-shrink"
               style={{ width: "min(320px, 75vw)" }}
             >
               <div className="flex items-center justify-between">
@@ -131,14 +131,14 @@ export default function CaseStudy() {
               {/* Dashed connector */}
               {i < chapters.length - 1 && (
                 <div
-                  className="absolute -right-3.5 top-1/2 hidden w-5 border-t-2 border-dashed border-line md:block"
+                  className="absolute -right-3.5 top-1/2 hidden w-5 border-t-2 border-dashed border-line lg:block"
                   aria-hidden
                 />
               )}
             </motion.div>
           ))}
           {/* End spacer so last card can scroll fully into view */}
-          <div className="flex-shrink-0 w-6 md:hidden" aria-hidden />
+          <div className="flex-shrink-0 w-6 lg:hidden" aria-hidden />
         </motion.div>
 
         {/* Scroll indicator */}
