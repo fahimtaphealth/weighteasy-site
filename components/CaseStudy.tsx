@@ -104,7 +104,7 @@ export default function CaseStudy() {
           initial="hidden"
           whileInView="show"
           viewport={viewportOnce}
-          className="flex gap-5 overflow-x-auto pb-6 pt-2 pl-6 snap-x snap-mandatory scrollbar-hide md:justify-center md:overflow-visible md:pl-0"
+          className="flex gap-5 overflow-x-auto pb-6 pt-2 px-6 snap-x snap-mandatory scrollbar-hide md:justify-center md:overflow-visible md:px-0"
           style={{ overscrollBehaviorX: "contain" }}
         >
           {chapters.map((c, i) => (

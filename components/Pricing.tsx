@@ -59,6 +59,7 @@ export default function Pricing() {
           {plans.map((p) => (
             <motion.div
               key={p.name}
+              id={p.highlight ? "yearly" : undefined}
               variants={fadeUp}
               whileHover={{ y: -4 }}
               className={cn(
