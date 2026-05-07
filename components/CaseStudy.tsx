@@ -98,13 +98,13 @@ export default function CaseStudy() {
       </div>
 
       {/* Horizontal scrolling timeline - outside container-x to prevent edge clipping */}
-      <div className="relative mt-10 max-w-[1280px] mx-auto">
+      <div className="relative mt-10 max-w-[1280px] mx-auto px-6">
         <motion.div
           variants={stagger(0.1, 0.1)}
           initial="hidden"
           whileInView="show"
           viewport={viewportOnce}
-          className="flex gap-5 overflow-x-auto pb-6 pt-2 px-6 snap-x snap-mandatory scrollbar-hide"
+          className="flex gap-5 overflow-x-auto pb-6 pt-2 snap-x snap-mandatory scrollbar-hide"
           style={{ overscrollBehaviorX: "contain" }}
         >
           {chapters.map((c, i) => (

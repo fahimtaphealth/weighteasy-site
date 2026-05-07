@@ -76,8 +76,9 @@ export default function Testimonials() {
       </div>
 
       {/* Scroll container — full-width so cards aren't clipped by container-x padding */}
+      <div className="relative mx-auto mt-16 max-w-[1280px] px-6">
       <div
-        className="relative mx-auto mt-16 flex max-w-[1280px] items-start gap-5 overflow-x-auto pb-12 pt-4 px-6 snap-x snap-mandatory scrollbar-hide md:flex-nowrap md:gap-8"
+        className="flex items-start gap-5 overflow-x-auto pb-12 pt-4 snap-x snap-mandatory scrollbar-hide md:flex-nowrap md:gap-8"
         style={{ overscrollBehaviorX: "contain" }}
       >
         {/* Right padding spacer on mobile — ensures last card isn't flush against edge */}
@@ -132,6 +133,7 @@ export default function Testimonials() {
         ))}
         {/* End spacer so last card can scroll fully into view */}
         <div className="flex-shrink-0 w-1" aria-hidden />
+      </div>
       </div>
 
       <div className="container-x">
