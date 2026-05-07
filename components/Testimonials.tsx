@@ -75,14 +75,14 @@ export default function Testimonials() {
         </div>
       </div>
 
-      {/* Scroll container — full-width so cards aren't clipped by container-x padding */}
-      <div className="relative mx-auto mt-16 max-w-[1200px]">
+      {/* Scroll container — full-width so overflow doesn't clip */}
+      <div className="relative mt-16">
       <div
         className="flex items-start gap-5 overflow-x-auto pb-12 pt-4 snap-x snap-mandatory scrollbar-hide md:flex-nowrap md:gap-8"
         style={{ overscrollBehaviorX: "contain" }}
       >
-        {/* Left spacer */}
-        <div className="flex-shrink-0 w-6" aria-hidden />
+        {/* Left spacer — aligns with container-x */}
+        <div className="flex-shrink-0" style={{ width: "max(calc((100vw - 1200px) / 2 + 24px), 24px)" }} aria-hidden />
         {quotes.map((q, i) => (
           <motion.div
             key={q.name}
@@ -132,8 +132,8 @@ export default function Testimonials() {
             </div>
           </motion.div>
         ))}
-        {/* End spacer so last card can scroll fully into view */}
-        <div className="flex-shrink-0 w-6" aria-hidden />
+        {/* Right spacer — aligns with container-x */}
+        <div className="flex-shrink-0" style={{ width: "max(calc((100vw - 1200px) / 2 + 24px), 24px)" }} aria-hidden />
       </div>
       </div>
 

@@ -97,8 +97,8 @@ export default function CaseStudy() {
 
       </div>
 
-      {/* Horizontal scrolling timeline - outside container-x to prevent edge clipping */}
-      <div className="relative mt-10 max-w-[1200px] mx-auto">
+      {/* Horizontal scrolling timeline — full-width so overflow doesn't clip */}
+      <div className="relative mt-10">
         <motion.div
           variants={stagger(0.1, 0.1)}
           initial="hidden"
@@ -107,8 +107,8 @@ export default function CaseStudy() {
           className="flex gap-5 overflow-x-auto pb-6 pt-2 snap-x snap-mandatory scrollbar-hide"
           style={{ overscrollBehaviorX: "contain" }}
         >
-          {/* Left spacer */}
-          <div className="flex-shrink-0 w-6" aria-hidden />
+          {/* Left spacer — aligns with container-x */}
+          <div className="flex-shrink-0" style={{ width: "max(calc((100vw - 1200px) / 2 + 24px), 24px)" }} aria-hidden />
           {chapters.map((c, i) => (
             <motion.div
               key={c.when}
@@ -139,8 +139,8 @@ export default function CaseStudy() {
               )}
             </motion.div>
           ))}
-          {/* End spacer so last card can scroll fully into view */}
-          <div className="flex-shrink-0 w-6" aria-hidden />
+          {/* Right spacer — aligns with container-x */}
+          <div className="flex-shrink-0" style={{ width: "max(calc((100vw - 1200px) / 2 + 24px), 24px)" }} aria-hidden />
         </motion.div>
 
         {/* Scroll indicator */}
