@@ -68,7 +68,7 @@ function Item({ q, a }: { q: string; a: string }) {
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="overflow-hidden"
           >
-            <p className="pt-3 text-[0.98rem]">{a}</p>
+            <p className="pt-3 pb-5 text-[0.98rem]">{a}</p>
           </motion.div>
         )}
       </AnimatePresence>
