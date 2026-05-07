@@ -98,13 +98,13 @@ export default function CaseStudy() {
       </div>
 
       {/* Horizontal scrolling timeline - outside container-x to prevent edge clipping */}
-      <div className="relative mt-10 max-w-[1280px] mx-auto px-6">
+      <div className="relative mt-10 max-w-[1280px] mx-auto">
         <motion.div
           variants={stagger(0.1, 0.1)}
           initial="hidden"
           whileInView="show"
           viewport={viewportOnce}
-          className="flex gap-5 overflow-x-auto pb-6 pt-2 snap-x snap-mandatory scrollbar-hide"
+          className="flex gap-5 overflow-x-auto pb-6 pt-2 pl-6 snap-x snap-mandatory scrollbar-hide"
           style={{ overscrollBehaviorX: "contain" }}
         >
           {chapters.map((c, i) => (
@@ -138,7 +138,7 @@ export default function CaseStudy() {
             </motion.div>
           ))}
           {/* End spacer so last card can scroll fully into view */}
-          <div className="flex-shrink-0 w-1" aria-hidden />
+          <div className="flex-shrink-0 w-6" aria-hidden />
         </motion.div>
 
         {/* Scroll indicator */}
