@@ -22,7 +22,7 @@ export default function Nav() {
           <a className="text-[0.92rem] font-medium text-muted hover:text-ink transition" href="#faq">Questions</a>
         </div>
         <div className="flex items-center gap-3">
-          <a href="#pricing" className="btn btn-primary">Try it free</a>
+          <a href="#yearly" className="btn btn-primary">Try it free</a>
         </div>
       </div>
     </motion.nav>

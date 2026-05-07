@@ -59,12 +59,13 @@ export default function Pricing() {
           {plans.map((p) => (
             <motion.div
               key={p.name}
+              id={p.highlight ? "yearly" : undefined}
               variants={fadeUp}
               whileHover={{ y: -4 }}
               className={cn(
                 "relative rounded-[24px] border bg-white p-9",
                 p.highlight
-                  ? "border-2 border-indigo shadow-[0_8px_32px_-12px_rgba(79,70,229,0.25)]"
+                  ? "scroll-mt-[90px] border-2 border-indigo shadow-[0_8px_32px_-12px_rgba(79,70,229,0.25)]"
                   : "border-line",
               )}
             >

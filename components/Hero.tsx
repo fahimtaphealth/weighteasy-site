@@ -31,7 +31,7 @@ We built WeightEasy to <span className="marker-hl">predict what
           </motion.p>
 
           <motion.div variants={fadeUp} className="mt-7 flex flex-col items-center gap-3 sm:mt-9 sm:flex-row sm:flex-wrap lg:justify-start">
-            <a href="#pricing" className="btn btn-primary w-full sm:w-auto">Try it for 7 days, free</a>
+            <a href="#yearly" className="btn btn-primary w-full sm:w-auto">Try it for 7 days, free</a>
             <a href="#story" className="btn btn-ghost w-full sm:w-auto">Read Meagan&rsquo;s story →</a>
           </motion.div>
 
