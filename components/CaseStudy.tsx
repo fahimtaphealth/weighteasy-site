@@ -98,7 +98,7 @@ export default function CaseStudy() {
       </div>
 
       {/* Horizontal scrolling timeline - outside container-x to prevent edge clipping */}
-      <div className="relative mt-10 max-w-[1280px] mx-auto">
+      <div className="relative mt-10 max-w-[1200px] mx-auto">
         <motion.div
           variants={stagger(0.1, 0.1)}
           initial="hidden"

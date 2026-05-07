@@ -76,7 +76,7 @@ export default function Testimonials() {
       </div>
 
       {/* Scroll container — full-width so cards aren't clipped by container-x padding */}
-      <div className="relative mx-auto mt-16 max-w-[1280px]">
+      <div className="relative mx-auto mt-16 max-w-[1200px]">
       <div
         className="flex items-start gap-5 overflow-x-auto pb-12 pt-4 pl-6 snap-x snap-mandatory scrollbar-hide md:flex-nowrap md:gap-8"
         style={{ overscrollBehaviorX: "contain" }}
