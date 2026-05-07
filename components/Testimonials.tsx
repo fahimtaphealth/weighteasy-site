@@ -77,7 +77,7 @@ export default function Testimonials() {
 
       {/* Scroll container — full-width so cards aren't clipped by container-x padding */}
       <div
-        className="relative mx-auto mt-16 flex max-w-[1280px] items-start gap-5 overflow-x-auto pb-12 pt-4 px-6 snap-x snap-mandatory scrollbar-hide md:flex-nowrap lg:justify-center lg:gap-8 lg:overflow-visible lg:pb-0 lg:pt-0 lg:px-0 lg:snap-none"
+        className="relative mx-auto mt-16 flex max-w-[1280px] items-start gap-5 overflow-x-auto pb-12 pt-4 px-6 snap-x snap-mandatory scrollbar-hide md:flex-nowrap md:gap-8"
         style={{ overscrollBehaviorX: "contain" }}
       >
         {/* Right padding spacer on mobile — ensures last card isn't flush against edge */}
@@ -89,7 +89,7 @@ export default function Testimonials() {
             viewport={viewportOnce}
             transition={{ duration: 0.7, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
             whileHover={{ rotate: 0, y: -6, zIndex: 20 }}
-            className="relative flex-shrink-0 snap-start lg:flex-shrink"
+            className="relative flex-shrink-0 snap-start"
             style={{
               width: "75vw",
               maxWidth: 300,
@@ -131,7 +131,7 @@ export default function Testimonials() {
           </motion.div>
         ))}
         {/* End spacer so last card can scroll fully into view */}
-        <div className="flex-shrink-0 w-6 lg:hidden" aria-hidden />
+        <div className="flex-shrink-0 w-1" aria-hidden />
       </div>
 
       <div className="container-x">
