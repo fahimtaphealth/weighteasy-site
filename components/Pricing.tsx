@@ -37,7 +37,7 @@ const plans = [
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="bg-bg py-[100px]">
+    <section id="pricing" className="bg-bg py-[100px] scroll-mt-[80px]">
       <div className="container-x">
         <SectionHead
           eyebrow="Simple pricing"
@@ -59,7 +59,6 @@ export default function Pricing() {
           {plans.map((p) => (
             <motion.div
               key={p.name}
-              id={p.highlight ? "yearly" : undefined}
               variants={fadeUp}
               whileHover={{ y: -4 }}
               className={cn(

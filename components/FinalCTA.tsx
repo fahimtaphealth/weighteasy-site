@@ -56,7 +56,7 @@ export default function FinalCTA() {
             variants={fadeUp}
             whileHover={{ scale: 1.03, y: -2 }}
             whileTap={{ scale: 0.98 }}
-            href="#yearly"
+            href="#pricing"
             className="btn mt-9 bg-white px-8 py-4 text-base text-ink hover:bg-bg"
           >
             Start the 7 days →
