@@ -65,7 +65,7 @@ export default function Pricing() {
               className={cn(
                 "relative rounded-[24px] border bg-white p-9",
                 p.highlight
-                  ? "scroll-mt-[340px] border-2 border-indigo shadow-[0_8px_32px_-12px_rgba(79,70,229,0.25)]"
+                  ? "scroll-mt-[310px] border-2 border-indigo shadow-[0_8px_32px_-12px_rgba(79,70,229,0.25)]"
                   : "border-line",
               )}
             >
