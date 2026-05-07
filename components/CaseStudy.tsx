@@ -104,9 +104,11 @@ export default function CaseStudy() {
           initial="hidden"
           whileInView="show"
           viewport={viewportOnce}
-          className="flex gap-5 overflow-x-auto pb-6 pt-2 pl-6 snap-x snap-mandatory scrollbar-hide"
+          className="flex gap-5 overflow-x-auto pb-6 pt-2 snap-x snap-mandatory scrollbar-hide"
           style={{ overscrollBehaviorX: "contain" }}
         >
+          {/* Left spacer */}
+          <div className="flex-shrink-0 w-6" aria-hidden />
           {chapters.map((c, i) => (
             <motion.div
               key={c.when}
