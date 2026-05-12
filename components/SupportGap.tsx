@@ -45,28 +45,6 @@ const items = [
   },
 ];
 
-function ArrowDown() {
-  return (
-    <div className="flex justify-center py-3">
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 20 20"
-        fill="none"
-        className="text-muted-2"
-      >
-        <path
-          d="M10 4v12m0 0l-4-4m4 4l4-4"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    </div>
-  );
-}
-
 export default function SupportGap() {
   return (
     <section className="bg-bg py-[100px]">
@@ -93,9 +71,13 @@ export default function SupportGap() {
           className="mt-14 grid gap-6 md:grid-cols-3"
         >
           {items.map((item) => (
-            <motion.div key={item.num} variants={fadeUp} className="flex flex-col">
-              {/* ── Problem card ── */}
-              <div className="rounded-[16px] border border-line bg-white p-7">
+            <motion.div
+              key={item.num}
+              variants={fadeUp}
+              className="flex flex-col overflow-hidden rounded-[16px] border border-line"
+            >
+              {/* ── Top: Problem (gray bg) ── */}
+              <div className="bg-bg p-7">
                 <div className="text-[0.75rem] font-semibold uppercase tracking-[0.08em] text-muted-2">
                   &mdash; Problem {item.num} &middot; {item.label}
                 </div>
@@ -117,11 +99,27 @@ export default function SupportGap() {
                 </div>
               </div>
 
-              {/* ── Arrow ── */}
-              <ArrowDown />
+              {/* ── Divider with arrow ── */}
+              <div className="flex items-center justify-center border-t border-line bg-bg py-2">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  className="text-muted-2"
+                >
+                  <path
+                    d="M10 4v12m0 0l-4-4m4 4l4-4"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
 
-              {/* ── Solution card ── */}
-              <div className="flex flex-1 flex-col rounded-[16px] border border-line bg-white p-7">
+              {/* ── Bottom: Solution (white bg) ── */}
+              <div className="flex flex-1 flex-col bg-white p-7">
                 <div className="text-[0.75rem] font-semibold uppercase tracking-[0.08em] text-accent">
                   &mdash; What we do
                 </div>
