@@ -18,7 +18,7 @@ const items = [
   },
   {
     num: "2",
-    label: "The 1am google",
+    label: "THE 1AM GOOGLE",
     quote:
       "“1am, doctor’s office closed. Two hours on Reddit and I still had no idea if I should be worried.”",
     who: "Tricia, Portland",
@@ -72,7 +72,7 @@ export default function SupportGap() {
             <motion.div
               key={item.num}
               variants={fadeUp}
-              className="relative flex flex-col overflow-hidden rounded-[24px] border border-line"
+              className="flex flex-col overflow-hidden rounded-[24px] border border-line"
               style={{
                 boxShadow:
                   "0 2px 3px rgba(0,0,0,0.08), 0 1px 1px rgba(0,0,0,0.05)",
@@ -80,7 +80,7 @@ export default function SupportGap() {
             >
               {/* ── Top: Problem (gray bg) ── */}
               <div className="bg-[#f2f5f9] p-8">
-                <p className="text-[0.875rem] font-medium tracking-[-0.5px] text-muted-2">
+                <p className="text-[0.875rem] font-medium uppercase tracking-[0.5px] text-muted-2">
                   Problem {item.num} &middot; {item.label}
                 </p>
                 <p className="mt-3 text-[1rem] leading-[1.5] text-muted">
@@ -102,14 +102,14 @@ export default function SupportGap() {
               </div>
 
               {/* ── Floating arrow button ── */}
-              <div
-                className="absolute left-1/2 z-10 flex h-[33px] w-[33px] -translate-x-1/2 items-center justify-center rounded-full bg-white"
-                style={{
-                  top: "calc(50% - 16px)",
-                  boxShadow:
-                    "0 1.5px 2.25px rgba(0,0,0,0.08), 0 0.75px 0.75px rgba(0,0,0,0.05)",
-                }}
-              >
+              <div className="relative z-10 -mb-[16px] -mt-[17px] flex justify-center">
+                <div
+                  className="flex h-[33px] w-[33px] items-center justify-center rounded-full bg-white"
+                  style={{
+                    boxShadow:
+                      "0 1.5px 2.25px rgba(0,0,0,0.08), 0 0.75px 0.75px rgba(0,0,0,0.05)",
+                  }}
+                >
                 <svg
                   width="18"
                   height="18"
@@ -125,6 +125,7 @@ export default function SupportGap() {
                     strokeLinejoin="round"
                   />
                 </svg>
+                </div>
               </div>
 
               {/* ── Bottom: Solution (white bg) ── */}
