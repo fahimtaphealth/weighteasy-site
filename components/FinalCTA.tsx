@@ -66,9 +66,9 @@ export default function FinalCTA() {
             className="mt-9 flex items-center justify-center gap-4"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <a href="#"><img src="https://www.figma.com/api/mcp/asset/71782312-95d6-4b95-8e3a-8fd77e67e8c6" alt="Download on the App Store" className="h-[48px] w-auto" /></a>
+            <a href="#"><img src="https://www.figma.com/api/mcp/asset/6ce4f983-24f2-4b70-86b0-582c8966de54" alt="Download on the App Store" className="h-[48px] w-auto" /></a>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <a href="#"><img src="https://www.figma.com/api/mcp/asset/9a58a29f-381e-44c5-bcfc-5220db8d03f2" alt="Get it on Google Play" className="h-[48px] w-auto" /></a>
+            <a href="#"><img src="https://www.figma.com/api/mcp/asset/564617aa-208a-4cd7-8a84-c316622c7641" alt="Get it on Google Play" className="h-[48px] w-auto" /></a>
           </motion.div>
           <motion.p
             variants={fadeUp}

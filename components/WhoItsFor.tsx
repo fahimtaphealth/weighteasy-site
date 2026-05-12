@@ -3,11 +3,11 @@
 import { motion } from "framer-motion";
 import { fadeUp, stagger, viewportOnce } from "@/lib/motion";
 
-/* Figma asset URLs (valid for 7 days) */
-const imgLaura = "https://www.figma.com/api/mcp/asset/59bd093b-1499-42ec-891f-dc38927ecc60";
-const imgJames = "https://www.figma.com/api/mcp/asset/64126df7-c98d-433e-adfc-18d88153ec05";
-const imgMarcus = "https://www.figma.com/api/mcp/asset/86cbc175-83f8-4b5c-be35-96ba8175bb90";
-const imgMerke = "https://www.figma.com/api/mcp/asset/bd7e1891-d4a7-43ef-b18b-3edeae371840";
+/* Figma asset URLs (refreshed 2026-05-12) */
+const imgLaura = "https://www.figma.com/api/mcp/asset/79238123-b69b-4f8e-936f-18ffaa30393c";
+const imgJames = "https://www.figma.com/api/mcp/asset/755fd6ed-adcd-44ea-85db-9a9bafb172be";
+const imgMarcus = "https://www.figma.com/api/mcp/asset/9ec09c16-a55f-4ebb-85d7-7d874113261b";
+const imgMerke = "https://www.figma.com/api/mcp/asset/8c49e1f9-776b-4763-831c-2bf53b6cd118";
 
 const types = [
   {

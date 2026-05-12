@@ -15,16 +15,16 @@ const remedies = [
   { emoji: "🍧", name: "Frozen Fruit", tip: "Cold + bland, easy to keep down." },
 ];
 
-/* ── Figma asset URLs (valid for 7 days) ── */
-const imgScreen = "https://www.figma.com/api/mcp/asset/95cd8321-3000-47d6-8400-801871450bc9";
-const imgIphoneOverlay1 = "https://www.figma.com/api/mcp/asset/a6db565c-bb94-4f0b-9bae-c4354d425464";
-const imgNutritionImageStacks = "https://www.figma.com/api/mcp/asset/d9ea55fb-957e-4707-ac1e-b3cce7dc7559";
-const imgFoodPhoto1 = "https://www.figma.com/api/mcp/asset/8a468fb9-48e4-4597-bb5d-362819306a8b";
-const imgFoodPhoto2 = "https://www.figma.com/api/mcp/asset/814fe641-1bd4-408a-b8d1-18dbea52e3e6";
-const imgScreen1 = "https://www.figma.com/api/mcp/asset/445a92ed-04a3-4d9f-b0fe-d08b0512ce81";
-const imgScreen2 = "https://www.figma.com/api/mcp/asset/f813ad40-09a6-45c5-bf3d-ddffae051c5d";
-const imgIconDinner = "https://www.figma.com/api/mcp/asset/8bf22073-16a6-48e5-a70f-a3c89bbb0473";
-const imgIconSteps = "https://www.figma.com/api/mcp/asset/f095ecd1-21ba-451c-abb1-b09f30a8a3db";
+/* ── Figma asset URLs (refreshed 2026-05-12) ── */
+const imgScreen = "https://www.figma.com/api/mcp/asset/bffacc2e-cdfe-4869-923a-08f02053b268";
+const imgIphoneOverlay1 = "https://www.figma.com/api/mcp/asset/a9ed1604-ff96-4fc7-80a9-7b0cd29606f8";
+const imgNutritionImageStacks = "https://www.figma.com/api/mcp/asset/efa509c9-2cd5-48c1-8864-27dda64d47d0";
+const imgFoodPhoto1 = "https://www.figma.com/api/mcp/asset/48d4ffbb-546c-46ae-904c-b2b8a85fd8b8";
+const imgFoodPhoto2 = "https://www.figma.com/api/mcp/asset/eb3c270d-0c48-4b46-afc3-b27705843e1b";
+const imgScreen1 = "https://www.figma.com/api/mcp/asset/f2d82591-2036-4bfd-9bd3-e77c763b74fc";
+const imgScreen2 = "https://www.figma.com/api/mcp/asset/a5099784-3368-49de-bfc8-5daefd4043d2";
+const imgIconDinner = "https://www.figma.com/api/mcp/asset/b20a503f-9caf-44c0-bed9-017329fe4ecc";
+const imgIconSteps = "https://www.figma.com/api/mcp/asset/5538bca9-9623-4be9-908f-c6c82a01c109";
 
 /* ── Row 1, Left: Tracking doses (dark teal card, wide - 717px in Figma) ── */
 function DoseTrackingCard() {
@@ -262,7 +262,7 @@ function FitnessIconCard() {
 }
 
 /* ── Row 3, Left: Weight chart (green card, narrow - 411px in Figma) ── */
-const imgTrackWeightCard = "https://www.figma.com/api/mcp/asset/831eceeb-8d34-4dab-ab3d-32e27a10176b";
+const imgTrackWeightCard = "https://www.figma.com/api/mcp/asset/ee5b2acd-d22f-4171-9875-45da9639b0da";
 
 function TrackWeightCard() {
   return (
