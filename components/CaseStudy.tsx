@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { fadeUp, stagger, viewportOnce } from "@/lib/motion";
 
@@ -37,6 +37,14 @@ const chapters = [
 
 export default function CaseStudy() {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [atBottom, setAtBottom] = useState(false);
+
+  const handleScroll = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const isBottom = el.scrollHeight - el.scrollTop - el.clientHeight < 20;
+    setAtBottom(isBottom);
+  }, []);
 
   const scrollDown = () => {
     scrollRef.current?.scrollBy({ top: 200, behavior: "smooth" });
@@ -128,6 +136,7 @@ export default function CaseStudy() {
             {/* Scrollable card container */}
             <div
               ref={scrollRef}
+              onScroll={handleScroll}
               className="flex h-full flex-col gap-6 overflow-y-auto pr-2 scrollbar-hide"
             >
               {chapters.map((c) => (
@@ -166,16 +175,18 @@ export default function CaseStudy() {
 
             {/* White gradient fade at bottom */}
             <div
-              className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[200px]"
+              className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[200px] transition-opacity duration-300"
               style={{
                 background: "linear-gradient(to bottom, rgba(255,255,255,0) 0%, white 80%)",
+                opacity: atBottom ? 0 : 1,
               }}
             />
 
             {/* Down arrow scroll button */}
             <button
               onClick={scrollDown}
-              className="absolute bottom-4 left-1/2 z-20 flex h-12 w-12 -translate-x-1/2 items-center justify-center rounded-full border border-[#bec5d2] bg-[#f2f5f9]"
+              className="absolute bottom-4 left-1/2 z-20 flex h-12 w-12 -translate-x-1/2 items-center justify-center rounded-full border border-[#bec5d2] bg-[#f2f5f9] transition-opacity duration-300"
+              style={{ opacity: atBottom ? 0 : 1, pointerEvents: atBottom ? "none" : "auto" }}
               style={{
                 boxShadow: "0 2px 3px rgba(0,0,0,0.08), 0 1px 1px rgba(0,0,0,0.05)",
               }}
