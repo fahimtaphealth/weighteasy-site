@@ -134,7 +134,7 @@ export default function CaseStudy() {
                 <motion.div
                   key={c.when}
                   variants={fadeUp}
-                  className="relative z-10 flex shrink-0 flex-col gap-1 rounded-[22px] border border-line bg-white p-7"
+                  className="relative flex shrink-0 flex-col gap-1 rounded-[22px] border border-line bg-white p-7"
                 >
                   <div className="flex items-center justify-between">
                     <span className="text-[1rem] font-semibold uppercase tracking-[1.5px] text-accent">
@@ -158,7 +158,7 @@ export default function CaseStudy() {
 
             {/* White gradient fade at bottom */}
             <div
-              className="pointer-events-none absolute inset-x-0 bottom-0 h-[160px]"
+              className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[200px]"
               style={{
                 background: "linear-gradient(to bottom, rgba(255,255,255,0) 0%, white 80%)",
               }}
