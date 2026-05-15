@@ -190,8 +190,9 @@ export default function CaseStudy() {
             <button
               onClick={scrollDown}
               className="absolute bottom-4 left-1/2 z-20 flex h-12 w-12 -translate-x-1/2 items-center justify-center rounded-full border border-[#bec5d2] bg-[#f2f5f9] transition-opacity duration-300"
-              style={{ opacity: atBottom ? 0 : 1, pointerEvents: atBottom ? "none" : "auto" }}
               style={{
+                opacity: atBottom ? 0 : 1,
+                pointerEvents: atBottom ? "none" : "auto",
                 boxShadow: "0 2px 3px rgba(0,0,0,0.08), 0 1px 1px rgba(0,0,0,0.05)",
               }}
               aria-label="Scroll to next story"
