@@ -38,12 +38,15 @@ const chapters = [
 export default function CaseStudy() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [atBottom, setAtBottom] = useState(false);
+  const [atTop, setAtTop] = useState(true);
 
   const handleScroll = useCallback(() => {
     const el = scrollRef.current;
     if (!el) return;
     const isBottom = el.scrollHeight - el.scrollTop - el.clientHeight < 20;
+    const isTop = el.scrollTop < 20;
     setAtBottom(isBottom);
+    setAtTop(isTop);
   }, []);
 
   const scrollDown = () => {
@@ -167,9 +170,10 @@ export default function CaseStudy() {
 
             {/* White gradient fade at top */}
             <div
-              className="pointer-events-none absolute inset-x-0 top-0 z-10 h-[200px]"
+              className="pointer-events-none absolute inset-x-0 top-0 z-10 h-[200px] transition-opacity duration-300"
               style={{
                 background: "linear-gradient(to top, rgba(255,255,255,0) 0%, white 80%)",
+                opacity: atTop ? 0 : 1,
               }}
             />
 
