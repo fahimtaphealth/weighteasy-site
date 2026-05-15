@@ -156,6 +156,14 @@ export default function CaseStudy() {
               <div className="shrink-0 h-16" aria-hidden />
             </div>
 
+            {/* White gradient fade at top */}
+            <div
+              className="pointer-events-none absolute inset-x-0 top-0 z-10 h-[200px]"
+              style={{
+                background: "linear-gradient(to top, rgba(255,255,255,0) 0%, white 80%)",
+              }}
+            />
+
             {/* White gradient fade at bottom */}
             <div
               className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[200px]"
