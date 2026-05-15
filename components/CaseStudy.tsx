@@ -58,13 +58,12 @@ export default function CaseStudy() {
           initial="hidden"
           whileInView="show"
           viewport={viewportOnce}
-          className="mt-10 grid items-start gap-10 lg:grid-cols-2"
+          className="mt-10 grid items-stretch gap-10 lg:grid-cols-[1fr_1fr]"
         >
           {/* Left: Photo / video card */}
           <motion.div
             variants={fadeUp}
-            className="relative overflow-hidden rounded-[24px]"
-            style={{ aspectRatio: "4/5.5" }}
+            className="relative min-h-[500px] overflow-hidden rounded-[24px]"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -126,7 +125,7 @@ export default function CaseStudy() {
           </motion.div>
 
           {/* Right: Timeline cards */}
-          <div className="relative flex flex-col gap-6">
+          <div className="relative flex flex-col justify-center gap-6">
             {/* Vertical dotted line */}
             <div
               className="absolute left-[calc(50%-85px)] top-6 hidden h-[calc(100%-48px)] border-l-2 border-dashed border-line lg:block"
