@@ -21,14 +21,14 @@ export default function Home() {
       <Nav />
       <Hero />
       <MedsStrip />
-      <SupportGap />
-      <Zones />
       <Features />
+      <SupportGap />
+      <CaseStudy />
+      <Zones />
       <CoachBand />
       <Stats />
       <WhoItsFor />
       <Integrations />
-      <CaseStudy />
       <Testimonials />
       <Pricing />
       <FAQ />
