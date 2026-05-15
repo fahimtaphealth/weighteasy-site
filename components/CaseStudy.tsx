@@ -1,17 +1,18 @@
 "use client";
 
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import { fadeUp, stagger, viewportOnce } from "@/lib/motion";
 
 /* Figma asset URLs (refreshed 2026-05-15) */
 const imgMeagan =
-  "https://www.figma.com/api/mcp/asset/e9fc7774-9fcc-47a1-9214-dd06838b33ac";
+  "https://www.figma.com/api/mcp/asset/d58dfee8-961b-4c18-8af4-4eed6b7a95de";
 
 const chapters = [
   {
     when: "Day 1",
     title: "The first shot",
-    body: "I was terrified. I’d watched YouTube tutorials for two weeks. The app walked me through the injection with a countdown and a calm “you’ve got this.” I cried a little. Then I had a sandwich.",
+    body: "“I was terrified. I’d watched YouTube tutorials for two weeks. The app walked me through the injection with a countdown and a calm “you’ve got this.” I cried a little. Then I had a sandwich.”",
     mood: "🫣",
   },
   {
@@ -35,6 +36,12 @@ const chapters = [
 ];
 
 export default function CaseStudy() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollDown = () => {
+    scrollRef.current?.scrollBy({ top: 200, behavior: "smooth" });
+  };
+
   return (
     <section id="story" className="bg-white py-[100px]">
       <div className="container-x">
@@ -58,12 +65,13 @@ export default function CaseStudy() {
           initial="hidden"
           whileInView="show"
           viewport={viewportOnce}
-          className="mt-10 grid items-stretch gap-10 lg:grid-cols-[1fr_1fr]"
+          className="mt-10 flex flex-col items-center gap-10 lg:flex-row lg:items-center lg:justify-center lg:gap-24"
         >
-          {/* Left: Photo / video card */}
+          {/* Left: Photo / video card — fixed size */}
           <motion.div
             variants={fadeUp}
-            className="relative min-h-[500px] overflow-hidden rounded-[24px]"
+            className="relative w-full max-w-[445px] shrink-0 overflow-hidden rounded-[24px] lg:w-[445px]"
+            style={{ height: "638px" }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -77,7 +85,7 @@ export default function CaseStudy() {
               className="absolute inset-x-0 top-0 p-7"
               style={{
                 background:
-                  "radial-gradient(ellipse at top left, rgba(0,0,0,0.55) 0%, transparent 70%)",
+                  "radial-gradient(ellipse at top left, rgba(0,0,0,0.75) 0%, transparent 70%)",
               }}
             >
               <div className="font-display text-[1.5rem] font-bold leading-tight text-white">
@@ -89,32 +97,23 @@ export default function CaseStudy() {
               </div>
             </div>
 
-            {/* Center play button */}
+            {/* Center play/pause button */}
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
               <div
                 className="flex h-[112px] w-[112px] items-center justify-center rounded-full"
-                style={{
-                  background: "rgba(12,12,13,0.75)",
-                }}
+                style={{ background: "rgba(12,12,13,0.75)" }}
               >
-                <svg
-                  width="64"
-                  height="64"
-                  viewBox="0 0 64 64"
-                  fill="none"
-                >
-                  <path
-                    d="M24 16v32l24-16-24-16z"
-                    fill="white"
-                  />
+                <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                  <rect x="20" y="16" width="8" height="32" rx="2" fill="white" />
+                  <rect x="36" y="16" width="8" height="32" rx="2" fill="white" />
                 </svg>
               </div>
             </div>
 
             {/* Bottom quote bar */}
-            <div className="absolute inset-x-0 bottom-8 flex justify-center px-6">
+            <div className="absolute inset-x-0 bottom-8 flex justify-center px-4">
               <div
-                className="rounded-md px-4 py-2 text-center text-[1rem] leading-[1.5] text-white"
+                className="rounded-md px-3 py-2 text-center text-[1rem] leading-[1.5] text-white"
                 style={{ background: "rgba(12,12,13,0.75)" }}
               >
                 I didn&rsquo;t need another app. I needed someone to
@@ -124,48 +123,68 @@ export default function CaseStudy() {
             </div>
           </motion.div>
 
-          {/* Right: Timeline cards */}
-          <div className="relative flex flex-col justify-center gap-6">
-            {/* Vertical dotted line */}
+          {/* Right: Scrollable timeline cards */}
+          <div className="relative w-full max-w-[560px] lg:flex-1" style={{ height: "638px" }}>
+            {/* Scrollable card container */}
             <div
-              className="absolute left-[calc(50%-85px)] top-6 hidden h-[calc(100%-48px)] border-l-2 border-dashed border-line lg:block"
-              aria-hidden
+              ref={scrollRef}
+              className="flex h-full flex-col gap-6 overflow-y-auto pr-2 scrollbar-hide"
+            >
+              {chapters.map((c) => (
+                <motion.div
+                  key={c.when}
+                  variants={fadeUp}
+                  className="relative z-10 flex shrink-0 flex-col gap-1 rounded-[22px] border border-line bg-white p-7"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="text-[1rem] font-semibold uppercase tracking-[1.5px] text-accent">
+                      {c.when}
+                    </span>
+                    <span className="text-[1.4rem]" aria-hidden>
+                      {c.mood}
+                    </span>
+                  </div>
+                  <h3 className="font-display text-[1.3rem] font-extrabold leading-[1.2] tracking-[-0.4px] text-ink">
+                    {c.title}
+                  </h3>
+                  <p className="text-[1rem] leading-[1.6] text-muted">
+                    {c.body}
+                  </p>
+                </motion.div>
+              ))}
+              {/* Bottom spacer so last card can scroll fully into view */}
+              <div className="shrink-0 h-16" aria-hidden />
+            </div>
+
+            {/* White gradient fade at bottom */}
+            <div
+              className="pointer-events-none absolute inset-x-0 bottom-0 h-[160px]"
+              style={{
+                background: "linear-gradient(to bottom, rgba(255,255,255,0) 0%, white 80%)",
+              }}
             />
 
-            {chapters.map((c, i) => (
-              <motion.div
-                key={c.when}
-                variants={fadeUp}
-                className="relative z-10 flex flex-col gap-3 rounded-[22px] border border-line bg-white p-7"
-                style={{
-                  boxShadow: i === 0 ? "none" : undefined,
-                }}
-              >
-                <div className="flex items-center justify-between">
-                  <span className="text-[1rem] font-semibold uppercase tracking-[1.5px] text-accent">
-                    {c.when}
-                  </span>
-                  <span className="text-[1.4rem]" aria-hidden>
-                    {c.mood}
-                  </span>
-                </div>
-                <h3 className="font-display text-[1.3rem] font-extrabold leading-[1.2] tracking-[-0.4px] text-ink">
-                  {c.title}
-                </h3>
-                <p className="text-[1rem] leading-[1.6] text-muted">
-                  {c.body}
-                </p>
-              </motion.div>
-            ))}
+            {/* Down arrow scroll button */}
+            <button
+              onClick={scrollDown}
+              className="absolute bottom-4 left-1/2 z-20 flex h-12 w-12 -translate-x-1/2 items-center justify-center rounded-full border border-[#bec5d2] bg-[#f2f5f9]"
+              style={{
+                boxShadow: "0 2px 3px rgba(0,0,0,0.08), 0 1px 1px rgba(0,0,0,0.05)",
+              }}
+              aria-label="Scroll to next story"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M12 5v14m0 0l-5-5m5 5l5-5"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
           </div>
         </motion.div>
-
-        {/* Scroll indicator */}
-        <div className="mt-10 flex justify-center">
-          <div className="flex h-2 w-[108px] overflow-hidden rounded-full bg-[#f2f5f9]">
-            <div className="w-[63%] rounded-full bg-[#3d4966]" />
-          </div>
-        </div>
       </div>
     </section>
   );
